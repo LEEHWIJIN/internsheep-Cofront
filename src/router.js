@@ -13,26 +13,6 @@ export default new Router ({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/appliedStd',
-            name: 'ViewAppliedStudents',
-            component: ViewAppliedStudents,
-            //component: ()=> import('./components/Resume/Index'),
-            // meta: {
-            //   permission: -1,
-            //   restrict: false,
-            // }
-        },
-        {
-            path: '/apply',
-            name: 'Apply',
-            component: Apply,
-            //component: ()=> import('./components/Resume/Index'),
-            // meta: {
-            //   permission: -1,
-            //   restrict: false,
-            // }
-        },
-        {
             path: '/home',
             name: 'Home',
             component: Home,
@@ -46,6 +26,36 @@ export default new Router ({
             path : '/login',
             name : 'login',
             component : Login,
+        },
+        {
+            path: '/apply',
+            name: 'Apply',
+            component: Apply,
+            //component: ()=> import('./components/Resume/Index'),
+            // meta: {
+            //   permission: -1,
+            //   restrict: false,
+            // }
+        },
+        {
+            path: '/applyNotice',
+            name: 'ApplyNotice',
+            component: ApplyNotice,
+            //component: ()=> import('./components/Resume/Index'),
+            // meta: {
+            //   permission: -1,
+            //   restrict: false,
+            // }
+        },
+        {
+            path: '/appliedStd',
+            name: 'ViewAppliedStudents',
+            component: ViewAppliedStudents,
+            //component: ()=> import('./components/Resume/Index'),
+            // meta: {
+            //   permission: -1,
+            //   restrict: false,
+            // }
         }
     ]
 })

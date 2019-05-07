@@ -37,7 +37,8 @@
                   <a class="nav-link text-white text-capitalize dropdown-toggle" href="#" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">(주)AJOU company</a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item text-color" href="#"><router-link :to="{name: 'Apply'}">공고 관리</router-link></a>
+                    <a class="dropdown-item text-color" href="#"><router-link :to="{name: 'Apply'}">공고 작성</router-link></a>
+                    <a class="dropdown-item text-color" href="#"><router-link :to="{name: 'ApplyNotice'}">공고 신청</router-link></a>
                     <a class="dropdown-item text-color" href="#"><router-link :to="{name: 'ViewAppliedStudents'}">지원 학생 관리</router-link></a>
                     <a class="dropdown-item text-color" href="career.html">선발 학생 관리</a>
                     <a class="dropdown-item text-color" href="team.html">회원 정보 수정</a>
@@ -98,6 +99,9 @@
     methods: {
       goApply(){
         this.$router.push({name: "Apply"})
+      },
+      goApplyNotice(){
+        this.$router.push({name: "ApplyNotice"})
       },
       goViewAppliedStudents(){
         this.$router.push({name: "ViewAppliedStudents"})
