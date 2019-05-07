@@ -1,3 +1,4 @@
+<!-- 홈 페이지 -->
 <template>
     <div id="Home">
         <!-- banner -->
