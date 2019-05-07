@@ -1,3 +1,4 @@
+<!-- 신청 학생 뷰 페이지 -->
 <template>
   <div id="apply">
     <div v-for='sc in applylist'>

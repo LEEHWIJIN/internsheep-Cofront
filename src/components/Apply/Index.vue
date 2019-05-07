@@ -1,3 +1,4 @@
+<!-- 공고 작성 페이지  -->
 <template>
   <div id="apply">
     <form v-on:submit.prevent='submitNotice'>
