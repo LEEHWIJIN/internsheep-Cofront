@@ -13,25 +13,10 @@
             <div class="collapse navbar-collapse text-center" id="navigation">
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                  <a class="nav-link text-white text-capitalize" href="about.html">about</a>
+                  <a class="nav-link text-white text-capitalize" href="about.html">공지사항</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-white text-capitalize" href="services.html">services</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link text-white text-capitalize dropdown-toggle" href="#" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">pages</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item text-color" href="team.html">Our Team</a>
-                    <a class="dropdown-item text-color" href="pricing.html">Our Pricing</a>
-                    <a class="dropdown-item text-color" href="career.html">Our Career</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white text-capitalize" href="blog.html">blog</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-white text-capitalize" href="contact.html">contact</a>
+                  <a class="nav-link text-white text-capitalize" href="services.html">기업목록</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link text-white text-capitalize dropdown-toggle" href="#" data-toggle="dropdown"
@@ -113,5 +98,10 @@
 <style scoped>
 #app {
  /* background-image: url('../public/images/background/banner.png'); */
+}
+
+.naviagtion {
+  background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
+  padding: 15px 0;
 }
 </style>
