@@ -21,10 +21,10 @@
       }
     },
     components: {
-        
+
     },
     created(){
-        
+
     },
     methods: {
       login() {
