@@ -1,4 +1,3 @@
-<!-- 홈 페이지 -->
 <template>
     <div id="Home">
         <!-- banner -->
@@ -17,7 +16,7 @@
             </div>
             </div>
         </div>
-        <!-- /banner -->
+        <!-- /banner --> 
     </div>
 </template>
 <script>
@@ -28,21 +27,18 @@
     name: 'Home',
     data() {
       return {
-
+       
       }
     },
     components: {
         //VResume
     },
     created(){
-
+        
     },
     methods: {
-      goApply(){
-        this.$router.push({name: "Apply"})
-      },
-      goViewAppliedStudents(){
-        this.$router.push({name: "ViewAppliedStudents"})
+      goResume(){
+        this.$router.push({name: "Resume"})
       },
     }
   }
