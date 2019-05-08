@@ -9,19 +9,9 @@
               aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-      
+
             <div class="collapse navbar-collapse text-center" id="navigation">
               <ul class="navbar-nav mx-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-white active text-capitalize" href="#"  data-toggle="dropdown"
-                  aria-haspopup="true" aria-expan
-                  ded="false"><router-link :to="{name: 'Home'}">Home</router-link></a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item text-color" href="index.html">Homepage 1</a>
-                    <a class="dropdown-item text-color" href="homepage2.html">Homepage 2</a>
-                    <a class="dropdown-item text-color" href="homepage3.html">Homepage 3</a>
-                  </div>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link text-white text-capitalize" href="about.html">about</a>
                 </li>
@@ -47,8 +37,9 @@
                   <a class="nav-link text-white text-capitalize dropdown-toggle" href="#" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">(주)AJOU company</a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item text-color" href="#"><router-link :to="{name: 'Apply'}">공고 관리</router-link></a>
-                    <a class="dropdown-item text-color" href="pricing.html">지원 학생 관리</a>
+                    <a class="dropdown-item text-color" href="#"><router-link :to="{name: 'Apply'}">공고 작성</router-link></a>
+                    <a class="dropdown-item text-color" href="#"><router-link :to="{name: 'ApplyNotice'}">공고 신청</router-link></a>
+                    <a class="dropdown-item text-color" href="#"><router-link :to="{name: 'ViewAppliedStudents'}">지원 학생 관리</router-link></a>
                     <a class="dropdown-item text-color" href="career.html">선발 학생 관리</a>
                     <a class="dropdown-item text-color" href="team.html">회원 정보 수정</a>
                   </div>
@@ -78,7 +69,7 @@
           </div>
         </div>
       </div> -->
-      <!-- /banner --> 
+      <!-- /banner -->
 
     <!-- 이력서 예시 입니다. 이런식으로 만들어 주시면 됩니다. 테스트 커밋
     2. build job 과 deploy job 나누기.
@@ -96,18 +87,24 @@
     name: 'app',
     data() {
       return {
-       
+
       }
     },
     components: {
         //VResume
     },
     created(){
-        
+
     },
     methods: {
-      goResume(){
-        this.$router.push({name: "Resume"})
+      goApply(){
+        this.$router.push({name: "Apply"})
+      },
+      goApplyNotice(){
+        this.$router.push({name: "ApplyNotice"})
+      },
+      goViewAppliedStudents(){
+        this.$router.push({name: "ViewAppliedStudents"})
       },
     }
   }
