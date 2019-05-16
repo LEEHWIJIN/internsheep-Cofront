@@ -37,10 +37,10 @@
       <input class="hello" type="submit" value="N차 지원하기">
     </form>
 
-    <div v-for='sc in applylist'>
+    <!-- <div v-for='sc in applylist'>
       기업명 : {{sc.cName}}<br>
       신청한 차수 : {{sc.applyOrder}}<br>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -58,10 +58,14 @@
 
       },
       created(){
-        this.applyList();
+        this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+          this.user = res.data.user;
+          this.submitNotice(this.user);
+        });
+        // this.applyList();
       },
       methods: {
-         submitNotice(){
+         submitNotice(loginId){
            this.$http.post('http://localhost:8888/co/mypage/applyNotice',{cName:this.cName,applyOrder: this.applyOrder}).then((response) => {
                console.log(this.cName)
                console.log(this.applyOrder)

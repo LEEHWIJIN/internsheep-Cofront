@@ -14,25 +14,27 @@
         return {
           applylist:[],
           selectedCo:[],
-          cName : "키"
+          user : {},
         }
       },
       components: {
       },
       created(){
-        this.applyList();
+        this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+          this.user = res.data.user;
+          // this.applyList(this.user);
+        });
       },
       methods: {
-        applyList(){
-          this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cName : this.cName}}).then((response) => {
-         //    console.log(response)
-              for(var i=0; i<response.data.length;i++){
-                  this.applylist.push({
-                    sName : response.data[i].sName
-                  })
-              }
-          //    console.log(this.applylist);
-            })
+        applyList(loginId){
+          this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : loginId.loginId}}).then((response) => {
+            // for(var i=0; i<response.data.length;i++){
+            //     this.applylist.push({
+            //       sName : response.data[i].sName
+            //     })
+            // }
+            console.log(response.data)
+          })
         },
       }
   }
