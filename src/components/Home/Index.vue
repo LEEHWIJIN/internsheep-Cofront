@@ -1,6 +1,7 @@
 <!-- 홈 페이지 -->
 <template>
     <div id="Home">
+      <v-base></v-base>
         <!-- banner -->
         <div class="hero-area bg-cover">
             <div class="container">
@@ -21,9 +22,7 @@
     </div>
 </template>
 <script>
-  //import Vue from 'vue';
-  //import VResume from './components/Resume/Index.vue';
-  //import Vtest from '../test/test.vue'
+  import VBase from '../Base/Index.vue'
   export default{
     name: 'Home',
     data() {
@@ -32,7 +31,7 @@
       }
     },
     components: {
-        //VResume
+        VBase,
     },
     created(){
 
