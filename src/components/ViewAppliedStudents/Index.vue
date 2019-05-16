@@ -2,24 +2,36 @@
 <template>
 <section class="section section-lg-bottom bg-light">
   <div class="container" id="apply">
+    <v-base></v-base>
     <div class="row">
-
-      <div class="col-lg-12 text-center">
-        <p class="subtitle">Students</p>
-        <h2 class="section-title">Applied Students</h2>
+      <!-- 카테고리란 -->
+      <div class="col-lg-3">
+        <v-category></v-category>
       </div>
-
-      <div v-for='sc in applylist' class="col-lg-12 bg-white p-4 rounded shadow my-3">
-        <div class="media align-items-center flex-column flex-sm-row">
-          <!-- 학생 사진 -->
-          <img src="images/career/logo-5.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
-          <!-- 학생 간단 정보 -->
-          <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-            <h6 class="mt-0">{{sc.sName}} - Team of PHP MySQL Developers </h6>
-            <p class="mb-0 text-gray">소프트웨어학과 | 3학년 | 학점 3.3</p>
+      <!-- 공백 -->
+      <div class="col-lg-1">
+      </div>
+      <!-- 지원 현황 -->
+      <div class="col-lg-8">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <p class="subtitle">Students</p>
+            <h2 class="section-title">Applied Students</h2>
           </div>
-          <!-- 학생 상세 정보 버튼 -->
-          <a href="#" class="btn btn-outline-primary">Specification</a>
+
+          <div v-for='sc in applylist' class="col-lg-12 bg-white p-4 rounded shadow my-3">
+            <div class="media align-items-center flex-column flex-sm-row">
+              <!-- 학생 사진 -->
+              <img src="images/career/logo-5.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
+              <!-- 학생 간단 정보 -->
+              <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
+                <h6 class="mt-0">{{sc.sName}} - Team of PHP MySQL Developers </h6>
+                <p class="mb-0 text-gray">소프트웨어학과 | 3학년 | 학점 3.3</p>
+              </div>
+              <!-- 학생 상세 정보 버튼 -->
+              <a href="#" class="btn btn-outline-primary">Specification</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -28,6 +40,8 @@
 </template>
 
 <script>
+  import VBase from '../Base/Index.vue'
+  import VCategory from '../Category/Index.vue'
   export default{
       name: 'Apply',
       data() {
@@ -38,6 +52,8 @@
         }
       },
       components: {
+        VBase,
+        VCategory,
       },
       created(){
         this.applyList();
@@ -59,8 +75,5 @@
 </script>
 
 <style scoped>
-#apply{
-  margin-left: 200px;
-  margin-top: 200px;
-}
+
 </style>
