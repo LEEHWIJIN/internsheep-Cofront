@@ -37,8 +37,8 @@
                     <a class="dropdown-item text-color" href="#" @click="goApply">공고 작성</a>
                     <a class="dropdown-item text-color" href="#" @click="goApplyNotice">공고 신청</a>
                     <a class="dropdown-item text-color" href="#" @click="goViewAppliedStudents">지원 학생 관리</a>
-                    <a class="dropdown-item text-color" href="team.html">선발 학생 관리</a>
-                    <a class="dropdown-item text-color" href="pricing.html">회원 정보 수정</a>
+                    <a class="dropdown-item text-color" href="#">선발 학생 관리</a>
+                    <a class="dropdown-item text-color" href="#">회원 정보 수정</a>
                   </div>
                 </li>
               </ul>
@@ -123,8 +123,16 @@
 </script>
 
 <style scoped>
+.naviagtion {
+  background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
+  padding: 10px 0;
+}
 .naviagtion.nav-bg {
   background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
-  padding: 5px 0;
+  padding: 1px 0;
+}
+.ul{
+   list-style:none;
+   padding-left:0px;
 }
 </style>

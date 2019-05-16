@@ -1,23 +1,12 @@
 <!-- 공고 작성 페이지  -->
 <template>
 <section class="section section-lg-bottom bg-light">
-  <v-base></v-base>
   <div class="container" id="apply">
+    <v-base></v-base>
     <div class="row">
       <div class="col-lg-3">
-          <div class="rounded-sm shadow bg-white pb-4">
-              <div class="widget">
-                  <h4>Category</h4>
-                    <ul class="list-styled list-bordered">
-                    <li><a class="text-color d-block py-3" href="blog-details.html">공고 작성</a></li>
-                    <li><a class="text-color d-block py-3" href="blog-details.html">공고 신청</a></li>
-                    <li><a class="text-color d-block py-3" href="blog-details.html">지원 학생 관리</a></li>
-                    <li><a class="text-color d-block py-3" href="blog-details.html">선발 학생 관리</a></li>
-                    <li><a class="text-color d-block py-3" href="blog-details.html">회원 정보 수정</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <v-category></v-category>
+      </div>
         <!-- 공백 -->
         <div class="col-lg-1">
         </div>
@@ -78,6 +67,7 @@
 
 <script>
   import VBase from '../Base/Index.vue'
+  import VCategory from '../Category/Index.vue'
   export default{
       name: 'Apply',
       data() {
@@ -96,6 +86,7 @@
       },
       components: {
           VBase,
+          VCategory,
       },
       created(){
         this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
@@ -130,8 +121,4 @@
 </script>
 
 <style scoped>
-#apply{
-  margin-left: 200px;
-  margin-top: 200px;
-}
 </style>
