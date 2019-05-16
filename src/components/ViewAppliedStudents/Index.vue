@@ -1,6 +1,5 @@
 <!-- 신청 학생 뷰 페이지 -->
 <template>
-
 <section class="section section-lg-bottom bg-light">
   <div class="container" id="apply">
     <div class="row">
@@ -23,8 +22,6 @@
           <a href="#" class="btn btn-outline-primary">Specification</a>
         </div>
       </div>
-
-
     </div>
   </div>
 </section>
@@ -62,5 +59,8 @@
 </script>
 
 <style scoped>
-
+#apply{
+  margin-left: 200px;
+  margin-top: 200px;
+}
 </style>
