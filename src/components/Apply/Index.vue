@@ -46,13 +46,14 @@
             <div class="col-lg-6">
                   <input class="form-control mb-4" v-model="cID_1" placeholder="사업자등록번호를 입력 해주세요">
             </div><br> -->
+
             <h6 style="font-weight:bold">실습시작일*</h6>
             <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="internTermStart" placeholder="실습시작일을 입력 해주세요">
+              <date-picker v-model="internTermStart"/>
             </div><br>
             <h6 style="font-weight:bold">실습종료일*</h6>
             <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="internTermEnd" placeholder="실습종료일을 입력 해주세요">
+              <date-picker v-model="internTermEnd"/>
             </div><br>
             <div class="col-12 text-center">
             <button class="btn btn-primary" type="submit">제출하기</button>
@@ -68,6 +69,7 @@
 <script>
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
+  import DatePicker from 'v-cal-input'
   export default{
       name: 'Apply',
       data() {
@@ -82,11 +84,13 @@
           cTag : [],
           // cID_1 : [],
           internTermEnd : [],
+            date : null,
         }
       },
       components: {
           VBase,
           VCategory,
+          DatePicker,
       },
       created(){
         this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
