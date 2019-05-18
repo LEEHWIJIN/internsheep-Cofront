@@ -20,7 +20,7 @@
               </div>
               <div class="col-lg-12 text-center p-0">
                 <form v-on:submit.prevent='submitNotice'>
-                <textarea class="form-control mb-4" name="name" rows="" cols="80">
+                <textarea class="form-control mb-4" name="name" rows="" cols="80" style="height:300px;">
                 제 1조 참가신청
                 아주대학교 현장실습 기업 참가신청은 조기에 완료된다.
 

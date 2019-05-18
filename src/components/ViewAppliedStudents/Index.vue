@@ -11,15 +11,16 @@
       <!-- 공백 -->
       <div class="col-lg-1">
         <!-- 상세 정보 버튼 -->
+
         <div>
           <!-- 긴 모달 -->
           <div>
             <b-button v-b-modal.modal-tall>이력서 보기</b-button>
             <b-modal id="modal-tall" title="이력서 세부내용">
-              <!-- <p class="my-1" v-for="i in 20" :key="i">
+               <p class="my-1" v-for="i in 20" :key="i">
                 Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                 in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </p> -->
+              </p>
               <div class="row">
                 <div class="col-lg-12 text-center">
                   <img src="images/career/logo-5.png" class="img shadow-sm mr-sm-3 m-3 p-0" alt="logo-1">
@@ -60,6 +61,7 @@
             </app-my-modal>
           </div>
         </div>
+
       </div>
       <!-- 지원 현황 -->
       <div class="col-lg-8">
