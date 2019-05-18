@@ -95,12 +95,21 @@
               applyOrder : this.applyOrder,
               applySemester : this.applySemester,
             }
-            this.$http.post('http://localhost:8888/co/mypage/applyNotice',{cLoginID:this.user.loginId, data}).then((response) => {
-              if(response.data.result==1){
+
+              this.$http.get('http://localhost:8888/co/mypage/checkApplyNotice',{params:{cLoginID:this.user.loginId, applyOrder : this.applyOrder, applySemester : this.applySemester}}).then((response) => {
+                console.log(response.data)
+              if(response.data=='1'){
+                alert("이미 신청하였습니다.")
+              }
+              else {
+                this.$http.post('http://localhost:8888/co/mypage/applyNotice',{cLoginID:this.user.loginId, data}).then((response) => {
+              if(response.data=='1'){
                 alert("신청되었습니다.")
               }
               else {
                 alert("신청에 실패 했습니다. 다시 시도해 주세요.")
+              }
+            })
               }
             })
           })

@@ -112,8 +112,8 @@
             cTag : this.cTag,
             cLocation : this.cLocation,
           };
-          this.$http.post('http://localhost:8888/co/mypage/writeNotice',{cLoginID:this.user.loginId,data}).then((response) => {
-            // console.log(this.cName)
+          this.$http.post('http://localhost:8888/co/mypage/writeNotice',{cLoginID:this.user.loginId,data:data}).then((response) => {
+            console.log(data)
             // console.log(this.cManagerName)
             // this.cName = "";
             // this.cManagerName="";
