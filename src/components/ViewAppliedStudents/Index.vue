@@ -12,18 +12,52 @@
       <div class="col-lg-1">
         <!-- 상세 정보 버튼 -->
         <div>
-          <b-button v-b-modal.modal-1>Launch demo modal</b-button>
-          <b-modal id="modal-1" title="BootstrapVue">
-            <p class="my-4">Hello from modal!</p>
-          </b-modal>
+          <!-- 긴 모달 -->
           <div>
-            <b-button v-b-modal.modal-tall>Launch overflowing modal</b-button>
-            <b-modal id="modal-tall" title="Overflowing Content">
-              <p class="my-4" v-for="i in 20" :key="i">
+            <b-button v-b-modal.modal-tall>이력서 보기</b-button>
+            <b-modal id="modal-tall" title="이력서 세부내용">
+              <!-- <p class="my-1" v-for="i in 20" :key="i">
                 Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                 in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+              </p> -->
+              <div class="row">
+                <div class="col-lg-12 text-center">
+                  <img src="images/career/logo-5.png" class="img shadow-sm mr-sm-3 m-3 p-0" alt="logo-1">
+                </div>
+              </div>
+              <p class="my-1">
+                이름:
               </p>
+              <p class="my-1">
+                소속학과:
+              </p>
+              <p class="my-1">
+                학번:
+              </p>
+              <p class="my-1">
+                전화번호:
+              </p>
+              <p class="my-1">
+                E-mail:
+              </p>
+
             </b-modal>
+          </div>
+          <!-- 짧은 모달 -->
+          <b-button v-b-modal.modal-1>Launch demo modal</b-button>
+          <b-modal id="modal-1" title="BootstrapVue">
+            <p class="my-1">Hello from modal!</p>
+          </b-modal>
+          <!-- 몬생긴 모달 -->
+          <div>
+            <button @click="handleClickButton">Toggle Modal</button>
+            <app-my-modal
+              title="This is modal"
+              :visible.sync="visible">
+              <div>
+                This is modal body
+              </div>
+            </app-my-modal>
           </div>
         </div>
       </div>
@@ -157,5 +191,9 @@
 </script>
 
 <style scoped>
-
+.img {
+    height:100px;
+    border-radius: 50%;
+    border-color: coral;
+}
 </style>
