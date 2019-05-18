@@ -81,6 +81,7 @@
         return {
           applylist:[],
           selectedCo:[],
+          applyTerm:{},
         }
       },
       components: {
@@ -90,28 +91,63 @@
           VCategory,
       },
       created(){
-        this.applyList();
-
+        //this.applyList();
+        this.recentSemester();
       },
       methods: {
+        recentSemester(){
+          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+            this.applyTerm = {
+                applyStart : response.data[0].applyStart,
+                applyEnd : response.data[0].applyEnd,
+                applySemester : response.data[0].applySemester,
+                applyOrder : response.data[0].applyOrder
+            }
+            this.applyList();
+          })
+        },
         applyList(){
-          this.$http.get('http://localhost:8888/std/list').then((response) => {
-              for(var i=0; i<response.data.length;i++){
-                  this.applylist.push({
-                    cManagerName : response.data[i].cManagerName,
-                    cName : response.data[i].cName,
-                    cNoticeID : response.data[i].cNoticeID
-                  })
-              }
-            })
+          this.$http.get('http://localhost:8888/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
+            for(var i=0; i<response.data.length;i++){
+              this.applylist.push({
+                cBenefit : response.data[i].cBenefit,
+                cPay : response.data[i].cPay,
+                internTermStart : response.data[i].internTermStart,
+                internTermEnd : response.data[i].internTermEnd,
+                cManagerPhone : response.data[i].cManagerPhone,
+                cImage : response.data[i].cImage,
+                cLocation : response.data[i].cLocation,
+                cManagerName : response.data[i].cManagerName,
+                cName : response.data[i].cName,
+                cOccupation : response.data[i].cOccupation,
+                cTag : response.data[i].cTag,
+                cNumOfPeople :response.data[i].cNumOfPeople,
+                applyStdNum : response.data[i].applyStdNum,
+                cInfo : response.data[i].cInfo,
+                cEmail : response.data[i].cEmail,
+              })
+            }
+          })
         },
         clickCo(selectedNum){
           this.selectedCo=[]
           //console.log(selectedNum)
           this.selectedCo.push({
-            cManagerName : this.applylist[selectedNum].cManagerName,
-            cName : this.applylist[selectedNum].cName,
-            cNoticeID : this.applylist[selectedNum].cNoticeID
+              cBenefit : this.applylist[selectedNum].cBenefit,
+              cPay : this.applylist[selectedNum].cPay,
+              internTermStart : this.applylist[selectedNum].internTermStart.split('T')[0],
+              internTermEnd : this.applylist[selectedNum].internTermEnd.split('T')[0],
+              cManagerPhone : this.applylist[selectedNum].cManagerPhone,
+              cImage : this.applylist[selectedNum].cImage,
+              cLocation : this.applylist[selectedNum].cLocation,
+              cManagerName : this.applylist[selectedNum].cManagerName,
+              cName : this.applylist[selectedNum].cName,
+              cOccupation : this.applylist[selectedNum].cOccupation,
+              cTag : this.applylist[selectedNum].cTag,
+              cNumOfPeople :this.applylist[selectedNum].cNumOfPeople,
+              applyStdNum : this.applylist[selectedNum].applyStdNum,
+              cInfo : this.applylist[selectedNum].cInfo,
+              cEmail : this.applylist[selectedNum].cEmail,
           })
         },
       }

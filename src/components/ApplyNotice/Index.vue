@@ -56,11 +56,6 @@
                 <button  class="btn btn-primary" type="submit" >N차 지원하기</button>
             </form>
               </div>
-
-            <div v-for='sc in applylist'>
-              기업명 : {{sc.cName}}<br>
-              신청한 차수 : {{sc.applyOrder}}<br>
-            </div>
           </div>
         </div>
       </div>
@@ -77,7 +72,8 @@
         return {
           applylist:[],
           cName:'고비포선라이즈',
-          applyOrder:'1',
+          applyOrder: [],
+          applySemester : [],
         }
       },
       components: {
@@ -85,29 +81,30 @@
         VCategory,
       },
       created(){
-        this.applyList();
+        this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+          this.user = res.data.user;
+          return this.user
+        });
       },
       methods: {
-         submitNotice(){
-           this.$http.post('http://localhost:8888/co/mypage/applyNotice',{cName:this.cName,applyOrder: this.applyOrder}).then((response) => {
-               console.log(this.cName)
-               console.log(this.applyOrder)
-               this.cName = "";
-               this.applyOrder="";
-             })
-         },
-         applyList(){
-           this.$http.get('http://localhost:8888/co/mypage/showApplyNotice',{params:{cName : this.cName,applyOrder: this.applyOrder}}).then((response) => {
-          //    console.log(response)
-               for(var i=0; i<response.data.length;i++){
-                   this.applylist.push({
-                     cName : response.data[i].cName,
-                     applyOrder : response.data[i].applyOrder
-                   })
-               }
-           //    console.log(this.applylist);
-             })
-         },
+        submitNotice(loginId){
+          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+            this.applyOrder = response.data[0].applyOrder;
+            this.applySemester = response.data[0].applySemester;
+            var data = {
+              applyOrder : this.applyOrder,
+              applySemester : this.applySemester,
+            }
+            this.$http.post('http://localhost:8888/co/mypage/applyNotice',{cLoginID:this.user.loginId, data}).then((response) => {
+              if(response.data.result==1){
+                alert("신청되었습니다.")
+              }
+              else {
+                alert("신청에 실패 했습니다. 다시 시도해 주세요.")
+              }
+            })
+          })
+        },
       }
   }
 </script>

@@ -36,19 +36,24 @@
             <h2 class="section-title">Applied Students</h2>
           </div>
 
-          <div v-for='sc in applylist' class="col-lg-12 bg-white p-4 rounded shadow my-3">
+          <div v-for='(sl,index) in stdList' class="col-lg-12 bg-white p-4 rounded shadow my-3">
             <div class="media align-items-center flex-column flex-sm-row">
               <!-- 학생 사진 -->
               <img src="images/career/logo-5.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
               <!-- 학생 간단 정보 -->
               <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-                <h6 class="mt-0">{{sc.sName}} - Team of PHP MySQL Developers </h6>
-                <p class="mb-0 text-gray">소프트웨어학과 | 3학년 | 학점 3.3</p>
+                <h6 class="mt-0">{{sl.sName}} - Team of PHP MySQL Developers </h6>
+                <p class="mb-0 text-gray">{{sl.sMajor}} | {{sl.sGrade}} | 학점 3.3</p>
+              </div>
+              <div>
+              <b-form-select v-model="sl.selected" :options="options"></b-form-select>
               </div>
               <!-- 학생 상세 정보 버튼 -->
-              <a href="#" class="btn btn-outline-primary">Specification</a>
+              <!-- <a href="#" class="btn btn-outline-primary">Specification</a> -->
+              <a href="#" @click="finishJudge(index,sl.selected)" class="btn btn-outline-primary">심사 완료</a>
             </div>
           </div>
+          <!-- <a href="#" @click="finishJudge" class="btn btn-outline-primary">심사 완료</a> -->
         </div>
       </div>
     </div>
@@ -67,8 +72,14 @@
         return {
           applylist:[],
           selectedCo:[],
-          cName : "키",
-          visible: false,
+          stdList : [],
+          user : {},
+          cloudeLang : [],
+          selected : [],
+          options:[
+            {value : 0, text : "불합격"},
+            {value : 1, text : "합격"}
+          ],
         }
       },
       components: {
@@ -76,20 +87,45 @@
         VCategory,
         appMyModal: myModal,
       },
-      created(){
-        this.applyList();
+      async created(){
+        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+          this.user = res.data.user;
+          return this.user;
+        });
+        await this.getSemester();
       },
       methods: {
-        applyList(){
-          this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cName : this.cName}}).then((response) => {
-         //    console.log(response)
-              for(var i=0; i<response.data.length;i++){
-                  this.applylist.push({
-                    sName : response.data[i].sName
-                  })
-              }
-          //    console.log(this.applylist);
-            })
+        async getSemester(){
+          await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+            this.applyOrder = response.data[0].applyOrder;
+            this.applySemester = response.data[0].applySemester;
+            var data = {
+              applyOrder : this.applyOrder,
+              applySemester : this.applySemester,
+            };
+            this.applyList(this.applyOrder,this.applySemester);
+          });
+        },
+        applyList(order,semester){
+          this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
+            for(var i=0; i<response.data.length;i++){
+              this.stdList.push({
+                sName : response.data[i].sName,
+                sMajor : response.data[i].sMajor,
+                sGrade : response.data[i].sGrade,
+                stdApplyCoID : response.data[i].stdApplyCoID,
+              })
+            }
+          })
+        },
+        finishJudge(index,selected){
+          var data = {
+            stdApplyCoID : JSON.stringify(this.stdList[index].stdApplyCoID),
+            YN : selected,
+          }
+          this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:data}).then((response)=>{
+            }
+          )
         },
         handleClickButton(){
           this.visible = !this.visible
