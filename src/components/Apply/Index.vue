@@ -18,45 +18,45 @@
               <h2 class="section-title">Write a Notice</h2>
             </div>
           <form class="row" v-on:submit.prevent='submitNotice'>
-            <h6 style="font-weight:bold">회사 주소*</h6>
             <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소를 입력 해주세요">
-            </div><br>
-            <h6 style="font-weight:bold">복리후생*</h6>
+              <h6 style="font-weight:bold">회사 주소*</h6>
+              <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소를 입력 해주세요">
+            </div>
             <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="cBenefit" placeholder="복리후생 정보를 입력 해주세요">
-            </div><br>
-            <h6 style="font-weight:bold">급여*</h6>
+              <h6 style="font-weight:bold">복리후생*</h6>
+              <input class="form-control mb-4" v-model="cBenefit" placeholder="복리후생 정보를 입력 해주세요">
+            </div>
             <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="cPay" placeholder="급여 정보를 입력 해주세요">
-            </div><br>
-            <h6 style="font-weight:bold">활동부서*</h6>
+              <h6 style="font-weight:bold">급여*</h6>
+              <input class="form-control mb-4" v-model="cPay" placeholder="급여 정보를 입력 해주세요">
+            </div>
             <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="cOccupation" placeholder="활동부서를 입력 해주세요">
-            </div><br>
-            <h6 style="font-weight:bold">모집인원*</h6>
+              <h6 style="font-weight:bold">활동부서*</h6>
+              <input class="form-control mb-4" v-model="cOccupation" placeholder="활동부서를 입력 해주세요">
+            </div>
             <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="cNumOfPeople" placeholder="모집인원을 입력 해주세요">
-            </div><br>
-            <h6 style="font-weight:bold">태그*</h6>
+              <h6 style="font-weight:bold">모집인원*</h6>
+              <input class="form-control mb-4" v-model="cNumOfPeople" placeholder="모집인원을 입력 해주세요">
+            </div>
             <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요">
-            </div><br>
+              <h6 style="font-weight:bold">태그*</h6>
+              <input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요">
+            </div>
             <!-- <h6 style="font-weight:bold">사업자등록번호*</h6>
             <div class="col-lg-6">
                   <input class="form-control mb-4" v-model="cID_1" placeholder="사업자등록번호를 입력 해주세요">
             </div><br> -->
 
-            <h6 style="font-weight:bold">실습시작일*</h6>
             <div class="col-lg-6">
+              <h6 style="font-weight:bold">실습시작일*</h6>
               <date-picker v-model="internTermStart"/>
-            </div><br>
-            <h6 style="font-weight:bold">실습종료일*</h6>
+            </div>
             <div class="col-lg-6">
+              <h6 style="font-weight:bold">실습종료일*</h6>
               <date-picker v-model="internTermEnd"/>
-            </div><br>
+            </div>
             <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit">제출하기</button>
+              <button class="btn btn-primary" type="submit">제출하기</button>
             </div>
           </form>
           </div>
