@@ -7,7 +7,7 @@
             <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6 pl-lg-0 text-center text-lg-left">
-                <h1 class="text-white position-relative">Build Your Business Together<span class="watermark">Build</span></h1>
+                <h1 class="text-white position-relative">Intern - Sheep<span class="watermark">Intern</span></h1>
                 <p class="text-white pt-2 pb-3">Cupidatat non proident sunt culpa qui officia deserunt mollit <br> anim idest
                     laborum sed ut perspiciatis.</p>
                 <a href="#" class="btn btn-primary">Get Agico</a>

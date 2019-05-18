@@ -10,6 +10,23 @@
       </div>
       <!-- 공백 -->
       <div class="col-lg-1">
+        <!-- 상세 정보 버튼 -->
+        <div>
+          <b-button v-b-modal.modal-1>Launch demo modal</b-button>
+          <b-modal id="modal-1" title="BootstrapVue">
+            <p class="my-4">Hello from modal!</p>
+          </b-modal>
+          <div>
+            <button @click="handleClickButton">Toggle Modal</button>
+            <app-my-modal
+              title="This is modal"
+              :visible.sync="visible">
+              <div>
+                This is modal body
+              </div>
+            </app-my-modal>
+          </div>
+        </div>
       </div>
       <!-- 지원 현황 -->
       <div class="col-lg-8">
@@ -40,6 +57,8 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions} from 'vuex'
+  import myModal from './myModal'
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   export default{
@@ -48,12 +67,14 @@
         return {
           applylist:[],
           selectedCo:[],
-          cName : "키"
+          cName : "키",
+          visible: false,
         }
       },
       components: {
         VBase,
         VCategory,
+        appMyModal: myModal,
       },
       created(){
         this.applyList();
@@ -70,6 +91,9 @@
           //    console.log(this.applylist);
             })
         },
+        handleClickButton(){
+          this.visible = !this.visible
+        }
       }
   }
 </script>
