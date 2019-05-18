@@ -2,17 +2,7 @@
   <section class="section section-lg-bottom bg-light">
     <div class="container rounded-sm bg-white shadow">
       <v-base></v-base>
-      <div class="row">
-        <!-- 카테고리란 -->
-        <div class="col-lg-3">
-          <v-category></v-category>
-        </div>
-        <!-- 공백 -->
-        <div class="col-lg-1">
-        </div>
-        <!-- 지원 현황 -->
-        <div class="col-lg-8">
-          <div id="apply">
+        <div id="apply">
             <!-- <v-CoList :applylist="applylist" @clickCo="clickCo"></v-CoList> -->
             <div class="row">
               <!-- 기업 목록 -->
@@ -75,9 +65,6 @@
 
             </div>
           </div>
-        </div>
-      </div>
-
     </div>
   </section>
 </template>

@@ -8,6 +8,7 @@ import Login from './components/Login/Index.vue'
 import Home from './components/Home/Index.vue'
 import SignUp from './components/SignUp/Index.vue'
 import ApplyList from './components/ApplyList/Index.vue'
+import Profile from './components/Profile/Index.vue'
 
 Vue.use(Router)
 
@@ -96,6 +97,16 @@ export default new Router ({
             //   permission: -1,
             //   restrict: false,
             // }
-        }
+        },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile,
+            //component: ()=> import('./components/Resume/Index'),
+            // meta: {
+            //   permission: -1,
+            //   restrict: false,
+            // }
+        },
     ]
 })

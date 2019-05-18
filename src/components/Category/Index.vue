@@ -7,7 +7,7 @@
           <li><a class="text-color d-block py-3" href="#" @click="goApplyNotice">공고 신청</a></li>
           <li><a class="text-color d-block py-3" href="#" @click="goViewAppliedStudents">지원 학생 관리</a></li>
           <li><a class="text-color d-block py-3" href="#">선발 학생 관리</a></li>
-          <li><a class="text-color d-block py-3" href="#">회원정보 수정</a></li>
+          <li><a class="text-color d-block py-3" href="#" @click="goProfile">회원정보 수정</a></li>
           </ul>
       </div>
   </div>
@@ -67,6 +67,9 @@
       },
       goApplyList(){
           this.$router.push({name: "Apply"})
+      },
+      goProfile(){
+          this.$router.push({name: "Profile"})
       },
       logout(){
       localStorage.removeItem('token')

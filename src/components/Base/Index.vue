@@ -4,7 +4,7 @@
       <div class="naviagtion fixed-top transition">
         <div class="container">
           <nav class="navbar navbar-expand-lg navbar-dark p-1">
-            <!-- <a class="navbar-brand p-0" href="index.html"><img src="images/logo/logo.png" alt="Agico"></a> -->
+          <a class="navbar-brand p-0" href="#" @click="goHome"><img src="images/logo/logo.png" style="filter: brightness(0) invert(1);"alt="Intern Sheep"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation"
               aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -27,18 +27,21 @@
                 <li class="nav-item">
                   <a class="nav-link text-white text-capitalize" href="#">공지 사항</a>
                 </li>
+
+              </ul>
+              <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                   <a v-if="auth == 2" class="nav-link text-white text-capitalize" href="#" @click="goAdminPage">관리자페이지</a>
                 </li>
                 <li v-if="auth!=0" class="nav-item dropdown">
-                  <a class="nav-link text-white text-capitalize dropdown-toggle" href="#" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">{{user.name}}</a>
+                  <a class="name nav-link text-white text-capitalize dropdown-toggle" href="#" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-graduate mr-1 text-white"></i> {{user.name}}님</a>
                   <div class="dropdown-menu">
                     <a class="dropdown-item text-color" href="#" @click="goApply">공고 작성</a>
                     <a class="dropdown-item text-color" href="#" @click="goApplyNotice">공고 신청</a>
                     <a class="dropdown-item text-color" href="#" @click="goViewAppliedStudents">지원 학생 관리</a>
                     <a class="dropdown-item text-color" href="#">선발 학생 관리</a>
-                    <a class="dropdown-item text-color" href="#">회원 정보 수정</a>
+                    <a class="dropdown-item text-color" href="#" @click="goProfile">회원 정보 수정</a>
                   </div>
                 </li>
               </ul>
@@ -95,6 +98,9 @@
 
     },
     methods: {
+        goHome(){
+            this.$router.push({name: "Home"})
+        },
         goApply(){
         this.$router.push({name: "coApply"})
         },
@@ -109,6 +115,9 @@
         },
         goApplyList(){
             this.$router.push({name: "Apply"})
+        },
+        goProfile(){
+            this.$router.push({name: "Profile"})
         },
         logout(){
         localStorage.removeItem('token')
