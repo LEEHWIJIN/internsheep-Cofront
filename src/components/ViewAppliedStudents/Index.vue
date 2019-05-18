@@ -46,14 +46,20 @@
                 <p class="mb-0 text-gray">{{sl.sMajor}} | {{sl.sGrade}} | 학점 3.3</p>
               </div>
               <div>
-              <b-form-select v-model="sl.selected" :options="options"></b-form-select>
+              <b-form-select v-model="sl.selected" v-on:change="ynchange(index,sl.selected)">
+                <option>합격</option>
+                <option>불합격</option>
+              </b-form-select>
               </div>
               <!-- 학생 상세 정보 버튼 -->
               <!-- <a href="#" class="btn btn-outline-primary">Specification</a> -->
-              <a href="#" @click="finishJudge(index,sl.selected)" class="btn btn-outline-primary">심사 완료</a>
+              <!-- <a href="#" @click="finishJudge(index,sl.selected)" class="btn btn-outline-primary">심사 완료</a> -->
             </div>
           </div>
           <!-- <a href="#" @click="finishJudge" class="btn btn-outline-primary">심사 완료</a> -->
+          <div class="col-12 text-center">
+          <button class="btn btn-primary" @click="finishJudge()">심사 완료</button>
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +86,8 @@
             {value : 0, text : "불합격"},
             {value : 1, text : "합격"}
           ],
+          visible : false,
+          judgeStdinfo:[],
         }
       },
       components: {
@@ -95,6 +103,11 @@
         await this.getSemester();
       },
       methods: {
+        ynchange(index,selected){
+          console.log(selected)
+          console.log(this.selected)
+          this.stdList[index].YN = selected;
+        },
         async getSemester(){
           await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
             this.applyOrder = response.data[0].applyOrder;
@@ -107,6 +120,8 @@
           });
         },
         applyList(order,semester){
+          console.log(this.user.loginId)
+          console.log(order);
           this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
             for(var i=0; i<response.data.length;i++){
               this.stdList.push({
@@ -114,18 +129,26 @@
                 sMajor : response.data[i].sMajor,
                 sGrade : response.data[i].sGrade,
                 stdApplyCoID : response.data[i].stdApplyCoID,
+                YN : 0,
               })
             }
+            console.log(this.stdList)
           })
         },
-        finishJudge(index,selected){
-          var data = {
-            stdApplyCoID : JSON.stringify(this.stdList[index].stdApplyCoID),
-            YN : selected,
+        finishJudge(){
+          for(var i=0 ; i<this.stdList.length;i++){
+            this.judgeStdinfo.push({
+              stdApplyCoID : JSON.stringify(this.stdList[i].stdApplyCoID),
+              YN : this.stdList[i].YN,
+            })
           }
-          this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:data}).then((response)=>{
-            }
-          )
+          console.log(this.judgeStdinfo);
+          // var data = {
+          //   stdApplyCoID : JSON.stringify(this.stdList[index].stdApplyCoID),
+          //   YN : selected,
+          // }
+          // this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:data}).then((response)=>{
+          // })
         },
         handleClickButton(){
           this.visible = !this.visible
