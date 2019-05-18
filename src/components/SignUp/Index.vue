@@ -148,8 +148,8 @@ export default {
     .section1 {
       background-color: #007bff;
       background: linear-gradient(to right, #0062E6, #33AEFF);
-      padding-bottom:100px;
-      padding-top:100px;
+      padding-bottom:150px;
+      padding-top:150px;
     }
 
     .card-signin {

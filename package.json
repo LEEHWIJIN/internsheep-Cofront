@@ -17,6 +17,7 @@
     "v-cal-input": "^0.1.9",
     "vue": "^2.5.17",
     "vue-burger-menu": "^1.0.9",
+    "vue-daum-map": "^1.0.12",
     "vue-icon": "^2.0.0",
     "vue-router": "^3.0.1",
     "vue-zondicons": "^0.1.10",
