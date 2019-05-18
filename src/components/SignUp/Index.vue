@@ -90,6 +90,10 @@ export default {
                     if(response.data.result == 1){
                         this.$router.push('/login');
                     }
+                    else
+                    {
+                      alert(response.data)
+                    }
                     //console.log(response) //response가 있으면 error 가 있는것.
                 },(error)=>{
                 console.log('err')
