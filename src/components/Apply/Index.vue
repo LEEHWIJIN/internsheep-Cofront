@@ -50,10 +50,12 @@
             <div class="col-lg-6">
               <h6 style="font-weight:bold">실습시작일*</h6>
               <date-picker v-model="internTermStart"/>
+              <input style="width:200px" type="text" v-model="internTermStart">
             </div>
             <div class="col-lg-6">
               <h6 style="font-weight:bold">실습종료일*</h6>
               <date-picker v-model="internTermEnd"/>
+              <input style="width:200px" type="text" v-model="internTermEnd">
             </div>
             <div class="col-12 text-center">
               <button class="btn btn-primary" type="submit">제출하기</button>
@@ -78,13 +80,12 @@
           cLocation:[],
           cBenefit:[],
           cPay : [],
-          internTermStart : [],
+          internTermStart : null,
           cOccupation : [],
           cNumOfPeople : [],
           cTag : [],
           // cID_1 : [],
-          internTermEnd : [],
-            date : null,
+          internTermEnd : null,
         }
       },
       components: {
@@ -101,7 +102,7 @@
       },
       methods: {
         submitNotice(){
-          //console.log(this.user);
+
           var data = {
             cBenefit : this.cBenefit,
             cPay : this.cPay,
@@ -112,6 +113,7 @@
             cTag : this.cTag,
             cLocation : this.cLocation,
           };
+          console.log(data.internTermStart)
           this.$http.post('http://localhost:8888/co/mypage/writeNotice',{cLoginID:this.user.loginId,data:data}).then((response) => {
             console.log(data)
             // console.log(this.cManagerName)

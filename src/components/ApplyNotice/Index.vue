@@ -89,8 +89,9 @@
       methods: {
         submitNotice(loginId){
           this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
-            this.applyOrder = response.data[0].applyOrder;
-            this.applySemester = response.data[0].applySemester;
+              console.log(response.data)
+            this.applyOrder = response.data.applyOrder;
+            this.applySemester = response.data.applySemester;
             var data = {
               applyOrder : this.applyOrder,
               applySemester : this.applySemester,

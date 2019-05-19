@@ -12,55 +12,55 @@
       <div class="col-lg-1">
         <!-- 상세 정보 버튼 -->
 
-        <div>
-          <!-- 긴 모달 -->
-          <div>
-            <b-button v-b-modal.modal-tall>이력서 보기</b-button>
-            <b-modal id="modal-tall" title="이력서 세부내용">
-               <p class="my-1" v-for="i in 20" :key="i">
-                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </p>
-              <div class="row">
-                <div class="col-lg-12 text-center">
-                  <img src="images/career/logo-5.png" class="img shadow-sm mr-sm-3 m-3 p-0" alt="logo-1">
-                </div>
-              </div>
-              <p class="my-1">
-                이름:
-              </p>
-              <p class="my-1">
-                소속학과:
-              </p>
-              <p class="my-1">
-                학번:
-              </p>
-              <p class="my-1">
-                전화번호:
-              </p>
-              <p class="my-1">
-                E-mail:
-              </p>
+        <!--<div>-->
+          <!--&lt;!&ndash;&lt;!&ndash; 긴 모달 &ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;<div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<b-button v-b-modal.modal-tall>이력서 보기</b-button>&ndash;&gt;-->
+            <!--&lt;!&ndash;<b-modal id="modal-tall" title="이력서 세부내용">&ndash;&gt;-->
+               <!--&lt;!&ndash;<p class="my-1" v-for="i in 20" :key="i">&ndash;&gt;-->
+                <!--&lt;!&ndash;Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis&ndash;&gt;-->
+                <!--&lt;!&ndash;in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&ndash;&gt;-->
+              <!--&lt;!&ndash;</p>&ndash;&gt;-->
+              <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="col-lg-12 text-center">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<img src="images/career/logo-5.png" class="img shadow-sm mr-sm-3 m-3 p-0" alt="logo-1">&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;<p class="my-1">&ndash;&gt;-->
+                <!--&lt;!&ndash;이름:&ndash;&gt;-->
+              <!--&lt;!&ndash;</p>&ndash;&gt;-->
+              <!--&lt;!&ndash;<p class="my-1">&ndash;&gt;-->
+                <!--&lt;!&ndash;소속학과:&ndash;&gt;-->
+              <!--&lt;!&ndash;</p>&ndash;&gt;-->
+              <!--&lt;!&ndash;<p class="my-1">&ndash;&gt;-->
+                <!--&lt;!&ndash;학번:&ndash;&gt;-->
+              <!--&lt;!&ndash;</p>&ndash;&gt;-->
+              <!--&lt;!&ndash;<p class="my-1">&ndash;&gt;-->
+                <!--&lt;!&ndash;전화번호:&ndash;&gt;-->
+              <!--&lt;!&ndash;</p>&ndash;&gt;-->
+              <!--&lt;!&ndash;<p class="my-1">&ndash;&gt;-->
+                <!--&lt;!&ndash;E-mail:&ndash;&gt;-->
+              <!--&lt;!&ndash;</p>&ndash;&gt;-->
 
-            </b-modal>
-          </div>
-          <!-- 짧은 모달 -->
-          <b-button v-b-modal.modal-1>Launch demo modal</b-button>
-          <b-modal id="modal-1" title="BootstrapVue">
-            <p class="my-1">Hello from modal!</p>
-          </b-modal>
-          <!-- 몬생긴 모달 -->
-          <div>
-            <button @click="handleClickButton">Toggle Modal</button>
-            <app-my-modal
-              title="This is modal"
-              :visible.sync="visible">
-              <div>
-                This is modal body
-              </div>
-            </app-my-modal>
-          </div>
-        </div>
+            <!--&lt;!&ndash;</b-modal>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash; 짧은 모달 &ndash;&gt;-->
+          <!--<b-button v-b-modal.modal-1>Launch demo modal</b-button>-->
+          <!--<b-modal id="modal-1" title="BootstrapVue">-->
+            <!--<p class="my-1">Hello from modal!</p>-->
+          <!--</b-modal>-->
+          <!--&lt;!&ndash; 몬생긴 모달 &ndash;&gt;-->
+          <!--<div>-->
+            <!--<button @click="handleClickButton">Toggle Modal</button>-->
+            <!--<app-my-modal-->
+              <!--title="This is modal"-->
+              <!--:visible.sync="visible">-->
+              <!--<div>-->
+                <!--This is modal body-->
+              <!--</div>-->
+            <!--</app-my-modal>-->
+          <!--</div>-->
+        <!--</div>-->
 
       </div>
       <!-- 지원 현황 -->
@@ -70,7 +70,7 @@
             <p class="subtitle">Students</p>
             <h2 class="section-title">Applied Students</h2>
           </div>
-
+          <div v-if="confirm==1">
           <div v-for='(sl,index) in stdList' class="col-lg-12 bg-white p-4 rounded shadow my-3">
             <div class="media align-items-center flex-column flex-sm-row">
               <!-- 학생 사진 -->
@@ -96,7 +96,11 @@
           <div class="col-12 text-center">
           <button class="btn btn-primary" @click="finishJudge()">심사 완료</button>
           </div>
-        </div>
+          </div>
+          <div v-if="confirm==0">
+            지원한 학생이 없음
+          </div>
+      </div>
       </div>
     </div>
   </div>
@@ -120,6 +124,7 @@
           selected : [],
           visible : false,
           judgeStdinfo:[],
+            confirm : -1,
         }
       },
       components: {
@@ -140,8 +145,8 @@
         },
         async getSemester(){
           await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
-            this.applyOrder = response.data[0].applyOrder;
-            this.applySemester = response.data[0].applySemester;
+            this.applyOrder = response.data.applyOrder;
+            this.applySemester = response.data.applySemester;
             var data = {
               applyOrder : this.applyOrder,
               applySemester : this.applySemester,
@@ -151,15 +156,34 @@
         },
         applyList(order,semester){
           this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
-            for(var i=0; i<response.data.length;i++){
-              this.stdList.push({
-                sName : response.data[i].sName,
-                sMajor : response.data[i].sMajor,
-                sGrade : response.data[i].sGrade,
-                stdApplyCoID : response.data[i].stdApplyCoID,
-                YN : "",
-              })
-            }
+              if(response.data =='기간이 없음'){
+                  alert('신청 기간이 아닙니다')
+                  this.$router.push({name: "Home"})
+              }
+              else if(response.data=='공고가 없음'){
+                  alert('공고를 작성하지 않으셨습니다.')
+                  this.$router.push({name: "Home"})
+              }
+              else if(response.data=='공고 신청을 하지 않음'){
+                  alert('공고신청을 하지 않으셨습니다.')
+                  this.$router.push({name: "Home"})
+              }
+              else if(response.data=='신청한 학생이 없음'){
+                  this.confirm=0
+              }
+              else {
+                  console.log(response.data)
+                  this.confirm = 1
+                  for (var i = 0; i < response.data.length; i++) {
+                      this.stdList.push({
+                          sName: response.data[i].sName,
+                          sMajor: response.data[i].sMajor,
+                          sGrade: response.data[i].sGrade,
+                          stdApplyCoID: response.data[i].stdApplyCoID,
+                          YN: "",
+                      })
+                  }
+              }
           })
         },
         finishJudge(){
@@ -170,6 +194,7 @@
             })
           }
           this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
+              alert('합격 여부가 확정되었습니다.')
           })
         },
         handleClickButton(){
