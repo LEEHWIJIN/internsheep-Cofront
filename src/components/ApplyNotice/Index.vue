@@ -81,11 +81,11 @@
         VCategory,
       },
       created(){
-        this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        this.$http.get('http://106.10.46.121:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user
         });
-          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+          this.$http.get('http://106.10.46.121:8888/admin/recentApplyTerm').then((response) => {
               if(response.data=='0'){
                   alert('공고신청기간이 아닙니다.')
                   this.$router.push({name: "Home"})
@@ -102,7 +102,7 @@
                       applyOrder: this.applyOrder,
                       applySemester: this.applySemester,
                   }
-                  this.$http.get('http://localhost:8888/co/mypage/checkApplyNotice', {
+                  this.$http.get('http://106.10.46.121:8888/co/mypage/checkApplyNotice', {
                       params: {
                           cLoginID: this.user.loginId,
                           applyOrder: this.applyOrder,
@@ -114,7 +114,7 @@
                           alert("이미 신청하였습니다.")
                       }
                       else {
-                          this.$http.post('http://localhost:8888/co/mypage/applyNotice', {
+                          this.$http.post('http://106.10.46.121:8888/co/mypage/applyNotice', {
                               cLoginID: this.user.loginId,
                               data
                           }).then((response) => {
