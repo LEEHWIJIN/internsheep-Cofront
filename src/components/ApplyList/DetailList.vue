@@ -179,28 +179,28 @@
       },
       async created(){
         // await this.$router.go();
-        await this.$http.get('http://106.10.46.121:10022/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get('http://10.41.83.72:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
             this.user = res.data.user;
             return this.user;
         })
-        await this.$http.get('http://106.10.46.121:10022/admin/recentApplyTerm').then((response) => {
+        await this.$http.get('http://10.41.83.72:8888/admin/recentApplyTerm').then((response) => {
           this.applyTerm = {
-              applyStart : response.data[0].applyStart,
-              applyEnd : response.data[0].applyEnd,
-              applySemester : response.data[0].applySemester,
-              applyOrder : response.data[0].applyOrder
+              applyStart : response.data.applyStart,
+              applyEnd : response.data.applyEnd,
+              applySemester : response.data.applySemester,
+              applyOrder : response.data.applyOrder
           }
           return this.applyTerm;
         })
       },
       methods: {
         applyStd(cName){
-            this.$http.get('http://106.10.46.121:10022/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId}}).then((response)=>{
+            this.$http.get('http://10.41.83.72:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId}}).then((response)=>{
             if(response.data != '0'){
                 alert("이미 지원을 한 상태 입니다.")
             }
             else{
-                this.$http.post('http://106.10.46.121:10022/std/mypage/applyCo',{cName : cName, sLoginID : this.user.loginId,applySemester: this.applyTerm.applySemester,applyOrder:this.applyTerm.applyOrder}).then((response) => {
+                this.$http.post('http://10.41.83.72:8888/std/mypage/applyCo',{cName : cName, sLoginID : this.user.loginId,applySemester: this.applyTerm.applySemester,applyOrder:this.applyTerm.applyOrder}).then((response) => {
                     if(response.data == '0'){
                         alert("이력서가 없습니다. 이력서를 작성해주세요")
                     }
