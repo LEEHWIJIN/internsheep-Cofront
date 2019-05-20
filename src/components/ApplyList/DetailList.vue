@@ -109,7 +109,7 @@
               <h6 class="text-dark">주소</h6>
               <ul class="list-unstyled">
                 <li class="mb-1">{{sc.cLocation}}</li>
-                <vue-daum-map :appKey="appKey" :center.sync="center" :level.sync="level" :mapTypeId="mapTypeId" :libraries="libraries" @load="onLoad" style="width:520px;height:300px;">
+                <vue-daum-map :appKey="appKey" :center.sync="center" :level.sync="level" :mapTypeId="mapTypeId" :libraries="libraries" @load="onLoad" @center_changed="onMapEvent('center_changed', $event)" style="width:520px;height:300px;">
                 </vue-daum-map>
               </ul>
             </div>
@@ -134,11 +134,6 @@
               </ul>
             </div>
           </li>
-
-          <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit" >저장하기</button>
-          </div>
-
         </ul>
       </div>
     </div>
@@ -166,11 +161,6 @@
       components: {
           VueDaumMap
       },
-      watch: {
-        // onLoad: function(map) {
-        //   this.onLoad(map);
-        // },
-      },
       props:{
         selectedCo:{
             type:Array,
@@ -178,24 +168,23 @@
         },
       },
       async created(){
-        // await this.$router.go();
         await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
             this.user = res.data.user;
             return this.user;
         })
         await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
           this.applyTerm = {
-              applyStart : response.data[0].applyStart,
-              applyEnd : response.data[0].applyEnd,
-              applySemester : response.data[0].applySemester,
-              applyOrder : response.data[0].applyOrder
+              applyStart : response.data.applyStart,
+              applyEnd : response.data.applyEnd,
+              applySemester : response.data.applySemester,
+              applyOrder : response.data.applyOrder
           }
           return this.applyTerm;
         })
       },
       methods: {
         applyStd(cName){
-            this.$http.get('http://localhost:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId}}).then((response)=>{
+            this.$http.get('http://localhost:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId, applySemester : this.applyTerm.applySemester}}).then((response)=>{
             if(response.data != '0'){
                 alert("이미 지원을 한 상태 입니다.")
             }
@@ -212,6 +201,7 @@
             })
         },
           onLoad (map) {
+
               var geocoder = new daum.maps.services.Geocoder();
               geocoder.addressSearch(this.selectedCo[0].cLocation, function(result, status) {
 
@@ -229,12 +219,14 @@
                           content: '<div style="width:150px;text-align:center;padding:6px 0;">회사</div>'
                       });
                       infowindow.open(map, marker);
+                      console.log(coords)
                       map.setCenter(coords);
 
                   }
               });
-
-
+          },
+          onMapEvent (event, params) {
+              console.log(`Daum Map Event(${event})`, params);
           }
       }
   }
