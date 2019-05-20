@@ -102,7 +102,7 @@
       },
       methods: {
         applyList(){
-          this.$http.get('http://10.41.83.72:8888/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
+          this.$http.get('http://10.41.83.255:8888/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
             console.log(response.data)
             for(var i=0; i<response.data.length;i++){
                 this.applylist.push({
@@ -148,7 +148,7 @@
           })
         },
         compareDate(){
-          this.$http.get('http://10.41.83.72:8888/admin/recentApplyTerm').then((response) => {
+          this.$http.get('http://10.41.83.255:8888/admin/recentApplyTerm').then((response) => {
             this.applyTerm = {
                 applyStart : response.data.applyStart,
                 applyEnd : response.data.applyEnd,

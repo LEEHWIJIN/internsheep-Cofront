@@ -24,7 +24,7 @@ export default {
 
     submit_ALL({commit},data){
         console.log(data)
-        axios.post('http://10.41.83.72:8888/std/mypage/resume',{req : data}).then((response) => {
+        axios.post('http://10.41.83.255:8888/std/mypage/resume',{req : data}).then((response) => {
                    
         })
     },
