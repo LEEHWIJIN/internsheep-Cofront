@@ -77,7 +77,7 @@
       },
       methods: {
          submitNotice(){
-           this.$http.post('http://10.41.83.255:8888/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
+           this.$http.post('http://106.10.46.121:10022/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
                console.log(this.cName)
                console.log(this.cManagerName)
                this.cName = "";
