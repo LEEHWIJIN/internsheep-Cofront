@@ -24,7 +24,7 @@ export default {
 
     submit_ALL({commit},data){
         console.log(data)
-        axios.post('http://106.10.46.121:8888/std/mypage/resume',{req : data}).then((response) => {
+        axios.post('http://api.ajou-internsheep.co/std/mypage/resume',{req : data}).then((response) => {
                    
         })
     },
