@@ -168,11 +168,16 @@
         },
       },
       async created(){
-        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+// // <<<<<<< HEAD
+//         await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+// // =======
+        await this.$router.go();
+        await this.$http.get('http://api.ajou-internsheep.co/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+// >>>>>>> d25306e3a5fa17aaa652197ded654ad22cfe6cd3
             this.user = res.data.user;
             return this.user;
         })
-        await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+        await this.$http.get('http://api.ajou-internsheep.co/admin/recentApplyTerm').then((response) => {
           this.applyTerm = {
               applyStart : response.data.applyStart,
               applyEnd : response.data.applyEnd,
@@ -184,12 +189,16 @@
       },
       methods: {
         applyStd(cName){
-            this.$http.get('http://localhost:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId, applySemester : this.applyTerm.applySemester}}).then((response)=>{
+// <<<<<<< HEAD
+//             this.$http.get('http://localhost:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId, applySemester : this.applyTerm.applySemester}}).then((response)=>{
+// =======
+            this.$http.get('http://api.ajou-internsheep.co/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId}}).then((response)=>{
+// >>>>>>> d25306e3a5fa17aaa652197ded654ad22cfe6cd3
             if(response.data != '0'){
                 alert("이미 지원을 한 상태 입니다.")
             }
             else{
-                this.$http.post('http://localhost:8888/std/mypage/applyCo',{cName : cName, sLoginID : this.user.loginId,applySemester: this.applyTerm.applySemester,applyOrder:this.applyTerm.applyOrder}).then((response) => {
+                this.$http.post('http://api.ajou-internsheep.co/std/mypage/applyCo',{cName : cName, sLoginID : this.user.loginId,applySemester: this.applyTerm.applySemester,applyOrder:this.applyTerm.applyOrder}).then((response) => {
                     if(response.data == '0'){
                         alert("이력서가 없습니다. 이력서를 작성해주세요")
                     }

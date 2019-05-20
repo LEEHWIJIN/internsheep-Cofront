@@ -77,7 +77,7 @@
       },
       methods: {
          submitNotice(){
-           this.$http.post('http://localhost:8888/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
+           this.$http.post('http://api.ajou-internsheep.co/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
                console.log(this.cName)
                console.log(this.cManagerName)
                this.cName = "";

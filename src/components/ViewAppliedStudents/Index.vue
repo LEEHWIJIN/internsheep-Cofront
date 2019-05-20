@@ -135,7 +135,7 @@
         appMyModal: myModal,
       },
       async created(){
-        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get('http://api.ajou-internsheep.co/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -146,7 +146,7 @@
           this.stdList[index].YN = event.target.value;
         },
         async getSemester(){
-          await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+          await this.$http.get('http://api.ajou-internsheep.co/admin/recentApplyTerm').then((response) => {
             this.applyOrder = response.data.applyOrder;
             this.applySemester = response.data.applySemester;
             var data = {
@@ -157,7 +157,7 @@
           });
         },
         applyList(order,semester){
-          this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
+          this.$http.get('http://api.ajou-internsheep.co/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
               if(response.data =='기간이 없음'){
                   alert('기간이 없습니다.')
                   // this.$router.push({name: "Home"})
@@ -174,6 +174,10 @@
               else if(response.data=='신청한 학생이 없음'){
                   this.$store.dispatch('apply/setApplyState',1);
                   // this.confirm=0
+              }
+              else if(response.data=='이미 선발을 완료 하였습니다.'){
+                alert('이미 선발을 완료 하였습니다.')
+                  this.$router.push({name: "Home"})
               }
               else {
                   // this.confirm = 1
@@ -201,7 +205,7 @@
               YN : this.stdList[i].YN,
             })
           }
-          this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
+          this.$http.post('http://api.ajou-internsheep.co/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
               alert('합격 여부가 확정되었습니다.')
           })
           this.$router.push({name: "Home"});
