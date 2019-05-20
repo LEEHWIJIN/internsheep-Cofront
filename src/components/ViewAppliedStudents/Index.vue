@@ -98,7 +98,7 @@
           </div>
           </div>
           <!-- <div > -->
-            <v-error v-else-if="$store.state.apply_state==1"></v-error>
+            <v-error v-else-if="$store.state.apply.apply_state==1"></v-error>
           <!-- </div> -->
       </div>
       </div>
