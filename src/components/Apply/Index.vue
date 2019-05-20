@@ -94,7 +94,7 @@
           DatePicker,
       },
       created(){
-        this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        this.$http.get('http://106.10.46.121:10022/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -114,7 +114,7 @@
             cLocation : this.cLocation,
           };
           console.log(data.internTermStart)
-          this.$http.post('http://localhost:8888/co/mypage/writeNotice',{cLoginID:this.user.loginId,data:data}).then((response) => {
+          this.$http.post('http://106.10.46.121:10022/co/mypage/writeNotice',{cLoginID:this.user.loginId,data:data}).then((response) => {
             console.log(data)
             // console.log(this.cManagerName)
             // this.cName = "";
