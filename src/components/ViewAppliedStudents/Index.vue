@@ -70,7 +70,7 @@
             <p class="subtitle">Students</p>
             <h2 class="section-title">Applied Students</h2>
           </div>
-          <div v-if="confirm==1">
+          <div v-if="$store.state.apply.apply_state==0">
           <div v-for='(sl,index) in stdList' class="col-lg-12 bg-white p-4 rounded shadow my-3">
             <div class="media align-items-center flex-column flex-sm-row">
               <!-- 학생 사진 -->
@@ -97,9 +97,9 @@
           <button class="btn btn-primary" @click="finishJudge()">심사 완료</button>
           </div>
           </div>
-          <div v-if="confirm==0">
-            지원한 학생이 없음
-          </div>
+          <!-- <div > -->
+            <v-error v-else-if="$store.state.apply_state==1"></v-error>
+          <!-- </div> -->
       </div>
       </div>
     </div>
@@ -112,6 +112,8 @@
   import myModal from './myModal'
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
+  import VError from './Error.vue'
+  import VNoNoticeError from './NoNoticeError.vue'
   export default{
       name: 'Apply',
       data() {
@@ -157,8 +159,9 @@
         applyList(order,semester){
           this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
               if(response.data =='기간이 없음'){
-                  alert('신청 기간이 아닙니다')
-                  this.$router.push({name: "Home"})
+                  alert('기간이 없습니다.')
+                  // this.$router.push({name: "Home"})
+                  
               }
               else if(response.data=='공고가 없음'){
                   alert('공고를 작성하지 않으셨습니다.')
@@ -169,18 +172,19 @@
                   this.$router.push({name: "Home"})
               }
               else if(response.data=='신청한 학생이 없음'){
-                  this.confirm=0
+                  this.$store.dispatch('apply/setApplyState',1);
+                  // this.confirm=0
               }
               else {
-                  console.log(response.data)
-                  this.confirm = 1
+                  // this.confirm = 1
+                  this.$store.dispatch('apply/setApplyState',0);
                   for (var i = 0; i < response.data.length; i++) {
                       this.stdList.push({
                           sName: response.data[i].sName,
                           sMajor: response.data[i].sMajor,
                           sGrade: response.data[i].sGrade,
                           stdApplyCoID: response.data[i].stdApplyCoID,
-                          YN: "",
+                          YN: "-1",
                       })
                   }
               }
@@ -188,6 +192,10 @@
         },
         finishJudge(){
           for(var i=0 ;i<this.stdList.length;i++){
+            if(this.stdList[i].YN==-1){
+              alert("합격여부를 모두 작성해 주세요.")
+              return 0;
+            }
             this.judgeStdinfo.push({
               stdApplyCoID : JSON.stringify(this.stdList[i].stdApplyCoID),
               YN : this.stdList[i].YN,
@@ -196,6 +204,7 @@
           this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
               alert('합격 여부가 확정되었습니다.')
           })
+          this.$router.push({name: "Home"});
         },
         handleClickButton(){
           this.visible = !this.visible

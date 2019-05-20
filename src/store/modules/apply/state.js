@@ -5,4 +5,5 @@ export default{
     userEng : [],
     userGrade : [],
     userSW : [],
+    apply_state : -1, // 공고 작성 state,
 }

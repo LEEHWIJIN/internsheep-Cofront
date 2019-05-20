@@ -126,6 +126,7 @@
           })
         },
         clickCo(selectedNum){
+          // this.$router.go();
           this.selectedCo=[]
           //console.log(selectedNum)
           this.selectedCo.push({
@@ -149,10 +150,10 @@
         compareDate(){
           this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
             this.applyTerm = {
-                applyStart : response.data[0].applyStart,
-                applyEnd : response.data[0].applyEnd,
-                applySemester : response.data[0].applySemester,
-                applyOrder : response.data[0].applyOrder
+                applyStart : response.data.applyStart,
+                applyEnd : response.data.applyEnd,
+                applySemester : response.data.applySemester,
+                applyOrder : response.data.applyOrder
             }
             this.applyList();
           })

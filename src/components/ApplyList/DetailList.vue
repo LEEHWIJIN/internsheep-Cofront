@@ -166,6 +166,11 @@
       components: {
           VueDaumMap
       },
+      watch: {
+        // onLoad: function(map) {
+        //   this.onLoad(map);
+        // },
+      },
       props:{
         selectedCo:{
             type:Array,
@@ -173,6 +178,7 @@
         },
       },
       async created(){
+        // await this.$router.go();
         await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
             this.user = res.data.user;
             return this.user;
