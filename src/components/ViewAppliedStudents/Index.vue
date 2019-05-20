@@ -175,6 +175,10 @@
                   this.$store.dispatch('apply/setApplyState',1);
                   // this.confirm=0
               }
+              else if(response.data=='이미 선발을 완료 하였습니다.'){
+                alert('이미 선발을 완료 하였습니다.')
+                  this.$router.push({name: "Home"})
+              }
               else {
                   // this.confirm = 1
                   this.$store.dispatch('apply/setApplyState',0);
