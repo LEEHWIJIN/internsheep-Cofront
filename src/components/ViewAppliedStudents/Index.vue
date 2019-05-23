@@ -77,7 +77,7 @@
               <img src="images/career/logo-5.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
               <!-- 학생 간단 정보 -->
               <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-                <h6 class="mt-0">{{sl.sName}} - Team of PHP MySQL Developers </h6>
+                <h6 class="mt-0">{{sl.sName}} </h6>
                 <p class="mb-0 text-gray">{{sl.sMajor}} | {{sl.sGrade}} | 학점 3.3</p>
               </div>
               <div>
@@ -135,7 +135,7 @@
         appMyModal: myModal,
       },
       async created(){
-        await this.$http.get('http://api.ajou-internsheep.co/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -146,7 +146,7 @@
           this.stdList[index].YN = event.target.value;
         },
         async getSemester(){
-          await this.$http.get('http://api.ajou-internsheep.co/admin/recentApplyTerm').then((response) => {
+          await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
             this.applyOrder = response.data.applyOrder;
             this.applySemester = response.data.applySemester;
             var data = {
@@ -157,7 +157,7 @@
           });
         },
         applyList(order,semester){
-          this.$http.get('http://api.ajou-internsheep.co/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
+          this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
               if(response.data =='기간이 없음'){
                   alert('기간이 없습니다.')
                   // this.$router.push({name: "Home"})
@@ -189,26 +189,31 @@
                           sGrade: response.data[i].sGrade,
                           stdApplyCoID: response.data[i].stdApplyCoID,
                           YN: "-1",
+                          sLoginID : response.data[i].sLoginID
                       })
                   }
               }
           })
         },
-        finishJudge(){
+        async finishJudge(){
           for(var i=0 ;i<this.stdList.length;i++){
             if(this.stdList[i].YN==-1){
               alert("합격여부를 모두 작성해 주세요.")
               return 0;
             }
-            this.judgeStdinfo.push({
+            await this.judgeStdinfo.push({
               stdApplyCoID : JSON.stringify(this.stdList[i].stdApplyCoID),
               YN : this.stdList[i].YN,
+                sName : this.stdList[i].sName,
+                sLoginID: this.stdList[i].sLoginID
             })
           }
-          this.$http.post('http://api.ajou-internsheep.co/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
+          await this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
               alert('합격 여부가 확정되었습니다.')
           })
-          this.$router.push({name: "Home"});
+          await this.$router.push({name: "Home"});
+          await this.$http.post('http://localhost:8888/mail/nodemailerTest',{data : this.judgeStdinfo}).then((response)=>{
+          })
         },
         handleClickButton(){
           this.visible = !this.visible
