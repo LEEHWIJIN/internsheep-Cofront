@@ -172,7 +172,7 @@
       },
       async created(){
 // <<<<<<< HEAD
-        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get('http://api.ajou-internsheep.co/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
 // =======
         // await this.$router.go();
         // await this.$http.get('http://api.ajou-internsheep.co/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
@@ -193,7 +193,7 @@
       methods: {
         applyStd(cName){
 // <<<<<<< HEAD
-            this.$http.get('http://localhost:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId, applySemester : this.applyTerm.applySemester}}).then((response)=>{
+            this.$http.get('http://api.ajou-internsheep.co/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId, applySemester : this.applyTerm.applySemester}}).then((response)=>{
 // =======
 //             this.$http.get('http://api.ajou-internsheep.co/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId}}).then((response)=>{
 // >>>>>>> d25306e3a5fa17aaa652197ded654ad22cfe6cd3
