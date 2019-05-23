@@ -44,11 +44,6 @@
               </div>
 
               <div class="form-label-group">
-                <input v-model="email" type="email" name="signemail" id="inputemail" class="form-control1"  placeholder="Email" required autofocus>
-                <label for="inputEmail">Email</label>
-              </div>
-
-              <div class="form-label-group">
                 <input v-model="user.password" type="password" name="signpassword" id="inputPassword" class="form-control1"  placeholder="Password" required autofocus>
                 <label for="inputPassword">Password</label>
               </div>
@@ -98,9 +93,8 @@ export default {
             if(this.Isuniq==-1) alert("중복을 확인하지 않았습니다. 확인하세요")
             else if(this.Isuniq == 1) alert("중복입니다.")
             else if(this.Isuniq==0){
-                this.$http.post('http://api.ajou-internsheep.co/auth/co/signup', {user: this.user, email: this.email}).then((response) => {
-                    if(response.data == '이메일을 확인해주세요.'){
-                        alert(response.data)
+                this.$http.post('http://api.ajou-internsheep.co/auth/co/signup', {user: this.user}).then((response) => {
+                    if(response.data == 1){
                         this.$router.push('/login');
                     }
                     else
