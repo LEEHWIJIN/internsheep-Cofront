@@ -3,6 +3,9 @@
     <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="" style="text-align: center;">
+          <a class="" href="#" @click="goHome"><img src="images/login.png" style="text-align: center; filter: brightness(0) invert(1);"alt="Intern Sheep"></a>
+        </div>
         <div class="card card-signin my-5">
           <div class="card-body">
 
@@ -82,6 +85,9 @@ export default {
 
     },
     methods:{
+        goHome(){
+            this.$router.push({name: "Home"})
+        },
         signup(){
             if(this.Isuniq==-1) alert("중복을 확인하지 않았습니다. 확인하세요")
             else if(this.Isuniq == 1) alert("중복입니다.")

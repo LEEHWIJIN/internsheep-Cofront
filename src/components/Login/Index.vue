@@ -3,6 +3,9 @@
     <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="" style="text-align: center;">
+          <a class="" href="#" @click="goHome"><img src="images/login.png" style="text-align: center; filter: brightness(0) invert(1);"alt="Intern Sheep"></a>
+        </div>
         <div class="card card-signin my-5">
           <div class="card-body">
 
@@ -77,6 +80,9 @@
 
     },
     methods: {
+      goHome(){
+          this.$router.push({name: "Home"})
+      },
       login() {
         this.$http.post('http://api.ajou-internsheep.co/auth/co/login',{user: this.user}).then((response)=>{
              alert('success');

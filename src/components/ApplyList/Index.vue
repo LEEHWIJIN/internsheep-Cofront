@@ -1,3 +1,4 @@
+
 <template>
   <section class="section section-lg-bottom bg-light">
     <v-base></v-base>
@@ -8,33 +9,38 @@
           <!-- 기업 목록 -->
           <div class="company-item companyList col-lg-5">
             <div class="comanyList">
+              <div class="search-container">
+                <form class="search-form pb-2" action="/action_page.php">
+                  <input class="search-input" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
+                  <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
+                </form>
+              </div>
                 <!-- <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)">
                   {{index+1}}.
                   기업명 : {{AL.cName}}<br>
                   매니저 : {{AL.cManagerName}}<br><br>
                 </div> -->
-                <ul class="list-styled list-bordered">
-
+              <ul class="list-styled list-bordered">
                   <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)">
                     <li><div class="media align-items-center flex-column flex-sm-row">
                       <!-- {{index+1}} -->
                       <!-- 회사 사진 -->
                       <img src="images/career/logo-1.png" class="mr-sm-0 mb-4 mb-sm-0 rounded p-3" alt="logo-1">
-                      <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:120%">
+                      <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:100%">
                         <!-- 모집 직군 -->
-                        <span class="h6">{{AL.cOccupation}}</span><br>
+                        <span class="h6" style="font-weight: bold;">{{AL.cOccupation}}</span><br>
                         <!-- 기업명 -->
-                        <span style="font-size: 12px;">{{AL.cName}}<br></span>
+                        <span style="font-size: 12px; color: #8b8e93;">{{AL.cName}}<br></span>
                         <!-- 태그 -->
-                        <span style="font-size: 12px;">{{AL.cTag}}<br></span>
+                        <span style="font-size: 12px; color: #8b8e93;">{{AL.cTag}}<br></span>
                       </div>
                       <!-- 경쟁률 -->
                       <div class="" style="line-height:120%">
                         <br><br>
                         <a class="mr-sm-3 paragraph">
                           <span style="font-size: 12px">모집:</span>{{AL.cNumOfPeople}}
-                          <span class="h4" style="color:#0097d5;">
-                          <span style="font-size: 12px">지원:</span>{{AL.applyStdNum}}</span>
+                          <span class="h4" style="color:#0064db">
+                          <span style="font-size: 12px"> 지원:</span>{{AL.applyStdNum}}</span>
                         </a>
                       </div>
                     </div></li>
@@ -66,7 +72,7 @@
         </div>
       </div>
     </div>
-    <v-footer class="mt-4"></v-footer>
+    <v-footer class="mt-5"></v-footer>
   </section>
 </template>
 
@@ -165,14 +171,9 @@
 <style scoped>
 
 .section {
-  padding-top: 170px;
+  padding-top: 150px;
   padding-bottom: 0px;
 }
-
-/* .container {
-  padding-bottom: 110px;
-} */
-
 
 .company-item {
   padding:15px;
@@ -187,5 +188,34 @@
 
 .detailList {
   flex-basis: 60%;
+}
+
+/* search bar */
+.search-container {
+  /* width: 100px; */
+}
+
+.search-form {
+  width: 100%;
+  border-right:0px;
+  border-top:0px;
+  border-left:0px;
+  border-bottom:1px solid #e5e5e5 ;
+}
+
+.search-input{
+  width: 90%;
+  border:none;
+
+}
+
+.search-button{
+  border: 0px;
+  background-color: white;
+}
+
+.search-input:focus {
+  outline: 0;
+  box-shadow: none;
 }
 </style>
