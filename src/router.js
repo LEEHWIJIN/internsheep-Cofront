@@ -44,7 +44,7 @@ export default new Router ({
             path: '/home',
             name: 'Home',
             component: Home,
-            beforeEnter: loggedin,
+            // beforeEnter: loggedin,
             //component: ()=> import('./components/Resume/Index'),
             // meta: {
             //   permission: -1,
