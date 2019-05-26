@@ -123,6 +123,8 @@
           stdList : [],
           user : {},
           cloudeLang : [],
+            applyOrder : "",
+            applySemester : "",
           selected : [],
           visible : false,
           judgeStdinfo:[],
@@ -149,10 +151,10 @@
           await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
             this.applyOrder = response.data.applyOrder;
             this.applySemester = response.data.applySemester;
-            var data = {
-              applyOrder : this.applyOrder,
-              applySemester : this.applySemester,
-            };
+            // var data = {
+            //   applyOrder : this.applyOrder,
+            //   applySemester : this.applySemester,
+            // };
             this.applyList(this.applyOrder,this.applySemester);
           });
         },
@@ -208,7 +210,7 @@
                 sLoginID: this.stdList[i].sLoginID
             })
           }
-          await this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
+          await this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo, cLoginID:this.user.cLoginID, applySemester : this.applySemester}).then((response)=>{
               alert('합격 여부가 확정되었습니다.')
           })
           await this.$router.push({name: "Home"});
