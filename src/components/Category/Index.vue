@@ -6,7 +6,7 @@
           <li><a class="text-color d-block py-3" href="#" @click="goApply">공고 작성</a></li>
           <li><a class="text-color d-block py-3" href="#" @click="goApplyNotice">공고 신청</a></li>
           <li><a class="text-color d-block py-3" href="#" @click="goViewAppliedStudents">지원 학생 관리</a></li>
-          <li><a class="text-color d-block py-3" href="#">선발 학생 관리</a></li>
+          <li><a class="text-color d-block py-3" href="#" @click="goManagementStd">선발 학생 관리</a></li>
           <li><a class="text-color d-block py-3" href="#" @click="goProfile">회원정보 수정</a></li>
           </ul>
       </div>
@@ -72,9 +72,12 @@
           this.$router.push({name: "Profile"})
       },
       logout(){
-      localStorage.removeItem('token')
-      this.auth = 0;
-      this.$router.push('login')
+        localStorage.removeItem('token')
+        this.auth = 0;
+        this.$router.push('login')
+      },
+      goManagementStd(){
+        this.$router.push({name: "manageStd"})
       },
     }
   }

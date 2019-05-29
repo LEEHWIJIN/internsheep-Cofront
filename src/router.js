@@ -9,6 +9,7 @@ import Home from './components/Home/Index.vue'
 import SignUp from './components/SignUp/Index.vue'
 import ApplyList from './components/ApplyList/Index.vue'
 import Profile from './components/Profile/Index.vue'
+import manageStd from './components/ManagementStd/Index.vue'
 
 Vue.use(Router)
 
@@ -57,6 +58,12 @@ export default new Router ({
             component: SignUp,
             beforeEnter: login
         },
+        {
+          path: '/manageStd',
+          name: 'manageStd',
+          component: manageStd,
+          beforeEnter: login
+      },
         {
             path : '/login',
             name : 'login',

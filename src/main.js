@@ -8,6 +8,9 @@ import 'vue-cal/dist/vuecal.css'
 Vue.use(feather, 'v-icon')
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
+import Vuetify from 'vuetify' // Import Vuetify to your project
+
+Vue.use(Vuetify) // Add Vuetify as a plugin
 //Vue.use(Vuecal, 'Vuecal')
 
 Vue.config.productionTip = false
