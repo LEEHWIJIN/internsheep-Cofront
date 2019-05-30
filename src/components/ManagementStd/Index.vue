@@ -1,4 +1,5 @@
 <template>
+<div id="manageStd">
   <v-layout>
     <v-flex>
       <v-sheet height="500">
@@ -64,10 +65,14 @@
       </v-sheet>
     </v-flex>
   </v-layout>
+  </div>
 </template>
 
 <script>
+// import 'vuetify/dist/vuetify.min.css'
+
   export default {
+    name: 'manageStd',
     data: () => ({
       today: '2019-01-08',
       events: [
@@ -129,6 +134,9 @@
         return map
       }
     },
+    created(){
+      console.log("들어옴")
+    },
     methods: {
       open (event) {
         alert(event.title)
@@ -138,6 +146,7 @@
 </script>
 
 <style lang="stylus" scoped>
+@import '~vuetify/src/stylus/main'
   .my-event {
     overflow: hidden;
     text-overflow: ellipsis;
