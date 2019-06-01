@@ -26,7 +26,7 @@
                   <img src="images/career/logo-5.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
                   <!-- 학생 간단 정보 -->
                   <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-                    <h6 class="mt-0">{{sl.sName}} - Team of PHP MySQL Developers </h6>
+                    <h6 class="mt-0">{{sl.sName}} </h6>
                     <p class="mb-0 text-gray">{{sl.sMajor}} | {{sl.sGrade}} | 학점 3.3</p>
                   </div>
                   <div>
@@ -71,11 +71,18 @@
           <div class="col-12 text-center">
             <button class="btn btn-primary" @click="finishJudge()">심사 완료</button>
           </div>
+
+          <div class="col-12 text-center">
+          <div id="chart">
+            <apexchart type=bar height=350 :options="chartOptions" :series="series" />
+          </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-</section>
+  </section>
 </template>
 
 <script>
@@ -83,8 +90,12 @@
   import myModal from './myModal'
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
+            import VueApexCharts from 'vue-apexcharts'
   import VError from './Error.vue'
   import VNoNoticeError from './NoNoticeError.vue'
+
+  var colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8'];
+
   export default{
       name: 'Apply',
       data() {
@@ -98,12 +109,65 @@
           visible : false,
           judgeStdinfo:[],
             confirm : -1,
+            userProgrammingLang:[],
+            userMachineLang:[],
+            userFrameworkLang:[],
+            userDatabaseLang:[],
+            userCloudLang:[],
+            userGrade:[],
+            userEng:[],
+            series: [{
+                name: 'C언어 수준',
+                data: []
+            }],
+            chartOptions: {
+                chart: {
+                    height: 350,
+                    type: 'bar',
+                    events: {
+                        click: function (chart, w, e) {
+                            console.log(chart, w, e)
+                        }
+                    },
+                },
+                colors: colors,
+                plotOptions: {
+                    bar: {
+                        columnWidth: '45%',
+                        distributed: true
+                    }
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                title: {
+                    text: 'C언어',
+                    align: 'center',
+                    style: {
+                        fontSize: '20px'
+                    }
+                },
+                subtitle: {
+                    text: '0 : 배운적 없음,  1 : 맛보기 수준,  2 : 초보 수준,  3 : 실무 가능,  4 : 나름 고수',
+                    align: 'center',
+                },
+                xaxis: {
+                    categories: [],
+                    labels: {
+                        style: {
+                            colors: colors,
+                            fontSize: '14px'
+                        }
+                    }
+                }
+            }
         }
       },
       components: {
         VBase,
         VCategory,
         appMyModal: myModal,
+          apexchart: VueApexCharts,
       },
       async created(){
         await this.$http.get('http://api.ajou-internsheep.co/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
@@ -120,23 +184,22 @@
         ynchange(index,event){
           this.stdList[index].YN = event.target.value;
         },
-        async getSemester(){
-          await this.$http.get('http://api.ajou-internsheep.co/admin/recentApplyTerm').then((response) => {
-            this.applyOrder = response.data.applyOrder;
-            this.applySemester = response.data.applySemester;
-            var data = {
-              applyOrder : this.applyOrder,
-              applySemester : this.applySemester,
-            };
-            this.applyList(this.applyOrder,this.applySemester);
-          });
-        },
+          async getSemester(){
+              await this.$http.get('http://api.ajou-internsheep.co/admin/recentApplyTerm').then((response) => {
+                  this.applyOrder = response.data.applyOrder;
+                  this.applySemester = response.data.applySemester;
+                  var data = {
+                      applyOrder : this.applyOrder,
+                      applySemester : this.applySemester,
+                  };
+                  this.applyList(this.applyOrder,this.applySemester);
+              });
+          },
         applyList(order,semester){
           this.$http.get('http://api.ajou-internsheep.co/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
               if(response.data =='기간이 없음'){
                   alert('기간이 없습니다.')
                   // this.$router.push({name: "Home"})
-
               }
               else if(response.data=='공고가 없음'){
                   alert('공고를 작성하지 않으셨습니다.')
@@ -158,45 +221,128 @@
                   // this.confirm = 1
                   this.$store.dispatch('apply/setApplyState',0);
                   for (var i = 0; i < response.data.length; i++) {
+                      var programmingLang = JSON.parse(response.data[i].programmingLang);
+                      // var frameworkLang = JSON.parse(response.data[i].frameworkLang);
+                      // var databaseLang = JSON.parse(response.data[i].databaseLang);
+                      // var cloudLang = JSON.parse(response.data[i].cloudLang);
+                      // var machineLang = JSON.parse(response.data[i].machineLang)
                       this.stdList.push({
                           sName: response.data[i].sName,
                           sMajor: response.data[i].sMajor,
                           sGrade: response.data[i].sGrade,
                           stdApplyCoID: response.data[i].stdApplyCoID,
-                          YN: "-1",
+                          YN: "-1"})
+                      this.userProgrammingLang.push({
+                          Javascript: programmingLang.Javascript,
+                          HTML: programmingLang.HTML,
+                          CSS: programmingLang.CSS,
+                          jQuery: programmingLang.jQuery,
+                          SQL: programmingLang.SQL,
+                          Java: programmingLang.Java,
+                          AndroidJava: programmingLang.AndroidJava,
+                          Swift: programmingLang.Swift,
+                          Objective: programmingLang.Objective,
+                          Python: programmingLang.Python,
+                          PHP: programmingLang.PHP,
+                          C: programmingLang.C,
+                          Microsoft: programmingLang.Microsoft,
+                          Kotlin: programmingLang.Kotlin,
+                          Peral: programmingLang.Peral,
+                          R: programmingLang.R,
+                          VBA: programmingLang.VBA
                       })
+                      // this.userFrameworkLang.push({
+                      // Nodejs : frameworkLang.Nodejs,
+                      // Angular : frameworkLang.Angular,
+                      // React : frameworkLang.React,
+                      // Expressjs : frameworkLang.Expressjs,
+                      // NetCore : frameworkLang.NetCore,
+                      // Spring : frameworkLang.Spring,
+                      // Django : frameworkLang.Django,
+                      // Flask : frameworkLang.Flask,
+                      // Cordova : frameworkLang.Cordova})
+                      //
+                      // this.userDatabaseLang.push({
+                      // MySql : databaseLang.MySql,
+                      // SQLServer : databaseLang.SQLServer,
+                      // MongoDB : databaseLang.MongoDB,
+                      // SQLite : databaseLang.SQLite,
+                      // Redis : databaseLang.Redis,
+                      // Oracle : databaseLang.Oracle,
+                      // Flask_data : databaseLang.Flask,
+                      // Cordova_data : databaseLang.Cordova})
+                      //
+                      // this.userCloudLang.push({
+                      // AWS : cloudLang.AWS,
+                      // Azure : cloudLang.Azure,
+                      // GCP : cloudLang.GCP,
+                      // Linux : cloudLang.Linux,
+                      // Wordpress : cloudLang.Wordpress,
+                      // RaspberryPi : cloudLang.RaspberryPi,
+                      // Arduino : cloudLang.Arduino,
+                      // Firebase : cloudLang.Firebase,
+                      // Docker : cloudLang.Docker,
+                      // Go : cloudLang.Go})
+
+                      // this.userMachineLang.push({
+                      //     Tensorflow : machineLang.Tensorflow,
+                      // Caffe : machineLang.Caffe,
+                      // OpenCV : machineLang.OpenCV,
+                      // DLib : machineLang.DLib,
+                      // OpenGL : machineLang.OpenGL,
+                      // Unity : machineLang.Unity,
+                      // Arduino_mac : machineLang.Arduino,
+                      // Firebase_mac : machineLang.Firebase
+                      // })
                   }
               }
+              this.chart(this.stdList)
           })
         },
-        finishJudge(){
-          for(var i=0 ;i<this.stdList.length;i++){
-            if(this.stdList[i].YN==-1){
-              alert("합격여부를 모두 작성해 주세요.")
-              return 0;
+            chart(stdList) {
+                for (var i = 0; i < stdList.length; i++) {
+                    this.chartOptions.xaxis.categories[i] = stdList[i].sName
+                    if (this.userProgrammingLang[i].C == '배운적 없음')
+                        this.userProgrammingLang[i].C = 0
+                    else if (this.userProgrammingLang[i].C == '맛보기 수준')
+                        this.userProgrammingLang[i].C = 1
+                    else if (this.userProgrammingLang[i].C == '초보 수준')
+                        this.userProgrammingLang[i].C = 2
+                    else if (this.userProgrammingLang[i].C == '실무 가능')
+                        this.userProgrammingLang[i].C = 3
+                    else if (this.userProgrammingLang[i].C == '나름 고수')
+                        this.userProgrammingLang[i].C = 4
+                    this.series[0].data[i] = this.userProgrammingLang[i].C
+                };
+            },
+            finishJudge(){
+                for(var i=0 ;i<this.stdList.length;i++){
+                    if(this.stdList[i].YN==-1){
+                        alert("합격여부를 모두 작성해 주세요.")
+                        return 0;
+                    }
+                    this.judgeStdinfo.push({
+                        stdApplyCoID : JSON.stringify(this.stdList[i].stdApplyCoID),
+                        YN : this.stdList[i].YN,
+                    })
+                }
+                this.$http.post('http://api.ajou-internsheep.co/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
+                    alert('합격 여부가 확정되었습니다.')
+                })
+                this.$router.push({name: "Home"});
+            },
+            handleClickButton(){
+                this.visible = !this.visible
             }
-            this.judgeStdinfo.push({
-              stdApplyCoID : JSON.stringify(this.stdList[i].stdApplyCoID),
-              YN : this.stdList[i].YN,
-            })
-          }
-          this.$http.post('http://api.ajou-internsheep.co/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
-              alert('합격 여부가 확정되었습니다.')
-          })
-          this.$router.push({name: "Home"});
-        },
-        handleClickButton(){
-          this.visible = !this.visible
         }
-      }
-  }
+    }
 </script>
 
 <style scoped>
-.img {
+  .img {
     height:100px;
     width:100px;
     border-radius: 50%;
     border-color: coral;
-}
+  }
 </style>
