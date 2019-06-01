@@ -21,7 +21,7 @@
                 <img src="images/career/logo-1.png" class="img mr-sm-0 mb-4 mb-sm-0 rounded p-3" alt="logo-1">
                 <div class="info media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:120%;">
                   <!-- 모집 직군 -->
-                  <span class="text-white" style="font-size: 20px;">{{sc.cOccupation}}<br></span>
+                  <span class="text-white" style="font-weight: bold; font-size: 20px;">{{sc.cOccupation}}<br></span>
                   <!-- 기업명 -->
                   <span class="text-white" style="font-size: 13px;">{{sc.cName}}<br></span>
                   <!-- 태그 -->
@@ -134,6 +134,9 @@
               </ul>
             </div>
           </li>
+          <div class="text-center">
+            <button  class="btn btn-primary" type="submit" >지원하기</button>      
+          </div>
         </ul>
       </div>
     </div>
@@ -185,7 +188,7 @@
       },
       methods: {
         applyStd(cName){
-            this.$http.get('http://localhost:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId}}).then((response)=>{
+            this.$http.get('http://localhost:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId, applySemester : this.applyTerm.applySemester}}).then((response)=>{
             if(response.data != '0'){
                 alert("이미 지원을 한 상태 입니다.")
             }
@@ -241,7 +244,7 @@
 
 .topImage {
   padding : 10px;
-  background: linear-gradient(90deg, #62aaff 20%, #626aff 100%);
+  background: linear-gradient(80deg, #0064db 0%, #00a4db 100%);
   height: 150px;
   border-radius: 5px;
 }

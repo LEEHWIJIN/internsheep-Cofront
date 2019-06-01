@@ -13,13 +13,13 @@ body {
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 15px;
-  color: #8b8e93;
+  color: #555555;
 }
 
 p,
 .paragraph {
   font-weight: 400;
-  color: #8b8e93;
+  color: #555555;
   font-size: 15px;
   line-height: 1.6;
   font-family: "Open Sans", sans-serif;
@@ -225,7 +225,7 @@ a.text-light:hover {
 }
 
 .text-dark {
-  color: #242f3e !important;
+  color: #555555 !important;
 }
 
 .text-secondary {
