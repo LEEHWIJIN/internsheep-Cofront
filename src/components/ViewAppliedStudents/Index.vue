@@ -68,8 +68,15 @@
             </div>
             <v-error v-else-if="$store.state.apply.apply_state==1"></v-error>
           </div>
+
+          <div class="col-12 text-center" style="font-size: 15px">
+             내 상태 : {{cStatus}}
+          </div><br/>
+
           <div class="col-12 text-center">
+            <br/>
             <button class="btn btn-primary" @click="finishJudge()">심사 완료</button>
+            <button class="btn btn-primary ml-2" v-if="cStatus=='심사중'" @click="changeStatus()">지원 그만 받기</button>
           </div>
 
           <div class="col-12 text-center">
@@ -109,6 +116,7 @@
           visible : false,
           judgeStdinfo:[],
             confirm : -1,
+            cStatus : "",
             userProgrammingLang:[],
             userMachineLang:[],
             userFrameworkLang:[],
@@ -170,7 +178,7 @@
           apexchart: VueApexCharts,
       },
       async created(){
-        await this.$http.get('http://api.ajou-internsheep.co/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -185,7 +193,7 @@
           this.stdList[index].YN = event.target.value;
         },
           async getSemester(){
-              await this.$http.get('http://api.ajou-internsheep.co/admin/recentApplyTerm').then((response) => {
+              await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
                   this.applyOrder = response.data.applyOrder;
                   this.applySemester = response.data.applySemester;
                   var data = {
@@ -193,10 +201,11 @@
                       applySemester : this.applySemester,
                   };
                   this.applyList(this.applyOrder,this.applySemester);
+                  this.loadCstatus(this.applyOrder,this.applySemester)
               });
           },
         applyList(order,semester){
-          this.$http.get('http://api.ajou-internsheep.co/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
+          this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
               if(response.data =='기간이 없음'){
                   alert('기간이 없습니다.')
                   // this.$router.push({name: "Home"})
@@ -326,11 +335,31 @@
                         YN : this.stdList[i].YN,
                     })
                 }
-                this.$http.post('http://api.ajou-internsheep.co/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
+                this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
                     alert('합격 여부가 확정되었습니다.')
                 })
                 this.$router.push({name: "Home"});
             },
+          changeStatus() {
+              this.$http.post('http://localhost:8888/co/mypage/changeCstatus',{cLoginID : this.user.loginId, applyOrder: this.applyOrder,applySemester:this.applySemester}).then((response)=>{
+                  if(response.data == '0'){
+                      alert('이미 지원 마감 상태입니다.')
+                  }
+                  else{
+                      alert('지원이 마감 되었습니다.')
+                  }
+              })
+          },
+          loadCstatus(applyOrder, applySemester) {
+              this.$http.get('http://localhost:8888/co/mypage/loadCstatus',{params : {cLoginID : this.user.loginId, applyOrder: applyOrder,applySemester:applySemester}}).then((response)=>{
+                  if(response.data.cStatus == 0){
+                      this.cStatus = '심사중'
+                  }
+                  else if(response.data.cStatus == 1){
+                      this.cStatus = '지원 마감'
+                  }
+              })
+          },
             handleClickButton(){
                 this.visible = !this.visible
             }
