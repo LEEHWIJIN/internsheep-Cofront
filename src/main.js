@@ -5,7 +5,6 @@ import axios from 'axios'
 import feather from 'vue-icon'
 import store from './store';
 import 'vue-cal/dist/vuecal.css'
-import VueApexCharts from 'vue-apexcharts'
 Vue.use(feather, 'v-icon')
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
@@ -18,6 +17,5 @@ new Vue({
   router,
   store,
   axios,
-    VueApexCharts,
   render: h => h(App)
 }).$mount('#app')
