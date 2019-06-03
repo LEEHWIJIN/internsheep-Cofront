@@ -20,7 +20,7 @@
               </div>
               <div class="col-lg-12 text-center p-0">
                 <form v-on:submit.prevent='submitNotice'>
-                <textarea class="form-control mb-4" name="name" rows="" cols="80">
+                <textarea class="form-control mb-4" name="name" rows="" cols="80" style="height:300px; background-color:white" readonly="readonly">
                 제 1조 참가신청
                 아주대학교 현장실습 기업 참가신청은 조기에 완료된다.
 
@@ -85,25 +85,48 @@
           this.user = res.data.user;
           return this.user
         });
+          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+              if(response.data=='0'){
+                  alert('공고신청기간이 아닙니다.')
+                  this.$router.push({name: "Home"})
+              }
+              else{
+                  this.applyOrder = response.data.applyOrder
+                  this.applySemester = response.data.applySemester
+              }
+          })
       },
       methods: {
         submitNotice(loginId){
-          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
-            this.applyOrder = response.data[0].applyOrder;
-            this.applySemester = response.data[0].applySemester;
-            var data = {
-              applyOrder : this.applyOrder,
-              applySemester : this.applySemester,
-            }
-            this.$http.post('http://localhost:8888/co/mypage/applyNotice',{cLoginID:this.user.loginId, data}).then((response) => {
-              if(response.data.result==1){
-                alert("신청되었습니다.")
-              }
-              else {
-                alert("신청에 실패 했습니다. 다시 시도해 주세요.")
-              }
-            })
-          })
+                  var data = {
+                      applyOrder: this.applyOrder,
+                      applySemester: this.applySemester,
+                  }
+                  this.$http.get('http://localhost:8888/co/mypage/checkApplyNotice', {
+                      params: {
+                          cLoginID: this.user.loginId,
+                          applyOrder: this.applyOrder,
+                          applySemester: this.applySemester
+                      }
+                  }).then((response) => {
+                      console.log(response.data)
+                      if (response.data == '1') {
+                          alert("이미 신청하였습니다.")
+                      }
+                      else {
+                          this.$http.post('http://localhost:8888/co/mypage/applyNotice', {
+                              cLoginID: this.user.loginId,
+                              data
+                          }).then((response) => {
+                              if (response.data == '1') {
+                                  alert("신청되었습니다.")
+                              }
+                              else {
+                                  alert("신청에 실패 했습니다. 다시 시도해 주세요.")
+                              }
+                          })
+                      }
+                  })
         },
       }
   }

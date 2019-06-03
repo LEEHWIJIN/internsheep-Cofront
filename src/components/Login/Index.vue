@@ -3,6 +3,9 @@
     <div class="container">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="" style="text-align: center;">
+          <a class="" href="#" @click="goHome"><img src="images/login.png" style="text-align: center; filter: brightness(0) invert(1);"alt="Intern Sheep"></a>
+        </div>
         <div class="card card-signin my-5">
           <div class="card-body">
 
@@ -77,6 +80,9 @@
 
     },
     methods: {
+      goHome(){
+          this.$router.push({name: "Home"})
+      },
       login() {
         this.$http.post('http://localhost:8888/auth/co/login',{user: this.user}).then((response)=>{
              alert('success');
@@ -112,8 +118,9 @@
 .section1 {
   background-color: #007bff;
   background: linear-gradient(to right, #0062E6, #33AEFF);
-  padding-bottom:100px;
-  padding-top:100px;
+  padding-bottom:150px;
+  padding-top:150px;
+  /* margin-bottom: 100px; */
 }
 
 .card-signin {

@@ -1,78 +1,70 @@
+
 <template>
   <section class="section section-lg-bottom bg-light">
+    <v-base></v-base>
     <div class="container rounded-sm bg-white shadow">
-      <v-base></v-base>
-        <div id="apply">
-            <!-- <v-CoList :applylist="applylist" @clickCo="clickCo"></v-CoList> -->
-            <div class="row">
-              <!-- 기업 목록 -->
-              <div class="company-item companyList col-lg-5">
-                <div class="comanyList">
-                    <!-- <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)">
-                      {{index+1}}.
-                      기업명 : {{AL.cName}}<br>
-                      매니저 : {{AL.cManagerName}}<br><br>
-                    </div> -->
-                    <ul class="list-styled list-bordered">
-
-                      <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)">
-                        <li><div class="media align-items-center flex-column flex-sm-row">
-                          <!-- {{index+1}} -->
-                          <!-- 회사 사진 -->
-                          <img src="images/career/logo-1.png" class="mr-sm-0 mb-4 mb-sm-0 rounded p-3" alt="logo-1">
-                          <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:120%">
-                            <!-- 모집 직군 -->
-                            <span class="h6">백엔드 개발자</span><br>
-                            <!-- 기업명 -->
-                            <span style="font-size: 12px;">카카오{{AL.cName}}<br></span>
-                            <!-- 태그 -->
-                            <span style="font-size: 12px;">#C #JAVA #Python{{AL.cName}}<br></span>
-                          </div>
-                          <!-- 경쟁률 -->
-                          <div class="" style="line-height:120%">
-                            <br><br>
-                            <a class="mr-sm-3 paragraph">
-                              <span style="font-size: 12px">모집:</span>1
-                              <span class="h4" style="color:#0097d5;">
-                              <span style="font-size: 12px">지원:</span>7</span>
-                            </a>
-                          </div>
-                        </div></li>
+      <div id="apply">
+        <!-- <v-CoList :applylist="applylist" @clickCo="clickCo"></v-CoList> -->
+        <div class="row">
+          <!-- 기업 목록 -->
+          <div class="company-item companyList col-lg-5">
+            <div class="comanyList">
+              <div class="search-container">
+                <form class="search-form pb-2" action="/action_page.php">
+                  <input class="search-input" v-model="searchinput" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
+                  <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
+                </form>
+              </div>
+                <!-- <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)">
+                  {{index+1}}.
+                  기업명 : {{AL.cName}}<br>
+                  매니저 : {{AL.cManagerName}}<br><br>
+                </div> -->
+              <ul class="list-styled list-bordered">
+                  <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)" v-if="AL.cName.includes(searchinput)||AL.cOccupation.includes(searchinput)||AL.cTag.includes(searchinput)">
+                    <li><div class="media align-items-center flex-column flex-sm-row">
+                      <!-- {{index+1}} -->
+                      <!-- 회사 사진 -->
+                      <img src="images/career/logo-1.png" class="mr-sm-0 mb-4 mb-sm-0 rounded p-3" alt="logo-1">
+                      <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:100%">
+                        <!-- 모집 직군 -->
+                        <span class="h6" style="font-weight: bold;">{{AL.cOccupation}}</span><br>
+                        <!-- 기업명 -->
+                        <span style="font-size: 12px; color: #8b8e93;">{{AL.cName}}<br></span>
+                        <!-- 태그 -->
+                        <span style="font-size: 12px; color: #8b8e93;">{{AL.cTag}}<br></span>
                       </div>
-
-                      <!-- 샘플. 나중에 지워주세요. -->
-                      <li><a class="text-color d-block py-3" href="blog-details.html">사케우동</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">심심이</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">네이버</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">카카오</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">(주)삼겹살</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">김치찌개</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">(주)고구마</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">(주)이누야샤</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">페이스북</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">구글</a></li>
-                      <li><a class="text-color d-block py-3" href="blog-details.html">인스타그램</a></li>
-
-                    </ul>
-                </div>
-              </div>
-              <!-- 기업 상세 목록 -->
-              <div class="company-item detailList col-lg-10 ">
-                  <div>
-                    <v-detail-list :selectedCo="selectedCo"></v-detail-list>
+                      <!-- 경쟁률 -->
+                      <div class="" style="line-height:120%">
+                        <br><br>
+                        <a class="mr-sm-3 paragraph">
+                          <span style="font-size: 12px">모집:</span>{{AL.cNumOfPeople}}
+                          <span class="h4" style="color:#0064db">
+                          <span style="font-size: 12px"> 지원:</span>{{AL.applyStdNum}}</span>
+                        </a>
+                      </div>
+                    </div></li>
                   </div>
-              </div>
-
+                </ul>
             </div>
           </div>
+          <!-- 기업 상세 목록 -->
+          <div class="company-item detailList col-lg-10 ">
+              <div>
+                <v-detail-list :selectedCo="selectedCo"></v-detail-list>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <v-footer class="mt-5"></v-footer>
   </section>
 </template>
 
 
 <script>
  import VBase from '../Base/Index.vue'
- import VCategory from '../Category/Index.vue'
+ import VFooter from '../Footer/Index.vue'
 // import VCoList from "./CoList.vue"
  import VDetailList from "./DetailList.vue"
   export default{
@@ -81,6 +73,13 @@
         return {
           applylist:[],
           selectedCo:[],
+          searchinput:"",
+          // applyTerm : {
+          //     applyStart : '',
+          //     applyEnd : '',
+          //     applySemester : '',
+          //     applyOrder : ''
+          // },
           applyTerm:{},
         }
       },
@@ -88,50 +87,37 @@
           //VCoList,
           VDetailList,
           VBase,
-          VCategory,
+          VFooter,
       },
       created(){
-        //this.applyList();
-        this.recentSemester();
+          this.compareDate();
       },
       methods: {
-        recentSemester(){
-          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
-            this.applyTerm = {
-                applyStart : response.data[0].applyStart,
-                applyEnd : response.data[0].applyEnd,
-                applySemester : response.data[0].applySemester,
-                applyOrder : response.data[0].applyOrder
-            }
-            this.applyList();
-          })
-        },
         applyList(){
           this.$http.get('http://localhost:8888/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
             for(var i=0; i<response.data.length;i++){
-              this.applylist.push({
-                cBenefit : response.data[i].cBenefit,
-                cPay : response.data[i].cPay,
-                internTermStart : response.data[i].internTermStart,
-                internTermEnd : response.data[i].internTermEnd,
-                cManagerPhone : response.data[i].cManagerPhone,
-                cImage : response.data[i].cImage,
-                cLocation : response.data[i].cLocation,
-                cManagerName : response.data[i].cManagerName,
-                cName : response.data[i].cName,
-                cOccupation : response.data[i].cOccupation,
-                cTag : response.data[i].cTag,
-                cNumOfPeople :response.data[i].cNumOfPeople,
-                applyStdNum : response.data[i].applyStdNum,
-                cInfo : response.data[i].cInfo,
-                cEmail : response.data[i].cEmail,
+                this.applylist.push({
+                  cBenefit : response.data[i].cBenefit,
+                  cPay : response.data[i].cPay,
+                  internTermStart : response.data[i].internTermStart,
+                  internTermEnd : response.data[i].internTermEnd,
+                  cManagerPhone : response.data[i].cManagerPhone,
+                  cImage : response.data[i].cImage,
+                  cLocation : response.data[i].cLocation,
+                  cManagerName : response.data[i].cManagerName,
+                  cName : response.data[i].cName,
+                  cOccupation : response.data[i].cOccupation,
+                  cTag : response.data[i].cTag,
+                  cNumOfPeople :response.data[i].cNumOfPeople,
+                  applyStdNum : response.data[i].applyStdNum,
+                  cInfo : response.data[i].cInfo,
+                  cEmail : response.data[i].cEmail,
               })
             }
           })
         },
         clickCo(selectedNum){
           this.selectedCo=[]
-          //console.log(selectedNum)
           this.selectedCo.push({
               cBenefit : this.applylist[selectedNum].cBenefit,
               cPay : this.applylist[selectedNum].cPay,
@@ -150,11 +136,28 @@
               cEmail : this.applylist[selectedNum].cEmail,
           })
         },
+        compareDate(){
+          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+            this.applyTerm = {
+                applyStart : response.data.applyStart,
+                applyEnd : response.data.applyEnd,
+                applySemester : response.data.applySemester,
+                applyOrder : response.data.applyOrder
+            }
+            this.applyList();
+          })
+        },
       }
   }
 </script>
 
 <style scoped>
+
+.section {
+  padding-top: 150px;
+  padding-bottom: 0px;
+}
+
 .company-item {
   padding:15px;
   overflow-y: scroll;
@@ -168,5 +171,34 @@
 
 .detailList {
   flex-basis: 60%;
+}
+
+/* search bar */
+.search-container {
+  /* width: 100px; */
+}
+
+.search-form {
+  width: 100%;
+  border-right:0px;
+  border-top:0px;
+  border-left:0px;
+  border-bottom:1px solid #e5e5e5 ;
+}
+
+.search-input{
+  width: 90%;
+  border:none;
+
+}
+
+.search-button{
+  border: 0px;
+  background-color: white;
+}
+
+.search-input:focus {
+  outline: 0;
+  box-shadow: none;
 }
 </style>

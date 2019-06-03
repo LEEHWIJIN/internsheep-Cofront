@@ -5,6 +5,7 @@ export const SUBMIT_USERENG = 'SUBMIT_USERENG';
 export const SUBMIT_USERGRADE = 'SUBMIT_USERGRADE';
 export const SUBMIT_USERSW = 'SUBMIT_USERSW';
 export const SETRESUMESTATE = 'SETRESUMESTATE';
+export const SETAPPLYSTATE = 'SETAPPLYSTATE';
 
     
 export default {
@@ -25,5 +26,8 @@ export default {
     },
     [SETRESUMESTATE](state,result){
         state.resume_state = result;
-    }
+    },
+    [SETAPPLYSTATE](state,result){
+        state.apply_state = result;
+    },
 };

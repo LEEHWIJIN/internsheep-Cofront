@@ -29,8 +29,8 @@ export default {
         })
     },
 
-    setResumeState({commit}, data){
-        commit(mutation.SETRESUMESTATE, data);
+    setApplyState({commit}, data){
+        commit(mutation.SETAPPLYSTATE, data);
     },
     
 };
