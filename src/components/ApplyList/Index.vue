@@ -11,7 +11,7 @@
             <div class="comanyList">
               <div class="search-container">
                 <form class="search-form pb-2" action="/action_page.php">
-                  <input class="search-input" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
+                  <input class="search-input" v-model="searchinput" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
                   <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
                 </form>
               </div>
@@ -21,7 +21,7 @@
                   매니저 : {{AL.cManagerName}}<br><br>
                 </div> -->
               <ul class="list-styled list-bordered">
-                  <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)">
+                  <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)" v-if="AL.cName.includes(searchinput)||AL.cOccupation.includes(searchinput)||AL.cTag.includes(searchinput)">
                     <li><div class="media align-items-center flex-column flex-sm-row">
                       <!-- {{index+1}} -->
                       <!-- 회사 사진 -->
@@ -45,20 +45,6 @@
                       </div>
                     </div></li>
                   </div>
-
-                  <!-- 샘플. 나중에 지워주세요. -->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">사케우동</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">심심이</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">네이버</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">카카오</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">(주)삼겹살</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">김치찌개</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">(주)고구마</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">(주)이누야샤</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">페이스북</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">구글</a></li>-->
-                  <!--<li><a class="text-color d-block py-3" href="blog-details.html">인스타그램</a></li>-->
-
                 </ul>
             </div>
           </div>
@@ -68,7 +54,6 @@
                 <v-detail-list :selectedCo="selectedCo"></v-detail-list>
               </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -88,6 +73,7 @@
         return {
           applylist:[],
           selectedCo:[],
+          searchinput:"",
           // applyTerm : {
           //     applyStart : '',
           //     applyEnd : '',
