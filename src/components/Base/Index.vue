@@ -40,7 +40,7 @@
                     <a class="dropdown-item text-color" href="#" @click="goApply">공고 작성</a>
                     <a class="dropdown-item text-color" href="#" @click="goApplyNotice">공고 신청</a>
                     <a class="dropdown-item text-color" href="#" @click="goViewAppliedStudents">지원 학생 관리</a>
-                    <a class="dropdown-item text-color" href="#">선발 학생 관리</a>
+                    <a class="dropdown-item text-color" href="#" @click="goManagementStd">선발 학생 관리</a>
                     <a class="dropdown-item text-color" href="#" @click="goProfile">회원 정보 수정</a>
                   </div>
                 </li>
@@ -118,6 +118,9 @@
         },
         goProfile(){
             this.$router.push({name: "Profile"})
+        },
+        goManagementStd(){
+          this.$router.push({name:"ManagementStd"});
         },
         logout(){
         localStorage.removeItem('token')
