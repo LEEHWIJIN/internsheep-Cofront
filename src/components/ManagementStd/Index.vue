@@ -23,6 +23,7 @@
             <option value="출석">출석</option>
             <option value="결석">결석</option>
             <option value="지각">지각</option>
+            <option value="조퇴">조퇴</option>
           </select>
         </div>
         <button class="btn btn-primary" @click="modify">저장</button>
