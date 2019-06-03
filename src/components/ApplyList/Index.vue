@@ -78,8 +78,8 @@
           VBase,
           VFooter,
       },
-      created(){
-          this.compareDate();
+      async created(){
+          await this.compareDate();
       },
       methods: {
         applyList(){
@@ -103,7 +103,9 @@
                   cEmail : response.data[i].cEmail,
               })
             }
+            this.selectedCo.push(this.applylist[0])
           })
+          return this.applylist;
         },
         clickCo(selectedNum){
           this.selectedCo=[]
