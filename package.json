@@ -18,11 +18,13 @@
     "v-cal-input": "^0.1.9",
     "vue": "^2.5.17",
     "vue-apexcharts": "^1.3.5",
+    "vue-bootstrap4-calendar": "^1.1.3",
     "vue-burger-menu": "^1.0.9",
     "vue-daum-map": "^1.0.12",
     "vue-icon": "^2.0.0",
     "vue-router": "^3.0.1",
     "vue-zondicons": "^0.1.10",
+    "vue2-simple-calendar": "^1.0.8",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

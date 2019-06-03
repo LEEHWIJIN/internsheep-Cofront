@@ -9,14 +9,6 @@
         <div class="card card-signin my-5">
           <div class="card-body">
 
-            <!-- <form v-on:submit.prevent='signup'>
-                <label style="font-size: 20px"><input type="text" name="signname" v-model="user.name">Name :</label><br>
-                <label style="font-size: 20px">ID : </label><input type="text" name="signid" v-model="user.id">
-                <input class="duplicate" type="button" v-on:click="dupcheck" value="중복확인"><br>
-                <label style="font-size: 20px">Password: </label> <input type="password" name="signpassword" v-model="user.password">
-                <input type="submit" value="Sign Up">
-            </form> -->
-
             <h2 class="card-title text-center">Sign Up</h2>
             <form v-on:submit.prevent='signup' class="form-signin">
 
@@ -24,18 +16,6 @@
                 <input v-model="user.name" type="text" id="signupName" class="form-control1" placeholder="Id" required autofocus>
                 <label for="signupName">Name</label>
               </div>
-
-              <!-- <div class="form-label-group">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <input v-model="user.id" type="signid" id="signupId" class="form-control1" placeholder="Id" required autofocus>
-                    <label for="signupId">Id</label>
-                  </div>
-                  <div class="col-lg-4">
-                    <input class="btn btn-sm btn-white" type="button" v-on:click="dupcheck" value="중복확인"><br>
-                  </div>
-                </div>
-              </div> -->
 
               <div class="form-label-group">
                 <input v-model="user.id" type="signid" id="signupId" class="form-control1" placeholder="Id" required autofocus>
@@ -57,16 +37,6 @@
     </div>
   </div>
   </section>
-    <!-- <div class="signup" style="  width: 380px;">
-        <h1>Sign Up</h1>
-        <form v-on:submit.prevent='signup'>
-            <input type="text" name="signname" v-model="user.name"><label style="font-size: 20px">Name :</label><br>
-            <label style="font-size: 20px">ID : </label><input type="text" name="signid" v-model="user.id">
-            <input class="duplicate" type="button" v-on:click="dupcheck" value="중복확인"><br>
-            <label style="font-size: 20px">Password: </label> <input type="password" name="signpassword" v-model="user.password">
-            <input type="submit" value="Sign Up">
-        </form>
-    </div> -->
 </template>
 
 <script>
@@ -94,8 +64,9 @@ export default {
             else if(this.Isuniq == 1) alert("중복입니다.")
             else if(this.Isuniq==0){
                 this.$http.post('http://localhost:8888/auth/co/signup', {user: this.user}).then((response) => {
-                    if(response.data == 1){
-                        this.$router.push('/login');
+                    if(response.data.result == 1){
+                      alert("성공적으로 가입 되었습니다.")
+                      this.$router.push('/login');
                     }
                     else
                     {
