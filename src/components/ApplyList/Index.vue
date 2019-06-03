@@ -15,11 +15,6 @@
                   <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
                 </form>
               </div>
-                <!-- <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)">
-                  {{index+1}}.
-                  기업명 : {{AL.cName}}<br>
-                  매니저 : {{AL.cManagerName}}<br><br>
-                </div> -->
               <ul class="list-styled list-bordered">
                   <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)" v-if="AL.cName.includes(searchinput)||AL.cOccupation.includes(searchinput)||AL.cTag.includes(searchinput)">
                     <li><div class="media align-items-center flex-column flex-sm-row">
@@ -74,12 +69,6 @@
           applylist:[],
           selectedCo:[],
           searchinput:"",
-          // applyTerm : {
-          //     applyStart : '',
-          //     applyEnd : '',
-          //     applySemester : '',
-          //     applyOrder : ''
-          // },
           applyTerm:{},
         }
       },
