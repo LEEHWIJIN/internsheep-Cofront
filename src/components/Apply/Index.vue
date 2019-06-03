@@ -12,55 +12,10 @@
         </div>
         <div class="col-lg-8">
           <div class="row">
-            <!-- 대제목 -->
-            <div class="col-lg-12 text-center">
-              <p class="subtitle">Notice</p>
-              <h2 class="section-title">Write a Notice</h2>
-            </div>
-          <form class="row" v-on:submit.prevent='submitNotice'>
-            <div class="col-lg-6">
-              <h6 style="font-weight:bold">회사 주소*</h6>
-              <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소를 입력 해주세요">
-            </div>
-            <div class="col-lg-6">
-              <h6 style="font-weight:bold">복리후생*</h6>
-              <input class="form-control mb-4" v-model="cBenefit" placeholder="복리후생 정보를 입력 해주세요">
-            </div>
-            <div class="col-lg-6">
-              <h6 style="font-weight:bold">급여*</h6>
-              <input class="form-control mb-4" v-model="cPay" placeholder="급여 정보를 입력 해주세요">
-            </div>
-            <div class="col-lg-6">
-              <h6 style="font-weight:bold">활동부서*</h6>
-              <input class="form-control mb-4" v-model="cOccupation" placeholder="활동부서를 입력 해주세요">
-            </div>
-            <div class="col-lg-6">
-              <h6 style="font-weight:bold">모집인원*</h6>
-              <input class="form-control mb-4" v-model="cNumOfPeople" placeholder="모집인원을 입력 해주세요">
-            </div>
-            <div class="col-lg-6">
-              <h6 style="font-weight:bold">태그*</h6>
-              <input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요">
-            </div>
-            <!-- <h6 style="font-weight:bold">사업자등록번호*</h6>
-            <div class="col-lg-6">
-                  <input class="form-control mb-4" v-model="cID_1" placeholder="사업자등록번호를 입력 해주세요">
-            </div><br> -->
-
-            <div class="col-lg-6">
-              <h6 style="font-weight:bold">실습시작일*</h6>
-              <date-picker v-model="internTermStart"/>
-              <!-- <input style="width:200px" type="text" v-model="internTermStart"> -->
-            </div>
-            <div class="col-lg-6">
-              <h6 style="font-weight:bold">실습종료일*</h6>
-              <date-picker v-model="internTermEnd"/>
-              <!-- <input style="width:200px" type="text" v-model="internTermEnd"> -->
-            </div>
-            <div class="col-12 text-center">
-              <button class="btn btn-primary mt-0" type="submit">제출하기</button>
-            </div>
-          </form>
+            <v-error v-if="$store.state.apply.apply_state==0"></v-error>
+            <v-write-notice v-if="$store.state.apply.apply_state==1"></v-write-notice>
+            <v-read-notice v-if="$store.state.apply.apply_state==2"></v-read-notice>
+            <v-modify-notice v-if="$store.state.apply.apply_state==3"></v-modify-notice>
           </div>
         </div>
       </div>
@@ -72,55 +27,42 @@
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   import DatePicker from 'v-cal-input'
+  import VWriteNotice from './writeNotice.vue'
+  import VModifyNotice from './modifyNotice.vue'
+  import VError from './Error.vue'
+  import VReadNotice from './ReadNotice.vue'
   export default{
       name: 'Apply',
       data() {
         return {
-          cName:[],
-          cLocation:[],
-          cBenefit:[],
-          cPay : [],
-          internTermStart : null,
-          cOccupation : [],
-          cNumOfPeople : [],
-          cTag : [],
-          // cID_1 : [],
-          internTermEnd : null,
         }
       },
       components: {
           VBase,
           VCategory,
           DatePicker,
+          VWriteNotice,
+          VModifyNotice,
+          VError,
+          VReadNotice,
       },
-      created(){
-        this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+      async created(){
+        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
-
+        await this.checkNotice();
       },
       methods: {
-        submitNotice(){
-
-          var data = {
-            cBenefit : this.cBenefit,
-            cPay : this.cPay,
-            internTermStart : this.internTermStart,
-            internTermEnd : this.internTermEnd,
-            cOccupation : this.cOccupation,
-            cNumOfPeople : this.cNumOfPeople,
-            cTag : this.cTag,
-            cLocation : this.cLocation,
-          };
-          console.log(data.internTermStart)
-          this.$http.post('http://localhost:8888/co/mypage/writeNotice',{cLoginID:this.user.loginId,data:data}).then((response) => {
-            console.log(data)
-            // console.log(this.cManagerName)
-            // this.cName = "";
-            // this.cManagerName="";
-            this.$router.push({name: "Home"})
-          })
+        checkNotice(){
+          this.$http.get('http://localhost:8888/co/mypage/checkNotice',{params:{cLoginID : this.user.loginId}}).then(res => {
+            if(res.data==0){
+              this.$store.dispatch('apply/setApplyState',0);
+            }
+            else{//read resume
+              this.$store.dispatch('apply/setApplyState',2);
+            }
+          });
         },
       }
   }

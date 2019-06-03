@@ -109,7 +109,6 @@
       methods: {
         applyList(){
           this.$http.get('http://localhost:8888/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
-            console.log(response.data)
             for(var i=0; i<response.data.length;i++){
                 this.applylist.push({
                   cBenefit : response.data[i].cBenefit,
@@ -132,9 +131,7 @@
           })
         },
         clickCo(selectedNum){
-          // this.$router.go();
           this.selectedCo=[]
-          //console.log(selectedNum)
           this.selectedCo.push({
               cBenefit : this.applylist[selectedNum].cBenefit,
               cPay : this.applylist[selectedNum].cPay,
