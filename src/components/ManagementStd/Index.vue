@@ -98,17 +98,24 @@ import {Calendar} from 'vue-bootstrap4-calendar';
           this.studentInfo[index].id = this.pickDate;
         },
         async modify(){
-          await this.$http.get('http://localhost:8888/co/mypage/loadInterTerm',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester}}).then((res)=>{
-            console.log(res)
-            this.internTerm = res.data;
-            console.log(internTerm);
-            
+          await this.$http.get('http://localhost:8888/co/mypage/loadInterTerm',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester,date : this.pickDate}}).then((res)=>{
+            if(res.data.result==0){
+              alert("실습기간이 아닙니다.");
+              return;
+            }
+            else{
+              this.changeAttend();
+              return;
+            }
           });
-          // await this.$http.post('http://localhost:8888/co/mypage/changeAttend',{data : this.studentInfo[this.pickStudent]}).then((res)=>{
-          //   if(res.status==200){
-          //     alert("저장 되었습니다.")
-          //   }
-          // });
+        },
+        changeAttend(){
+          this.$http.post('http://localhost:8888/co/mypage/changeAttend',{data : this.studentInfo[this.pickStudent]}).then((res)=>{
+            if(res.status==200){
+              alert("저장 되었습니다.")
+            }
+            return ;
+          });
         },
         showAll(events) {
           // Do something...
