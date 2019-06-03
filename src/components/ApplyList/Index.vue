@@ -2,43 +2,48 @@
 <template>
   <section class="section section-lg-bottom bg-light">
     <v-base></v-base>
+    <div class="mt-4 text-center">
+      <br>
+    </div>
     <div class="container rounded-sm bg-white shadow">
       <div id="apply">
         <!-- <v-CoList :applylist="applylist" @clickCo="clickCo"></v-CoList> -->
         <div class="row">
           <!-- 기업 목록 -->
-          <div class="company-item companyList col-lg-5">
-            <div class="comanyList">
-              <div class="search-container">
-                <form class="search-form pb-2" action="/action_page.php">
-                  <input class="search-input" v-model="searchinput" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
-                  <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
-                </form>
-              </div>
+          <div class="companyList col-lg-5">
+            <div class="search-container pt-3">
+              <form class="search-form pb-2" action="/action_page.php">
+                <input class="search-input" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
+                <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
+              </form>
+            </div>
+            <div class="company-item comanyList">
               <ul class="list-styled list-bordered">
                   <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)" v-if="AL.cName.includes(searchinput)||AL.cOccupation.includes(searchinput)||AL.cTag.includes(searchinput)">
-                    <li><div class="media align-items-center flex-column flex-sm-row">
-                      <!-- {{index+1}} -->
-                      <!-- 회사 사진 -->
-                      <img src="images/career/logo-1.png" class="mr-sm-0 mb-4 mb-sm-0 rounded p-3" alt="logo-1">
-                      <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:100%">
-                        <!-- 모집 직군 -->
-                        <span class="h6" style="font-weight: bold;">{{AL.cOccupation}}</span><br>
-                        <!-- 기업명 -->
-                        <span style="font-size: 12px; color: #8b8e93;">{{AL.cName}}<br></span>
-                        <!-- 태그 -->
-                        <span style="font-size: 12px; color: #8b8e93;">{{AL.cTag}}<br></span>
-                      </div>
-                      <!-- 경쟁률 -->
-                      <div class="" style="line-height:120%">
-                        <br><br>
-                        <a class="mr-sm-3 paragraph">
-                          <span style="font-size: 12px">모집:</span>{{AL.cNumOfPeople}}
-                          <span class="h4" style="color:#0064db">
-                          <span style="font-size: 12px"> 지원:</span>{{AL.applyStdNum}}</span>
-                        </a>
-                      </div>
-                    </div></li>
+                    <div class="zoom">
+                      <li><a class="media align-items-center flex-column flex-sm-row">
+                        <!-- {{index+1}} -->
+                        <!-- 회사 사진 -->
+                        <img src="images/career/logo-1.png" class="mr-sm-0 mb-4 mb-sm-0 rounded p-3" alt="logo-1">
+                        <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:100%">
+                          <!-- 모집 직군 -->
+                          <span class="h6" style="font-weight: bold;">{{AL.cOccupation}}</span><br>
+                          <!-- 기업명 -->
+                          <span style="font-size: 12px; color: #8b8e93;">{{AL.cName}}<br></span>
+                          <!-- 태그 -->
+                          <span style="font-size: 12px; color: #8b8e93;">{{AL.cTag}}<br></span>
+                        </div>
+                        <!-- 경쟁률 -->
+                        <div class="" style="line-height:120%">
+                          <br><br>
+                          <a class="mr-sm-3 paragraph">
+                            <span style="font-size: 12px">모집:</span>{{AL.cNumOfPeople}}
+                            <span class="h4" style="color:#0064db">
+                            <span style="font-size: 12px"> 지원:</span>{{AL.applyStdNum}}</span>
+                          </a>
+                        </div>
+                      </a></li>
+                    </div>
                   </div>
                 </ul>
             </div>
@@ -52,11 +57,9 @@
         </div>
       </div>
     </div>
-    <v-footer class="mt-5"></v-footer>
+    <v-footer class="mt-4"></v-footer>
   </section>
 </template>
-
-
 <script>
  import VBase from '../Base/Index.vue'
  import VFooter from '../Footer/Index.vue'
@@ -68,8 +71,8 @@
         return {
           applylist:[],
           selectedCo:[],
-          searchinput:"",
           applyTerm:{},
+          searchinput:"",
         }
       },
       components: {
@@ -78,12 +81,12 @@
           VBase,
           VFooter,
       },
-      async created(){
-          await this.compareDate();
+      created(){
+        this.compareDate();
       },
       methods: {
         applyList(){
-          this.$http.get('http://localhost:8888/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
+          this.$http.get('http://api.ajou-internsheep.co/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
             for(var i=0; i<response.data.length;i++){
                 this.applylist.push({
                   cBenefit : response.data[i].cBenefit,
@@ -143,9 +146,8 @@
 </script>
 
 <style scoped>
-
 .section {
-  padding-top: 150px;
+  padding-top: 80px;
   padding-bottom: 0px;
 }
 
@@ -160,8 +162,20 @@
   flex-basis: 40%;
 }
 
+@media (max-width: 1000px) {
+  .companyList {
+    flex-basis: 100%;
+  }
+}
+
 .detailList {
   flex-basis: 60%;
+}
+
+@media (max-width: 1000px) {
+  .detailList {
+    flex-basis: 100%;
+  }
 }
 
 /* search bar */
@@ -191,5 +205,15 @@
 .search-input:focus {
   outline: 0;
   box-shadow: none;
+}
+
+.zoom {
+   transition: all .1s ease-in-out;
+ }
+
+.zoom:hover {
+  background-color: white;
+  transform: scale(1.072) !important; /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  box-shadow: 0px 2px 8px 0px rgba(51, 77, 128, 0.12) !important;
 }
 </style>

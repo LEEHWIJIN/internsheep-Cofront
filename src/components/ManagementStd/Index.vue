@@ -11,22 +11,61 @@
         <!-- 공백 -->
         <div class="col-lg-1">
         </div>
-        <div v-for="(info,index) in studentInfo">
-          <vue-calendar
-            :show-limit="3"
-            @show-all="showAll"
-            @event-clicked="eventClicked"
-            @month-changed="monthChanged"
-          ></vue-calendar>
-          <select @change="attendanceChange(index,$event)">
-            <option value="" selected disabled hidden style="font-color:#aab1bb;">출석여부</option>
-            <option value="출석">출석</option>
-            <option value="결석">결석</option>
-            <option value="지각">지각</option>
-            <option value="조퇴">조퇴</option>
-          </select>
+        <!-- 내용 -->
+        <div class="col-lg-8">
+          <div class="col-lg-12 text-center">
+            <p class="subtitle">Manage</p>
+            <h2 class="section-title">Manage Student</h2>
+          </div>
+          <div class="row rounded-sm shadow-sm b-2 p-3" style="background: white;">
+
+            <!-- <div class="row rounded-sm shadow-sm" style="background: white;"> -->
+              <div class="col-lg-8">
+                <!-- 캘린더 -->
+                <div v-for="(info,index) in studentInfo">
+                  <vue-calendar
+                    :show-limit="3"
+                    @show-all="showAll"
+                    @event-clicked="eventClicked"
+                    @month-changed="monthChanged"
+                  ></vue-calendar>
+                </div>
+              </div>
+              <!-- 세부 정보  -->
+              <div class="col-lg-4">
+                <div class="text-center mt-2">
+                  <h4>Attendance Info</h4>
+                </div>
+                <li class="list-form pt-2 pb-1">
+                  선택 날짜 <br>
+                </li>
+                <li class="list-form pt-2 pb-1">
+                  학생 이름 <br>
+                  <div class="student-name">
+
+                  </div>
+                </li>
+                <li class="pt-2 pb-1">
+                  출석 여부 <br>
+                  <select class="selectpicker select-size" @change="attendanceChange(index,$event)">
+                    <option value="" selected disabled hidden style="font-color:#aab1bb;">출석여부</option>
+                    <option value="출석">출석</option>
+                    <option value="결석">결석</option>
+                    <option value="지각">지각</option>
+                    <option value="조퇴">조퇴</option>
+                  </select>
+                </li>
+                <div class="text-center pt-3 pb-1">
+                  <!-- 저장 -->
+                  <button class="btn btn-primary" @click="modify">저장</button>
+                </div>
+              </div>
+            <!-- </div> -->
+
+          </div>
+
+
         </div>
-        <button class="btn btn-primary" @click="modify">저장</button>
       </div>
   </div>
 </section>
@@ -35,6 +74,7 @@
 
 <script>
 import {Calendar} from 'vue-bootstrap4-calendar';
+  import VFooter from '../Footer/Index.vue'
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   export default{
@@ -57,6 +97,7 @@ import {Calendar} from 'vue-bootstrap4-calendar';
         VBase,
         VCategory,
         Calendar,
+        VFooter,
       },
       async created() {
         await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
@@ -70,7 +111,7 @@ import {Calendar} from 'vue-bootstrap4-calendar';
         this.$calendar.eventBus.$on("show-all", events => this.showAll(events));
         this.$calendar.eventBus.$on("day-clicked", day => this.dayClicked(day));
         await this.loadHiredStd();
-        
+
       },
       methods: {
         loadHiredStd(){
@@ -141,20 +182,25 @@ import {Calendar} from 'vue-bootstrap4-calendar';
 </script>
 
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+.list-form {
+    border-right:0px;
+    border-top:0px;
+    border-left:0px;
+    border-bottom:1px solid #e5e5e5;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.select-size {
+    width: 50%;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+.student-name {
+  height: 120px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-a {
-  color: #42b983;
+
+.select {
+  height: 25px !important;
+  width: 80px !important;
 }
 </style>
-
