@@ -9,10 +9,6 @@
         <h2 class="section-title">Read a Notice</h2>
       </div>
       <form class="row" v-on:submit.prevent='submitNotice'>
-        <div class="col-lg-12 mb-4">
-              <h6 style="font-weight:bold">회사 이미지</h6>
-        <img id='img' :src="uploadImage" style="width:200px; height:200px; background-color: white; border: 1px solid #DDD; padding: 5px;"/>
-        </div>
         <div class="col-lg-6">
           <h6 style="font-weight:bold">회사 주소*</h6>
           <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소를 입력 해주세요" readonly="readonly">
@@ -49,6 +45,11 @@
         <div class="col-lg-6">
           <h6 style="font-weight:bold">실습종료일*</h6>
           <input class="form-control mb-4" type="text" v-model="internTermEnd" readonly="readonly">
+          <Image src="https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png" stretch="none" />
+        </div>
+        <div class="col-lg-6">
+          <h6 style="font-weight:bold">프로필 사진*</h6>
+          <img id='img' :src="uploadImage" style="width:200px; height:200px; background-color: white; border: 1px solid #DDD; padding: 5px;"/>
         </div>
       </form>
     </div>
@@ -71,7 +72,9 @@
           cNumOfPeople : [],
           cTag : [],
           internTermEnd : null,
+          image : null,
           uploadImage : "",
+
         }
       },
       components: {
@@ -92,7 +95,8 @@
           this.$store.dispatch('apply/setApplyState',3);
         },
         async getNotice(){
-          this.$http.get('http://localhost:8888/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>{
+          await this.$http.get('http://localhost:8888/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
+          {
             this.cName = res.data[0].cName;
             this.cLocation = res.data[0].cLocation;
             this.cBenefit = res.data[0].cBenefit;
@@ -102,11 +106,11 @@
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
             this.cTag = res.data[0].cTag;
+            this.cImage = res.data[0]
           })
         },
         loadImage(loginId){
           this.uploadImage='http://localhost:8888/co/mypage/getProfileImage?cLoginID='+loginId
-          console.log(this.uploadImage)
         }
       }
   }
