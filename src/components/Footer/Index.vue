@@ -8,7 +8,6 @@
           <div class="row">
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
               <p class="mb-0 text-light"><a href="index.html" class="text-primary">아주대학교 현장실습 지원센터</a> &copy;
-
                 All Right Reserved</p>
             </div>
             <div class="col-md-6 text-md-right text-center">
