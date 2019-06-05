@@ -12,6 +12,19 @@
               <h2 class="section-title">Modify Notice</h2>
             </div>
           <form class="row" v-on:submit.prevent='submitNotice'>
+
+            <div class="col-lg-12 mb-4">
+              <h6 style="font-weight:bold">회사 이미지</h6>
+              <b-form-file
+                      v-model="file"
+                      :state="Boolean(file)"
+                      placeholder="Choose a file..."
+                      drop-placeholder="Drop file here..."
+                      @change="upload($event)"
+              ></b-form-file>
+            </div>
+            <div id="parentDiv">
+            </div>
             <div class="col-lg-6">
               <h6 style="font-weight:bold">회사 주소*</h6>
               <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소를 입력 해주세요">
@@ -77,6 +90,8 @@
           cNumOfPeople : [],
           cTag : [],
           internTermEnd : null,
+            file : null,
+            uploadFile : null,
         }
       },
       components: {
@@ -92,18 +107,36 @@
         await this.getNotice();
       },
       methods: {
+          upload(event){
+              console.log('sss' + this.file)
+              var fr = new FileReader();
+              var img = document.createElement("img");
+              var parentDiv = document.querySelector("#parentDiv");
+              img.src = this.file;
+              img.classList.add("margin-bottom");
+              parentDiv.appendChild(img);
+
+              this.uploadFile = event.target.files[0];
+          },
         submitNotice(){
-            var data = {
-                cBenefit : this.cBenefit,
-                cPay : this.cPay,
-                internTermStart : this.internTermStart,
-                internTermEnd : this.internTermEnd,
-                cOccupation : this.cOccupation,
-                cNumOfPeople : this.cNumOfPeople,
-                cTag : this.cTag,
-                cLocation : this.cLocation,
-            };
-            this.$http.post('http://localhost:8888/co/mypage/modifyNotice',{cLoginID:this.user.loginId,data:data}).then((response) => {
+            var data = new FormData();
+            data.append('cLoginID',this.user.loginId)
+            data.append('file', this.uploadFile)
+            data.append('cBenefit', this.cBenefit)
+            data.append('cPay', this.cPay)
+            data.append('internTermStart', this.internTermStart)
+            data.append('internTermEnd', this.internTermEnd)
+            data.append('cOccupation', this.cOccupation)
+            data.append('cNumOfPeople',this.cNumOfPeople)
+            data.append('cTag',  this.cTag)
+            data.append('cLocation', this.cLocation)
+            let config = {
+                header : {
+                    'Content-Type' : 'multipart/form-data'
+                }
+            }
+
+            this.$http.post('http://localhost:8888/co/mypage/modifyNotice',data,config).then((response) => {
                 alert("수정되었습니다.")
                 this.$store.dispatch('apply/setApplyState',2);
             })
