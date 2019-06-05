@@ -7,6 +7,19 @@
       <h2 class="section-title">Modify Notice</h2>
     </div>
     <form class="row" v-on:submit.prevent='submitNotice'>
+      <div class="col-lg-12 mb-0">
+        <h6 style="font-weight:bold">사진 업로드</h6>
+        <b-form-file
+          v-model="file"
+          :state="Boolean(file)"
+          placeholder="Choose a file..."
+          drop-placeholder="Drop file here..."
+          @change="upload($event)"
+        ></b-form-file>
+      </div>
+        <div class="col-lg-12 mb-4">
+        <div >Selected file: {{ file ? file.name : '' }}</div>
+      </div>
       <div class="col-lg-6">
         <h6 style="font-weight:bold">회사 주소*</h6>
         <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소를 입력 해주세요">
@@ -83,21 +96,44 @@
         await this.getNotice();
       },
       methods: {
+        upload(event){
+          this.uploadFile = event.target.files[0];
+        },
         submitNotice(){
-            var data = {
-                cBenefit : this.cBenefit,
-                cPay : this.cPay,
-                internTermStart : this.internTermStart,
-                internTermEnd : this.internTermEnd,
-                cOccupation : this.cOccupation,
-                cNumOfPeople : this.cNumOfPeople,
-                cTag : this.cTag,
-                cLocation : this.cLocation,
-            };
-            this.$http.post('http://localhost:8888/co/mypage/modifyNotice',{cLoginID:this.user.loginId,data:data}).then((response) => {
-                alert("수정되었습니다.")
-                this.$store.dispatch('apply/setApplyState',2);
-            })
+            // var data = {
+            //     cBenefit : this.cBenefit,
+            //     cPay : this.cPay,
+            //     internTermStart : this.internTermStart,
+            //     internTermEnd : this.internTermEnd,
+            //     cOccupation : this.cOccupation,
+            //     cNumOfPeople : this.cNumOfPeople,
+            //     cTag : this.cTag,
+            //     cLocation : this.cLocation,
+            //     file : this.uploadFile
+            // };
+            var data = new FormData();
+            data.append('cLoginID', this.user.loginId)
+            data.append('cBenefit', this.cBenefit)
+            data.append('cPay', this.cPay)
+            data.append('internTermStart',this.internTermStart)
+            data.append('internTermEnd',this.internTermEnd)
+            data.append('cOccupation',this.cOccupation)
+            data.append('cNumOfPeople',this.cNumOfPeople)
+            data.append('cTag',this.cTag)
+            data.append('cLocation',this.cLocation)
+            data.append('file',this.uploadFile)
+            let config = {
+              header : {
+                'Content-Type' : 'multipart/form-data'
+              }
+            }
+            this.$http.post('http://localhost:8888/co/mypage/modifyNotice', data, config).then(
+              response => {
+                alert('수정되었습니다.')
+                this.store.dispatch('apply/setApplyState',2)
+              }
+            )
+
         },
         getNotice(){
           this.$http.get('http://localhost:8888/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>{

@@ -45,6 +45,11 @@
         <div class="col-lg-6">
           <h6 style="font-weight:bold">실습종료일*</h6>
           <input class="form-control mb-4" type="text" v-model="internTermEnd" readonly="readonly">
+          <Image src="https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png" stretch="none" />
+        </div>
+        <div class="col-lg-6">
+          <h6 style="font-weight:bold">프로필 사진*</h6>
+          <img src= data().image class="img mr-sm-0 mb-4 mb-sm-0 rounded p-3">
         </div>
       </form>
     </div>
@@ -67,6 +72,7 @@
           cNumOfPeople : [],
           cTag : [],
           internTermEnd : null,
+          image : null,
         }
       },
       components: {
@@ -85,8 +91,12 @@
         modifyApply(){
           this.$store.dispatch('apply/setApplyState',3);
         },
-        getNotice(){
-          this.$http.get('http://localhost:8888/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>{
+        async getNotice(){
+          await this.$http.get('http://localhost:8888/co/getProfileImage',{params:{cName:this.user.name}}).then(res=>{
+            this.image = res.data[0]
+          })
+          await this.$http.get('http://localhost:8888/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
+          {
             this.cName = res.data[0].cName;
             this.cLocation = res.data[0].cLocation;
             this.cBenefit = res.data[0].cBenefit;
@@ -96,6 +106,7 @@
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
             this.cTag = res.data[0].cTag;
+            this.cImage = res.data[0]
           })
         },
       }
