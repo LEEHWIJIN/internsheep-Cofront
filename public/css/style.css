@@ -251,7 +251,7 @@ a.text-light:hover {
 }
 
 .bg-gray {
-  background: #8b8e93;
+  background: #8b8e93 !important;
 }
 
 .bg-gray-light {
