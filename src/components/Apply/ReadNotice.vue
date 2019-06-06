@@ -92,9 +92,9 @@
           this.$store.dispatch('apply/setApplyState',3);
         },
         async getNotice(){
-          await this.$http.get('http://localhost:8888/co/getProfileImage',{params:{cName:this.user.name}}).then(res=>{
-            this.image = res.data[0]
-          })
+          // await this.$http.get('http://localhost:8888/co/getProfileImage',{params:{cName:this.user.name}}).then(res=>{
+          //   this.image = res.data[0]
+          // })
           await this.$http.get('http://localhost:8888/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
           {
             this.cName = res.data[0].cName;
@@ -106,7 +106,7 @@
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
             this.cTag = res.data[0].cTag;
-            this.cImage = res.data[0]
+            this.image = res.data[0]
           })
         },
       }
