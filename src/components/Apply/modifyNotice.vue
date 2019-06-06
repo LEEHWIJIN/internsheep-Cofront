@@ -112,7 +112,7 @@
         });
         await this.getNotice();
       },
-      methods: {,
+      methods: {
            previewImage(event) {
             var input = event.target;
                   if (input.files && input.files[0]) {
