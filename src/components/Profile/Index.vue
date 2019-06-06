@@ -45,7 +45,7 @@
                 <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소">
               </div>
               <div class="col-12">
-                <button class="btn btn-primary" type="submit">Submit Now</button>
+                <button class="btn btn-primary" type="submitN">Submit Now</button>
               </div>
             </form>
           </div>
@@ -65,8 +65,11 @@
         return {
           cName:[],
           cManagerName:[],
+          cManagerPhone:[],
           cLocation:[],
-          cBenefit:[],
+          cCeoPhone:[],
+          cCeoName:[],
+          cCompanyNum:[],
         }
       },
       components: {
@@ -77,7 +80,7 @@
       },
       methods: {
          submitNotice(){
-           this.$http.post('http://localhost:8888/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
+           this.$http.post('http://localhost:8888/co/mypage/modifyCompanyInfo',this.user.loginId,data).then((response) => {
                console.log(this.cName)
                console.log(this.cManagerName)
                this.cName = "";
