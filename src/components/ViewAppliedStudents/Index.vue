@@ -45,20 +45,237 @@
                         </div>
                       </div>
                       <p class="my-1">
-                        이름:
+                        이름: {{sl.sName}}
                       </p>
                       <p class="my-1">
-                        소속학과:
+                        소속학과: {{sl.sMajor}}
                       </p>
                       <p class="my-1">
-                        학번:
+                        학번: {{sl.sNum}}
                       </p>
                       <p class="my-1">
-                        전화번호:
+                        전화번호: {{sl.sPhone}}
                         </p>
                       <p class="my-1">
-                        E-mail:
+                        E-mail: {{sl.sEmail}}
                       </p>
+                      <p class="my-1">
+                        --나름 고수인 프로그램 언어--
+                      </p>
+                      <p v-if = "sl.HTML === '나름 고수'" class="my-1">
+                        HTML
+                      </p>
+                      <p v-if = "sl.Javascript === '나름 고수'" class="my-1">
+                        Javascript
+                      </p>
+                      <p v-if = "sl.CSS === '나름 고수'" class="my-1">
+                        CSS
+                      </p>
+                      <p v-if = "sl.jQuery === '나름 고수'" class="my-1">
+                        jQuery
+                      </p>
+                      <p v-if = "sl.SQL === '나름 고수'" class="my-1">
+                        SQL
+                      </p>
+                      <p v-if = "sl.Java === '나름 고수'" class="my-1">
+                        Java
+                      </p>
+                      <p v-if = "sl.AndroidJava === '나름 고수'" class="my-1">
+                        AndroidJava
+                      </p>
+                      <p v-if = "sl.Swift === '나름 고수'" class="my-1">
+                        Swift
+                      </p>
+                      <p v-if = "sl.Objective === '나름 고수'" class="my-1">
+                        Objective
+                      </p>
+                      <p v-if = "sl.Python === '나름 고수'" class="my-1">
+                        Python
+                      </p>
+                      <p v-if = "sl.PHP === '나름 고수'" class="my-1">
+                        PHP
+                      </p>
+                      <p v-if = "sl.C === '나름 고수'" class="my-1">
+                        C
+                      </p>
+                      <p v-if = "sl.Microsoft === '나름 고수'" class="my-1">
+                        Microsoft
+                      </p>
+                      <p v-if = "sl.Kotlin === '나름 고수'" class="my-1">
+                        Kotlin
+                      </p>
+                      <p v-if = "sl.Peral === '나름 고수'" class="my-1">
+                        Peral
+                      </p>
+                      <p v-if = "sl.R === '나름 고수'" class="my-1">
+                        R
+                      </p>
+                      <p v-if = "sl.VBA === '나름 고수'" class="my-1">
+                        VBA
+                      </p>
+                      <p class="my-1">
+                        --실무 가능한 프로그램 언어--
+                      </p>
+                      <p v-if = "sl.HTML === '실무 가능'" class="my-1">
+                        HTML
+                      </p>
+                      <p v-if = "sl.Javascript === '실무 가능'" class="my-1">
+                        Javascript
+                      </p>
+                      <p v-if = "sl.CSS === '실무 가능'" class="my-1">
+                        CSS
+                      </p>
+                      <p v-if = "sl.jQuery === '실무 가능'" class="my-1">
+                        jQuery
+                      </p>
+                      <p v-if = "sl.SQL === '실무 가능'" class="my-1">
+                        SQL
+                      </p>
+                      <p v-if = "sl.Java === '실무 가능'" class="my-1">
+                        Java
+                      </p>
+                      <p v-if = "sl.AndroidJava === '실무 가능'" class="my-1">
+                        AndroidJava
+                      </p>
+                      <p v-if = "sl.Swift === '실무 가능'" class="my-1">
+                        Swift
+                      </p>
+                      <p v-if = "sl.Objective === '실무 가능'" class="my-1">
+                        Objective
+                      </p>
+                      <p v-if = "sl.Python === '실무 가능'" class="my-1">
+                        Python
+                      </p>
+                      <p v-if = "sl.PHP === '실무 가능'" class="my-1">
+                        PHP
+                      </p>
+                      <p v-if = "sl.C === '실무 가능'" class="my-1">
+                        C
+                      </p>
+                      <p v-if = "sl.Microsoft === '실무 가능'" class="my-1">
+                        Microsoft
+                      </p>
+                      <p v-if = "sl.Kotlin === '실무 가능'" class="my-1">
+                        Kotlin
+                      </p>
+                      <p v-if = "sl.Peral === '실무 가능'" class="my-1">
+                        Peral
+                      </p>
+                      <p v-if = "sl.R === '실무 가능'" class="my-1">
+                        R
+                      </p>
+                      <p v-if = "sl.VBA === '실무 가능'" class="my-1">
+                        VBA
+                      </p>
+                      <p class="my-1">
+                        --초보 수준인 프로그램 언어--
+                      </p>
+                      <p v-if = "sl.HTML === '초보 수준'" class="my-1">
+                        HTML
+                      </p>
+                      <p v-if = "sl.Javascript === '초보 수준'" class="my-1">
+                        Javascript
+                      </p>
+                      <p v-if = "sl.CSS === '초보 수준'" class="my-1">
+                        CSS
+                      </p>
+                      <p v-if = "sl.jQuery === '초보 수준'" class="my-1">
+                        jQuery
+                      </p>
+                      <p v-if = "sl.SQL === '초보 수준'" class="my-1">
+                        SQL
+                      </p>
+                      <p v-if = "sl.Java === '초보 수준'" class="my-1">
+                        Java
+                      </p>
+                      <p v-if = "sl.AndroidJava === '초보 수준'" class="my-1">
+                        AndroidJava
+                      </p>
+                      <p v-if = "sl.Swift === '초보 수준'" class="my-1">
+                        Swift
+                      </p>
+                      <p v-if = "sl.Objective === '초보 수준'" class="my-1">
+                        Objective
+                      </p>
+                      <p v-if = "sl.Python === '초보 수준'" class="my-1">
+                        Python
+                      </p>
+                      <p v-if = "sl.PHP === '초보 수준'" class="my-1">
+                        PHP
+                      </p>
+                      <p v-if = "sl.C === '초보 수준'" class="my-1">
+                        C
+                      </p>
+                      <p v-if = "sl.Microsoft === '초보 수준'" class="my-1">
+                        Microsoft
+                      </p>
+                      <p v-if = "sl.Kotlin === '초보 수준'" class="my-1">
+                        Kotlin
+                      </p>
+                      <p v-if = "sl.Peral === '초보 수준'" class="my-1">
+                        Peral
+                      </p>
+                      <p v-if = "sl.R === '초보 수준'" class="my-1">
+                        R
+                      </p>
+                      <p v-if = "sl.VBA === '초보 수준'" class="my-1">
+                        VBA
+                      </p>
+                      <p class="my-1">
+                        --초보 수준인 프로그램 언어--
+                      </p>
+                      <p v-if = "sl.HTML === '맛보기 수준'" class="my-1">
+                        HTML
+                      </p>
+                      <p v-if = "sl.Javascript === '맛보기 수준'" class="my-1">
+                        Javascript
+                      </p>
+                      <p v-if = "sl.CSS === '맛보기 수준'" class="my-1">
+                        CSS
+                      </p>
+                      <p v-if = "sl.jQuery === '맛보기 수준'" class="my-1">
+                        jQuery
+                      </p>
+                      <p v-if = "sl.SQL === '맛보기 수준'" class="my-1">
+                        SQL
+                      </p>
+                      <p v-if = "sl.Java === '맛보기 수준'" class="my-1">
+                        Java
+                      </p>
+                      <p v-if = "sl.AndroidJava === '맛보기 수준'" class="my-1">
+                        AndroidJava
+                      </p>
+                      <p v-if = "sl.Swift === '맛보기 수준'" class="my-1">
+                        Swift
+                      </p>
+                      <p v-if = "sl.Objective === '맛보기 수준'" class="my-1">
+                        Objective
+                      </p>
+                      <p v-if = "sl.Python === '맛보기 수준'" class="my-1">
+                        Python
+                      </p>
+                      <p v-if = "sl.PHP === '맛보기 수준'" class="my-1">
+                        PHP
+                      </p>
+                      <p v-if = "sl.C === '맛보기 수준'" class="my-1">
+                        C
+                      </p>
+                      <p v-if = "sl.Microsoft === '맛보기 수준'" class="my-1">
+                        Microsoft
+                      </p>
+                      <p v-if = "sl.Kotlin === '맛보기 수준'" class="my-1">
+                        Kotlin
+                      </p>
+                      <p v-if = "sl.Peral === '맛보기 수준'" class="my-1">
+                        Peral
+                      </p>
+                      <p v-if = "sl.R === '맛보기 수준'" class="my-1">
+                        R
+                      </p>
+                      <p v-if = "sl.VBA === '맛보기 수준'" class="my-1">
+                        VBA
+                      </p>
+
                     </b-modal>
                   </div>
                   <!-- 학생 상세 정보 버튼 -->
@@ -240,7 +457,28 @@
                           sMajor: response.data[i].sMajor,
                           sGrade: response.data[i].sGrade,
                           stdApplyCoID: response.data[i].stdApplyCoID,
-                          YN: "-1"})
+                          sNum: response.data[i].sNum,
+                          sEmail: response.data[i].sEmail,
+                          sPhone: response.data[i].sPhone,
+                          YN: "-1",
+                          Javascript: programmingLang.Javascript,
+                          HTML: programmingLang.HTML,
+                          CSS: programmingLang.CSS,
+                          jQuery: programmingLang.jQuery,
+                          SQL: programmingLang.SQL,
+                          Java: programmingLang.Java,
+                          AndroidJava: programmingLang.AndroidJava,
+                          Swift: programmingLang.Swift,
+                          Objective: programmingLang.Objective,
+                          Python: programmingLang.Python,
+                          PHP: programmingLang.PHP,
+                          C: programmingLang.C,
+                          Microsoft: programmingLang.Microsoft,
+                          Kotlin: programmingLang.Kotlin,
+                          Peral: programmingLang.Peral,
+                          R: programmingLang.R,
+                          VBA: programmingLang.VBA
+                          })
                       this.userProgrammingLang.push({
                           Javascript: programmingLang.Javascript,
                           HTML: programmingLang.HTML,
