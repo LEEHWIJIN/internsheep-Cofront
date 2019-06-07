@@ -86,7 +86,7 @@ import Const from '../../constant/constant';
           this.$router.push({name: "Home"})
       },
       login() {
-        this.$http.post('Const.API_SERVER/auth/co/login',{user: this.user}).then((response)=>{
+        this.$http.post(Const.API_SERVER+'/auth/co/login',{user: this.user}).then((response)=>{
              alert('success');
              localStorage.setItem('token',response.data.token);
              this.$router.push({name: "Home"});
