@@ -42,17 +42,16 @@
               <h6 style="font-weight:bold">태그*</h6>
               <p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 기본태그</p>
               <div class="bg-gray-light mb-3 p-2">
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Java &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">C++ &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">C &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Python &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Javascript &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Database &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Mysql &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Django &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Unity &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Vue.js &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button type="button" class="btn tag-light btn-sm m-1" name="button">Html/Css &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('JAVA')" type="button" class="btn tag-light btn-sm m-1" name="button">Java &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('C++')" type="button" class="btn tag-light btn-sm m-1" name="button">C++ &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('C')" type="button" class="btn tag-light btn-sm m-1" name="button">C &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('Python')" type="button" class="btn tag-light btn-sm m-1" name="button">Python &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('Javascript')" type="button" class="btn tag-light btn-sm m-1" name="button">Javascript &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('Database')" type="button" class="btn tag-light btn-sm m-1" name="button">Database &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('Mysql')" type="button" class="btn tag-light btn-sm m-1" name="button">Mysql &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('Django')" type="button" class="btn tag-light btn-sm m-1" name="button">Django &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('Vue.js')" type="button" class="btn tag-light btn-sm m-1" name="button">Vue.js &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button onclick="cTagArray('HTML/CSS')" type="button" class="btn tag-light btn-sm m-1" name="button">Html/Css &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
                 <!-- <input type="button" value="^_^" id="cat"  onclick="change2(this)" style="background-color:white;"><br>
 클릭하면 바뀌는 버튼<br><br> -->
               </div>
@@ -113,16 +112,34 @@
         await this.getNotice();
       },
       methods: {
-           previewImage(event) {
-            var input = event.target;
-                  if (input.files && input.files[0]) {
-                var fr = new FileReader();
-                fr.onload = (e) => {
-                    this.imageData = e.target.result;
-                }
-                fr.readAsDataURL(input.files[0]);
-                this.imageURL=input.files[0]
+        cTagArray(lang){
+          var overlap = 0; //중복횟수를 저장하는 변수 선언
+
+          for(var i=0; i<this.cTag.length ; i++){
+            if(cTag[i]==lang){  // lang과 같은 태그가 존재할 경우
+              overlap++; //중복횟수를 늘린다
             }
+          }
+
+          if(overlap>=1){ // 중복횟수가 1이상일 경우
+            return;
+          }
+          else{ // 아닐경우
+            this.cTag.push(lang); // cTag 배열에 저장
+          }
+
+          console.log(this.cTag);
+        },
+        previewImage(event) {
+          var input = event.target;
+                if (input.files && input.files[0]) {
+              var fr = new FileReader();
+              fr.onload = (e) => {
+                  this.imageData = e.target.result;
+              }
+              fr.readAsDataURL(input.files[0]);
+              this.imageURL=input.files[0]
+          }
         },
         submitNotice(){
             var data = new FormData();
