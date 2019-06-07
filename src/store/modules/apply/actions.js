@@ -24,8 +24,7 @@ export default {
     },
 
     submit_ALL({commit},data){
-        axios.post('Const.API_SERVER/std/mypage/resume',{req : data}).then((response) => {
-                   
+        axios.post('Const.API_SERVER/std/mypage/resume',{req : data}).then((response) => {                   
         })
     },
 

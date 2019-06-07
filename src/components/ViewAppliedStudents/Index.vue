@@ -331,6 +331,8 @@
           stdList : [],
           user : {},
           cloudeLang : [],
+            applyOrder : "",
+            applySemester : "",
           selected : [],
           visible : false,
           judgeStdinfo:[],
@@ -579,6 +581,8 @@
                     alert('합격 여부가 확정되었습니다.')
                 })
                 this.$router.push({name: "Home"});
+                 await this.$http.post('Const.API_SERVER/mail/nodemailerTest',{cLoginID:this.user.loginId,applySemester:this.applySemester,applyOrder:this.applyOrder}).then((response)=>{
+            })
             },
           changeStatus() {
               this.$http.post('Const.API_SERVER/co/mypage/changeCstatus',{cLoginID : this.user.loginId, applyOrder: this.applyOrder,applySemester:this.applySemester}).then((response)=>{
