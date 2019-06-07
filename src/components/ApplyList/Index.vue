@@ -131,7 +131,7 @@
           })
         },
         compareDate(){
-          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+          this.$http.get('API_SERVER/admin/recentApplyTerm').then((response) => {
             this.applyTerm = {
                 applyStart : response.data.applyStart,
                 applyEnd : response.data.applyEnd,

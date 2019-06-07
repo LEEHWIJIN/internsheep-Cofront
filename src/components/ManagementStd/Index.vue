@@ -100,11 +100,11 @@ import {Calendar} from 'vue-bootstrap4-calendar';
         VFooter,
       },
       async created() {
-        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get('API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
-        await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+        await this.$http.get('API_SERVER/admin/recentApplyTerm').then((response) => {
           this.applySemester = response.data.applySemester;
           return this.applySemester;
         });
@@ -115,7 +115,7 @@ import {Calendar} from 'vue-bootstrap4-calendar';
       },
       methods: {
         loadHiredStd(){
-          this.$http.get('http://localhost:8888/co/mypage/loadHiredStd',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester}}).then((res)=>{
+          this.$http.get('API_SERVER/co/mypage/loadHiredStd',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester}}).then((res)=>{
             if(res.data.length==0){
               console.log("확정된 학생이 없음");
               return;
@@ -140,7 +140,7 @@ import {Calendar} from 'vue-bootstrap4-calendar';
           this.studentInfo[index].id = this.pickDate;
         },
         async modify(){
-          await this.$http.get('http://localhost:8888/co/mypage/loadInterTerm',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester,date : this.pickDate}}).then((res)=>{
+          await this.$http.get('API_SERVER/co/mypage/loadInterTerm',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester,date : this.pickDate}}).then((res)=>{
             if(res.data.result==0){
               alert("실습기간이 아닙니다.");
               return;
@@ -152,7 +152,7 @@ import {Calendar} from 'vue-bootstrap4-calendar';
           });
         },
         changeAttend(){
-          this.$http.post('http://localhost:8888/co/mypage/changeAttend',{data : this.studentInfo[this.pickStudent]}).then((res)=>{
+          this.$http.post('API_SERVER/co/mypage/changeAttend',{data : this.studentInfo[this.pickStudent]}).then((res)=>{
             if(res.status==200){
               alert("저장 되었습니다.")
             }

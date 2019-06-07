@@ -178,11 +178,11 @@ export default{
     }
   },
   async created(){
-    await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+    await this.$http.get('API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
         this.user = res.data.user;
         return this.user;
     })
-    await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+    await this.$http.get('API_SERVER/admin/recentApplyTerm').then((response) => {
       this.applyTerm = {
           applyStart : response.data.applyStart,
           applyEnd : response.data.applyEnd,
@@ -194,12 +194,12 @@ export default{
   },
   methods: {
     applyStd(cName){
-        this.$http.get('http://localhost:8888/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId, applySemester : this.applyTerm.applySemester}}).then((response)=>{
+        this.$http.get('API_SERVER/std/mypage/applyStatus',{params:{sLoginID : this.user.loginId, applySemester : this.applyTerm.applySemester}}).then((response)=>{
           if(response.data != '0'){
               alert("이미 지원을 한 상태 입니다.")
           }
           else{
-              this.$http.post('http://localhost:8888/std/mypage/applyCo',{cName : cName, sLoginID : this.user.loginId,applySemester: this.applyTerm.applySemester,applyOrder:this.applyTerm.applyOrder}).then((response) => {
+              this.$http.post('API_SERVER/std/mypage/applyCo',{cName : cName, sLoginID : this.user.loginId,applySemester: this.applyTerm.applySemester,applyOrder:this.applyTerm.applyOrder}).then((response) => {
                   if(response.data == '0'){
                       alert("이력서가 없습니다. 이력서를 작성해주세요")
                   }

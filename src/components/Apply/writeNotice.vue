@@ -90,7 +90,7 @@
           DatePicker,
       },
       created(){
-        this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        this.$http.get('API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -126,7 +126,7 @@
                 }
             }
 
-          this.$http.post('http://localhost:8888/co/mypage/writeNotice',data,config).then((response) => {
+          this.$http.post('API_SERVER/co/mypage/writeNotice',data,config).then((response) => {
             alert("저장 되었습니다.");
             this.$store.dispatch('apply/setApplyState',2);
           })
