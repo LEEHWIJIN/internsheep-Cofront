@@ -1,4 +1,4 @@
-<!-- 공고 작성 페이지  -->
+<!-- 회원 정보 수정 페이지  -->
 <template>
   <section class="section section-lg-bottom bg-light">
     <div  class="container" id="apply">
@@ -53,12 +53,21 @@
         </div>
       </div>
     </div>
-  </section>
+    <!-- 공백 -->
+    <div class="col-lg-1">
+    </div>
+    <v-read-profile v-if="$store.state.profile.profile_state==0"></v-read-profile>
+    <v-modify-profile v-if="$store.state.profile.profile_state==1"></v-modify-profile>
+</section>
 </template>
 
 <script>
+import Const from '../../constant/constant';
+
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
+  import VReadProfile from './ReadProfile.vue'
+  import VModifyProfile from './ModifyProfile.vue'
   export default{
       name: 'Apply',
       data() {
@@ -75,24 +84,26 @@
       components: {
         VBase,
         VCategory,
+        VReadProfile,
+        VModifyProfile,
       },
       created(){
+        this.$store.dispatch('profile/setProfileState',0);
       },
       methods: {
-         submitNotice(){
-           this.$http.post('http://localhost:8888/co/mypage/modifyCompanyInfo',this.user.loginId,data).then((response) => {
-               console.log(this.cName)
-               console.log(this.cManagerName)
-               this.cName = "";
-               this.cManagerName="";
-             })
-         },
+        //  submitNotice(){
+        //    this.$http.post('http://localhost:8888/co/mypage/modifyCompanyInfo',this.user.loginId,data).then((response) => {
+        //        console.log(this.cName)
+        //        console.log(this.cManagerName)
+        //        this.cName = "";
+        //        this.cManagerName="";
+        //      })
+        //  },
       }
   }
 </script>
 
-<style>
-
+<style scoped>
 </style>
 <!-- Main Stylesheet -->
 <link href="css/style.css" rel="stylesheet">

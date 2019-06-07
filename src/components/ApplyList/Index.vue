@@ -65,6 +65,7 @@
  import VFooter from '../Footer/Index.vue'
 // import VCoList from "./CoList.vue"
  import VDetailList from "./DetailList.vue"
+ import Const from '../../constant/constant';
   export default{
       name: 'Apply',
       data() {
@@ -131,7 +132,7 @@
           })
         },
         compareDate(){
-          this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+          this.$http.get('Const.API_SERVER/admin/recentApplyTerm').then((response) => {
             this.applyTerm = {
                 applyStart : response.data.applyStart,
                 applyEnd : response.data.applyEnd,

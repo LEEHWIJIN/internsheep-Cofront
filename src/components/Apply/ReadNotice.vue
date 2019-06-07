@@ -59,6 +59,7 @@
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   import DatePicker from 'v-cal-input'
+  import Const from '../../constant/constant';
   export default{
       name: 'writeapply',
       data() {
@@ -83,7 +84,7 @@
           DatePicker,
       },
       async created(){
-        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get('Const.API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -95,7 +96,7 @@
           this.$store.dispatch('apply/setApplyState',3);
         },
         async getNotice(){
-          await this.$http.get('http://localhost:8888/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
+          await this.$http.get('Const.API_SERVER/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
           {
             this.cName = res.data[0].cName;
             this.cLocation = res.data[0].cLocation;
@@ -110,7 +111,7 @@
           })
         },
         loadImage(loginId){
-          this.uploadImage='http://localhost:8888/co/mypage/getProfileImage?cLoginID='+loginId
+          this.uploadImage='Const.API_SERVER/co/mypage/getProfileImage?cLoginID='+loginId
         }
       }
   }
