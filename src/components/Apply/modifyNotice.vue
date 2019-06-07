@@ -131,8 +131,14 @@ import Const from '../../constant/constant';
             data.append('image', this.imageURL)
             data.append('cBenefit', this.cBenefit)
             data.append('cPay', this.cPay)
-            data.append('internTermStart', this.internTermStart)
-            data.append('internTermEnd', this.internTermEnd)
+            if(this.internTermStart != null)
+            {
+              data.append('internTermStart', this.internTermStart)
+            }
+            if(this.internTermEnd != null)
+            {
+              data.append('internTermEnd', this.internTermEnd)
+            }
             data.append('cOccupation', this.cOccupation)
             data.append('cNumOfPeople',this.cNumOfPeople)
             data.append('cTag',  this.cTag)
