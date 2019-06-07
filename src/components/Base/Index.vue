@@ -59,6 +59,7 @@
   //import Vue from 'vue';
   //import VResume from './components/Resume/Index.vue';
   //import Vtest from '../test/test.vue'
+  import Const from '../../constant/constant'
   export default{
     name: 'app',
     data() {
