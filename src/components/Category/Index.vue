@@ -6,7 +6,7 @@
           <li><a class="text-color d-block py-3" href="#" @click="goApply">공고 작성</a></li>
           <li><a class="text-color d-block py-3" href="#" @click="goApplyNotice">공고 신청</a></li>
           <li><a class="text-color d-block py-3" href="#" @click="goViewAppliedStudents">지원 학생 관리</a></li>
-          <li><a class="text-color d-block py-3" href="#">선발 학생 관리</a></li>
+          <li><a class="text-color d-block py-3" href="#" @click="goManagementStd">선발 학생 관리</a></li>
           <li><a class="text-color d-block py-3" href="#" @click="goProfile">회원정보 수정</a></li>
           </ul>
       </div>
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import Const from '../../constant/constant';
+
   export default{
     name: 'app',
     data() {
@@ -27,7 +29,7 @@
     },
     created(){
         if(localStorage.token){
-          this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+          this.$http.get('Const.API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
               if(res.data.result==1){
                 localStorage.removeItem('token')
                 this.user={};
@@ -70,6 +72,9 @@
       },
       goProfile(){
           this.$router.push({name: "Profile"})
+      },
+      goManagementStd(){
+          this.$router.push({name: "ManagementStd"})
       },
       logout(){
       localStorage.removeItem('token')

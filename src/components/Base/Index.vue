@@ -40,7 +40,7 @@
                     <a class="dropdown-item text-color" href="#" @click="goApply">공고 작성</a>
                     <a class="dropdown-item text-color" href="#" @click="goApplyNotice">공고 신청</a>
                     <a class="dropdown-item text-color" href="#" @click="goViewAppliedStudents">지원 학생 관리</a>
-                    <a class="dropdown-item text-color" href="#">선발 학생 관리</a>
+                    <a class="dropdown-item text-color" href="#" @click="goManagementStd">선발 학생 관리</a>
                     <a class="dropdown-item text-color" href="#" @click="goProfile">회원 정보 수정</a>
                   </div>
                 </li>
@@ -72,7 +72,7 @@
     },
     created(){
         if(localStorage.token){
-          this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+          this.$http.get('Const.API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
               if(res.data.result==1){
                 localStorage.removeItem('token')
                 this.user={};
@@ -118,6 +118,9 @@
         },
         goProfile(){
             this.$router.push({name: "Profile"})
+        },
+        goManagementStd(){
+          this.$router.push({name:"ManagementStd"});
         },
         logout(){
         localStorage.removeItem('token')

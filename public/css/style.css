@@ -198,16 +198,18 @@ a:focus {
 }
 
 a,
-button,
-select {
+button
+,select
+{
   cursor: pointer;
   transition: .3s ease;
 }
 
 a:focus,
-button:focus,
-select:focus {
-  outline: 0;
+button:focus
+,select:focus
+{
+  outline: 0 !important;
 }
 
 a.text-color:hover,
@@ -249,7 +251,7 @@ a.text-light:hover {
 }
 
 .bg-gray {
-  background: #8b8e93;
+  background: #8b8e93 !important;
 }
 
 .bg-gray-light {
