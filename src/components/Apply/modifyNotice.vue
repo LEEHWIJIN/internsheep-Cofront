@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import Const from '../../constant/constant';
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   import DatePicker from 'v-cal-input'
@@ -105,7 +106,7 @@
           DatePicker,
       },
       async created(){
-        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -158,14 +159,14 @@
                     'Content-Type' : 'multipart/form-data'
                 }
             }
-
-            this.$http.post('http://localhost:8888/co/mypage/modifyNotice',data,config).then((response) => {
+            this.$http.post(Const.API_SERVER+'/co/mypage/modifyNotice',data,config).then((response) => {
                 alert("수정되었습니다.")
+
                 this.$store.dispatch('apply/setApplyState',2);
             })
         },
         getNotice(){
-          this.$http.get('http://localhost:8888/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>{
+          this.$http.get(Const.API_SERVER+'/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>{
             this.cName = res.data[0].cName;
             this.cLocation = res.data[0].cLocation;
             this.cBenefit = res.data[0].cBenefit;

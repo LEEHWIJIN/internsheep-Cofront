@@ -63,6 +63,8 @@
 </template>
 
 <script>
+import Const from '../../constant/constant';
+
   export default{
     name: 'login',
     data() {
@@ -84,7 +86,7 @@
           this.$router.push({name: "Home"})
       },
       login() {
-        this.$http.post('http://localhost:8888/auth/co/login',{user: this.user}).then((response)=>{
+        this.$http.post(Const.API_SERVER+'/auth/co/login',{user: this.user}).then((response)=>{
              alert('success');
              localStorage.setItem('token',response.data.token);
              this.$router.push({name: "Home"});
@@ -94,7 +96,8 @@
         }).catch(error=>{
             alert(error)
         })
-        // this.$http.post('http://localhost:8888/aimsLogin/check',{userId: this.userId,password:this.password}).then((response)=>{
+//
+        // this.$http.post(Const.API_SERVER+'/aimsLogin/check',{userId: this.userId,password:this.password}).then((response)=>{
         //     alert('success');
         // },(error)=>{
         //     console.log('err')

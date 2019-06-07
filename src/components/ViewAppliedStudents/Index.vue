@@ -45,20 +45,693 @@
                         </div>
                       </div>
                       <p class="my-1">
-                        이름:
+                        이름: {{sl.sName}}
                       </p>
                       <p class="my-1">
-                        소속학과:
+                        소속학과: {{sl.sMajor}}
                       </p>
                       <p class="my-1">
-                        학번:
+                        학번: {{sl.sNum}}
                       </p>
                       <p class="my-1">
-                        전화번호:
+                        전화번호: {{sl.sPhone}}
                         </p>
                       <p class="my-1">
-                        E-mail:
+                        E-mail: {{sl.sEmail}}
                       </p>
+                      <p class="my-1">
+                        --나름 고수인 프로그램 언어--
+                      </p>
+                      <p v-if = "sl.HTML === '나름 고수'" class="my-1">
+                        HTML
+                      </p>
+                      <p v-if = "sl.Javascript === '나름 고수'" class="my-1">
+                        Javascript
+                      </p>
+                      <p v-if = "sl.CSS === '나름 고수'" class="my-1">
+                        CSS
+                      </p>
+                      <p v-if = "sl.jQuery === '나름 고수'" class="my-1">
+                        jQuery
+                      </p>
+                      <p v-if = "sl.SQL === '나름 고수'" class="my-1">
+                        SQL
+                      </p>
+                      <p v-if = "sl.Java === '나름 고수'" class="my-1">
+                        Java
+                      </p>
+                      <p v-if = "sl.AndroidJava === '나름 고수'" class="my-1">
+                        AndroidJava
+                      </p>
+                      <p v-if = "sl.Swift === '나름 고수'" class="my-1">
+                        Swift
+                      </p>
+                      <p v-if = "sl.Objective === '나름 고수'" class="my-1">
+                        Objective
+                      </p>
+                      <p v-if = "sl.Python === '나름 고수'" class="my-1">
+                        Python
+                      </p>
+                      <p v-if = "sl.PHP === '나름 고수'" class="my-1">
+                        PHP
+                      </p>
+                      <p v-if = "sl.C === '나름 고수'" class="my-1">
+                        C
+                      </p>
+                      <p v-if = "sl.Microsoft === '나름 고수'" class="my-1">
+                        Microsoft
+                      </p>
+                      <p v-if = "sl.Kotlin === '나름 고수'" class="my-1">
+                        Kotlin
+                      </p>
+                      <p v-if = "sl.Peral === '나름 고수'" class="my-1">
+                        Peral
+                      </p>
+                      <p v-if = "sl.R === '나름 고수'" class="my-1">
+                        R
+                      </p>
+                      <p v-if = "sl.VBA === '나름 고수'" class="my-1">
+                        VBA
+                      </p>
+                      <p class="my-1">
+                        --실무 가능한 프로그램 언어--
+                      </p>
+                      <p v-if = "sl.HTML === '실무 가능'" class="my-1">
+                        HTML
+                      </p>
+                      <p v-if = "sl.Javascript === '실무 가능'" class="my-1">
+                        Javascript
+                      </p>
+                      <p v-if = "sl.CSS === '실무 가능'" class="my-1">
+                        CSS
+                      </p>
+                      <p v-if = "sl.jQuery === '실무 가능'" class="my-1">
+                        jQuery
+                      </p>
+                      <p v-if = "sl.SQL === '실무 가능'" class="my-1">
+                        SQL
+                      </p>
+                      <p v-if = "sl.Java === '실무 가능'" class="my-1">
+                        Java
+                      </p>
+                      <p v-if = "sl.AndroidJava === '실무 가능'" class="my-1">
+                        AndroidJava
+                      </p>
+                      <p v-if = "sl.Swift === '실무 가능'" class="my-1">
+                        Swift
+                      </p>
+                      <p v-if = "sl.Objective === '실무 가능'" class="my-1">
+                        Objective
+                      </p>
+                      <p v-if = "sl.Python === '실무 가능'" class="my-1">
+                        Python
+                      </p>
+                      <p v-if = "sl.PHP === '실무 가능'" class="my-1">
+                        PHP
+                      </p>
+                      <p v-if = "sl.C === '실무 가능'" class="my-1">
+                        C
+                      </p>
+                      <p v-if = "sl.Microsoft === '실무 가능'" class="my-1">
+                        Microsoft
+                      </p>
+                      <p v-if = "sl.Kotlin === '실무 가능'" class="my-1">
+                        Kotlin
+                      </p>
+                      <p v-if = "sl.Peral === '실무 가능'" class="my-1">
+                        Peral
+                      </p>
+                      <p v-if = "sl.R === '실무 가능'" class="my-1">
+                        R
+                      </p>
+                      <p v-if = "sl.VBA === '실무 가능'" class="my-1">
+                        VBA
+                      </p>
+                      <p class="my-1">
+                        --초보 수준인 프로그램 언어--
+                      </p>
+                      <p v-if = "sl.HTML === '초보 수준'" class="my-1">
+                        HTML
+                      </p>
+                      <p v-if = "sl.Javascript === '초보 수준'" class="my-1">
+                        Javascript
+                      </p>
+                      <p v-if = "sl.CSS === '초보 수준'" class="my-1">
+                        CSS
+                      </p>
+                      <p v-if = "sl.jQuery === '초보 수준'" class="my-1">
+                        jQuery
+                      </p>
+                      <p v-if = "sl.SQL === '초보 수준'" class="my-1">
+                        SQL
+                      </p>
+                      <p v-if = "sl.Java === '초보 수준'" class="my-1">
+                        Java
+                      </p>
+                      <p v-if = "sl.AndroidJava === '초보 수준'" class="my-1">
+                        AndroidJava
+                      </p>
+                      <p v-if = "sl.Swift === '초보 수준'" class="my-1">
+                        Swift
+                      </p>
+                      <p v-if = "sl.Objective === '초보 수준'" class="my-1">
+                        Objective
+                      </p>
+                      <p v-if = "sl.Python === '초보 수준'" class="my-1">
+                        Python
+                      </p>
+                      <p v-if = "sl.PHP === '초보 수준'" class="my-1">
+                        PHP
+                      </p>
+                      <p v-if = "sl.C === '초보 수준'" class="my-1">
+                        C
+                      </p>
+                      <p v-if = "sl.Microsoft === '초보 수준'" class="my-1">
+                        Microsoft
+                      </p>
+                      <p v-if = "sl.Kotlin === '초보 수준'" class="my-1">
+                        Kotlin
+                      </p>
+                      <p v-if = "sl.Peral === '초보 수준'" class="my-1">
+                        Peral
+                      </p>
+                      <p v-if = "sl.R === '초보 수준'" class="my-1">
+                        R
+                      </p>
+                      <p v-if = "sl.VBA === '초보 수준'" class="my-1">
+                        VBA
+                      </p>
+                      <p class="my-1">
+                        --맛보기 수준인 프로그램 언어--
+                      </p>
+                      <p v-if = "sl.HTML === '맛보기 수준'" class="my-1">
+                        HTML
+                      </p>
+                      <p v-if = "sl.Javascript === '맛보기 수준'" class="my-1">
+                        Javascript
+                      </p>
+                      <p v-if = "sl.CSS === '맛보기 수준'" class="my-1">
+                        CSS
+                      </p>
+                      <p v-if = "sl.jQuery === '맛보기 수준'" class="my-1">
+                        jQuery
+                      </p>
+                      <p v-if = "sl.SQL === '맛보기 수준'" class="my-1">
+                        SQL
+                      </p>
+                      <p v-if = "sl.Java === '맛보기 수준'" class="my-1">
+                        Java
+                      </p>
+                      <p v-if = "sl.AndroidJava === '맛보기 수준'" class="my-1">
+                        AndroidJava
+                      </p>
+                      <p v-if = "sl.Swift === '맛보기 수준'" class="my-1">
+                        Swift
+                      </p>
+                      <p v-if = "sl.Objective === '맛보기 수준'" class="my-1">
+                        Objective
+                      </p>
+                      <p v-if = "sl.Python === '맛보기 수준'" class="my-1">
+                        Python
+                      </p>
+                      <p v-if = "sl.PHP === '맛보기 수준'" class="my-1">
+                        PHP
+                      </p>
+                      <p v-if = "sl.C === '맛보기 수준'" class="my-1">
+                        C
+                      </p>
+                      <p v-if = "sl.Microsoft === '맛보기 수준'" class="my-1">
+                        Microsoft
+                      </p>
+                      <p v-if = "sl.Kotlin === '맛보기 수준'" class="my-1">
+                        Kotlin
+                      </p>
+                      <p v-if = "sl.Peral === '맛보기 수준'" class="my-1">
+                        Peral
+                      </p>
+                      <p v-if = "sl.R === '맛보기 수준'" class="my-1">
+                        R
+                      </p>
+                      <p v-if = "sl.VBA === '맛보기 수준'" class="my-1">
+                        VBA
+                      </p>
+                      <!-- <p class="my-1">
+                        --나름 고수인 Framwork 언어--
+                      </p>
+                      <p v-if = "sl.Node.js === '나름 고수'" class="my-1">
+                        Node.js
+                      </p>
+                      <p v-if = "sl.Angular === '나름 고수'" class="my-1">
+                        Angular
+                      </p>
+                      <p v-if = "sl.React === '나름 고수'" class="my-1">
+                        React
+                      </p>
+                      <p v-if = "sl.Expressjs === '나름 고수'" class="my-1">
+                        Expressjs
+                      </p>
+                      <p v-if = "sl.NetCore === '나름 고수'" class="my-1">
+                        NetCore
+                      </p>
+                      <p v-if = "sl.Spring === '나름 고수'" class="my-1">
+                        Spring
+                      </p>
+                      <p v-if = "sl.Django === '나름 고수'" class="my-1">
+                        Django
+                      </p>
+                      <p v-if = "sl.Flask === '나름 고수'" class="my-1">
+                        Flask
+                      </p>
+                      <p v-if = "sl.Cordova === '나름 고수'" class="my-1">
+                        Cordova
+                      </p>
+                      <p class="my-1">
+                        --실무 가능한 Framework 언어--
+                      </p>
+                      <p v-if = "sl.Nodejs === '실무 가능'" class="my-1">
+                        Nodejs
+                      </p>
+                      <p v-if = "sl.Angular === '실무 가능'" class="my-1">
+                        Angular
+                      </p>
+                      <p v-if = "sl.React === '실무 가능'" class="my-1">
+                        React
+                      </p>
+                      <p v-if = "sl.Expressjs === '실무 가능'" class="my-1">
+                        Expressjs
+                      </p>
+                      <p v-if = "sl.NetCore === '실무 가능'" class="my-1">
+                        NetCore
+                      </p>
+                      <p v-if = "sl.Spring === '실무 가능'" class="my-1">
+                        Spring
+                      </p>
+                      <p v-if = "sl.Django === '실무 가능'" class="my-1">
+                        Django
+                      </p>
+                      <p v-if = "sl.Flask === '실무 가능'" class="my-1">
+                        Flask
+                      </p>
+                      <p v-if = "sl.Cordova === '실무 가능'" class="my-1">
+                        Cordova
+                      </p>
+                      <p class="my-1">
+                        --초보 수준인 framework 언어--
+                      </p>
+                      <p v-if = "sl.Nodejs === '초보 수준'" class="my-1">
+                        Nodejs
+                      </p>
+                      <p v-if = "sl.Angular === '초보 수준'" class="my-1">
+                        Angular
+                      </p>
+                      <p v-if = "sl.React === '초보 수준'" class="my-1">
+                        React
+                      </p>
+                      <p v-if = "sl.Expressjs === '초보 수준'" class="my-1">
+                        Expressjs
+                      </p>
+                      <p v-if = "sl.NetCore === '초보 수준'" class="my-1">
+                        NetCore
+                      </p>
+                      <p v-if = "sl.Spring === '초보 수준'" class="my-1">
+                        Spring
+                      </p>
+                      <p v-if = "sl.Django === '초보 수준'" class="my-1">
+                        Django
+                      </p>
+                      <p v-if = "sl.Flask === '초보 수준'" class="my-1">
+                        Flask
+                      </p>
+                      <p v-if = "sl.Cordova === '초보 수준'" class="my-1">
+                        Cordova
+                      </p>
+                      <p class="my-1">
+                        --맛보기 수준인 Framework 언어--
+                      </p>
+                      <p v-if = "sl.Nodejs === '맛보기 수준'" class="my-1">
+                        Nodejs
+                      </p>
+                      <p v-if = "sl.Angular === '맛보기 수준'" class="my-1">
+                        Angular
+                      </p>
+                      <p v-if = "sl.React === '맛보기 수준'" class="my-1">
+                        React
+                      </p>
+                      <p v-if = "sl.Expressjs === '맛보기 수준'" class="my-1">
+                        Expressjs
+                      </p>
+                      <p v-if = "sl.NetCore === '맛보기 수준'" class="my-1">
+                        NetCore
+                      </p>
+                      <p v-if = "sl.Spring === '맛보기 수준'" class="my-1">
+                        Spring
+                      </p>
+                      <p v-if = "sl.Django === '맛보기 수준'" class="my-1">
+                        Django
+                      </p>
+                      <p v-if = "sl.Flask === '맛보기 수준'" class="my-1">
+                        Flask
+                      </p>
+                      <p v-if = "sl.Cordova === '맛보기 수준'" class="my-1">
+                        Cordova
+                      </p>
+                      <p class="my-1">
+                        --나름 고수인 Database 언어--
+                      </p>
+                      <p v-if = "sl.Mysql === '나름 고수'" class="my-1">
+                        Mysql
+                      </p>
+                      <p v-if = "sl.SQLServer === '나름 고수'" class="my-1">
+                        SQLServer
+                      </p>
+                      <p v-if = "sl.MongoDB === '나름 고수'" class="my-1">
+                        MongoDB
+                      </p>
+                      <p v-if = "sl.SQLite === '나름 고수'" class="my-1">
+                        SQLite
+                      </p>
+                      <p v-if = "sl.Redis === '나름 고수'" class="my-1">
+                        Redis
+                      </p>
+                      <p v-if = "sl.oracle === '나름 고수'" class="my-1">
+                        oracle
+                      </p>
+                      <p v-if = "sl.Flask_data === '나름 고수'" class="my-1">
+                        Flask_data
+                      </p>
+                      <p v-if = "sl.Cordova_data === '나름 고수'" class="my-1">
+                        Cordova_data
+                      </p>
+                      <p class="my-1">
+                        --실무 가능한 Database 언어--
+                      </p>
+                      <p v-if = "sl.Mysql === '실무 가능'" class="my-1">
+                        Mysql
+                      </p>
+                      <p v-if = "sl.SQLServer === '실무 가능'" class="my-1">
+                        SQLServer
+                      </p>
+                      <p v-if = "sl.MongoDB === '실무 가능'" class="my-1">
+                        MongoDB
+                      </p>
+                      <p v-if = "sl.SQLite === '실무 가능'" class="my-1">
+                        SQLite
+                      </p>
+                      <p v-if = "sl.Redis === '실무 가능'" class="my-1">
+                        Redis
+                      </p>
+                      <p v-if = "sl.oracle === '실무 가능'" class="my-1">
+                        oracle
+                      </p>
+                      <p v-if = "sl.Flask_data === '실무 가능'" class="my-1">
+                        Flask_data
+                      </p>
+                      <p v-if = "sl.Cordova_data === '실무 가능'" class="my-1">
+                        Cordova_data
+                      </p>
+                      <p class="my-1">
+                        --초보 수준인 Database 언어--
+                      </p>
+                      <p v-if = "sl.Mysql === '초보 수준'" class="my-1">
+                        Mysql
+                      </p>
+                      <p v-if = "sl.SQLServer === '초보 수준'" class="my-1">
+                        SQLServer
+                      </p>
+                      <p v-if = "sl.MongoDB === '초보 수준'" class="my-1">
+                        MongoDB
+                      </p>
+                      <p v-if = "sl.SQLite === '초보 수준'" class="my-1">
+                        SQLite
+                      </p>
+                      <p v-if = "sl.Redis === '초보 수준'" class="my-1">
+                        Redis
+                      </p>
+                      <p v-if = "sl.oracle === '초보 수준'" class="my-1">
+                        oracle
+                      </p>
+                      <p v-if = "sl.Flask_data === '초보 수준'" class="my-1">
+                        Flask_data
+                      </p>
+                      <p v-if = "sl.Cordova_data === '초보 수준'" class="my-1">
+                        Cordova_data
+                      </p>
+                      <p class="my-1">
+                        --맛보기 수준인 Database 언어--
+                      </p>
+                      <p v-if = "sl.Mysql === '맛보기 수준'" class="my-1">
+                        Mysql
+                      </p>
+                      <p v-if = "sl.SQLServer === '맛보기 수준'" class="my-1">
+                        SQLServer
+                      </p>
+                      <p v-if = "sl.MongoDB === '맛보기 수준'" class="my-1">
+                        MongoDB
+                      </p>
+                      <p v-if = "sl.SQLite === '맛보기 수준'" class="my-1">
+                        SQLite
+                      </p>
+                      <p v-if = "sl.Redis === '맛보기 수준'" class="my-1">
+                        Redis
+                      </p>
+                      <p v-if = "sl.oracle === '맛보기 수준'" class="my-1">
+                        oracle
+                      </p>
+                      <p v-if = "sl.Flask_data === '맛보기 수준'" class="my-1">
+                        Flask_data
+                      </p>
+                      <p v-if = "sl.Cordova_data === '맛보기 수준'" class="my-1">
+                        Cordova_data
+                      </p>
+                      <p class="my-1">
+                        --나름 고수인 Clouding 언어--
+                      </p>
+                      <p v-if = "sl.AWS === '나름 고수'" class="my-1">
+                        AWS
+                      </p>
+                      <p v-if = "sl.Azure === '나름 고수'" class="my-1">
+                        Azure
+                      </p>
+                      <p v-if = "sl.GCP === '나름 고수'" class="my-1">
+                        GCP
+                      </p>
+                      <p v-if = "sl.Linux === '나름 고수'" class="my-1">
+                        Linux
+                      </p>
+                      <p v-if = "sl.Wordpress === '나름 고수'" class="my-1">
+                        Wordpress
+                      </p>
+                      <p v-if = "sl.Arduino === '나름 고수'" class="my-1">
+                        Arduino
+                      </p>
+                      <p v-if = "sl.Firebase === '나름 고수'" class="my-1">
+                        Firebase
+                      </p>
+                      <p v-if = "sl.Docker === '나름 고수'" class="my-1">
+                        Docker
+                      </p>
+                      <p v-if = "sl.Go === '나름 고수'" class="my-1">
+                        Go
+                      </p>
+                      <p class="my-1">
+                        --실무 가능한 Clouding 언어--
+                      </p>
+                      <p v-if = "sl.AWS === '실무 가능'" class="my-1">
+                        AWS
+                      </p>
+                      <p v-if = "sl.Azure === '실무 가능'" class="my-1">
+                        Azure
+                      </p>
+                      <p v-if = "sl.GCP === '실무 가능'" class="my-1">
+                        GCP
+                      </p>
+                      <p v-if = "sl.Linux === '실무 가능'" class="my-1">
+                        Linux
+                      </p>
+                      <p v-if = "sl.Wordpress === '실무 가능'" class="my-1">
+                        Wordpress
+                      </p>
+                      <p v-if = "sl.Arduino === '실무 가능'" class="my-1">
+                        Arduino
+                      </p>
+                      <p v-if = "sl.Firebase === '실무 가능'" class="my-1">
+                        Firebase
+                      </p>
+                      <p v-if = "sl.Docker === '실무 가능'" class="my-1">
+                        Docker
+                      </p>
+                      <p v-if = "sl.Go === '실무 가능'" class="my-1">
+                        Go
+                      </p>
+                      <p class="my-1">
+                        --초보 수준인 Clouding 언어--
+                      </p>
+                      <p v-if = "sl.AWS === '초보 수준'" class="my-1">
+                        AWS
+                      </p>
+                      <p v-if = "sl.Azure === '초보 수준'" class="my-1">
+                        Azure
+                      </p>
+                      <p v-if = "sl.GCP === '초보 수준'" class="my-1">
+                        GCP
+                      </p>
+                      <p v-if = "sl.Linux === '초보 수준'" class="my-1">
+                        Linux
+                      </p>
+                      <p v-if = "sl.Wordpress === '초보 수준'" class="my-1">
+                        Wordpress
+                      </p>
+                      <p v-if = "sl.Arduino === '초보 수준'" class="my-1">
+                        Arduino
+                      </p>
+                      <p v-if = "sl.Firebase === '초보 수준'" class="my-1">
+                        Firebase
+                      </p>
+                      <p v-if = "sl.Docker === '초보 수준'" class="my-1">
+                        Docker
+                      </p>
+                      <p v-if = "sl.Go === '초보 수준'" class="my-1">
+                        Go
+                      </p>
+                      <p class="my-1">
+                        --맛보기 수준인 Clouding 언어--
+                      </p>
+                      <p v-if = "sl.AWS === '맛보기 수준'" class="my-1">
+                        AWS
+                      </p>
+                      <p v-if = "sl.Azure === '맛보기 수준'" class="my-1">
+                        Azure
+                      </p>
+                      <p v-if = "sl.GCP === '맛보기 수준'" class="my-1">
+                        GCP
+                      </p>
+                      <p v-if = "sl.Linux === '맛보기 수준'" class="my-1">
+                        Linux
+                      </p>
+                      <p v-if = "sl.Wordpress === '맛보기 수준'" class="my-1">
+                        Wordpress
+                      </p>
+                      <p v-if = "sl.Arduino === '맛보기 수준'" class="my-1">
+                        Arduino
+                      </p>
+                      <p v-if = "sl.Firebase === '맛보기 수준'" class="my-1">
+                        Firebase
+                      </p>
+                      <p v-if = "sl.Docker === '맛보기 수준'" class="my-1">
+                        Docker
+                      </p>
+                      <p v-if = "sl.Go === '맛보기 수준'" class="my-1">
+                        Go
+                      </p>
+                      <p class="my-1">
+                        --나름 고수인 Machine learnning 언어--
+                      </p>
+                      <p v-if = "sl.Tensorflow === '나름 고수'" class="my-1">
+                        Tensorflow
+                      </p>
+                      <p v-if = "sl.Caffe === '나름 고수'" class="my-1">
+                        Caffe
+                      </p>
+                      <p v-if = "sl.OpenCV === '나름 고수'" class="my-1">
+                        OpenCV
+                      </p>
+                      <p v-if = "sl.DLib === '나름 고수'" class="my-1">
+                        DLib
+                      </p>
+                      <p v-if = "sl.OpenGL === '나름 고수'" class="my-1">
+                        OpenGL
+                      </p>
+                      <p v-if = "sl.Unity === '나름 고수'" class="my-1">
+                        Unity
+                      </p>
+                      <p v-if = "sl.Arduino_mac === '나름 고수'" class="my-1">
+                        Arduino_mac
+                      </p>
+                      <p v-if = "sl.Firebase_mac === '나름 고수'" class="my-1">
+                        Firebase_mac
+                      </p>
+                      <p class="my-1">
+                        --실무 가능한 Machine learnning 언어--
+                      </p>
+                      <p v-if = "sl.Tensorflow === '실무 가능'" class="my-1">
+                        Tensorflow
+                      </p>
+                      <p v-if = "sl.Caffe === '실무 가능'" class="my-1">
+                        Caffe
+                      </p>
+                      <p v-if = "sl.OpenCV === '실무 가능'" class="my-1">
+                        OpenCV
+                      </p>
+                      <p v-if = "sl.DLib === '실무 가능'" class="my-1">
+                        DLib
+                      </p>
+                      <p v-if = "sl.OpenGL === '실무 가능'" class="my-1">
+                        OpenGL
+                      </p>
+                      <p v-if = "sl.Unity === '실무 가능'" class="my-1">
+                        Unity
+                      </p>
+                      <p v-if = "sl.Arduino_mac === '실무 가능'" class="my-1">
+                        Arduino_mac
+                      </p>
+                      <p v-if = "sl.Firebase_mac === '실무 가능'" class="my-1">
+                        Firebase_mac
+                      </p>
+                      <p class="my-1">
+                        --초보 수준인 Machine learnning 언어--
+                      </p>
+                      <p v-if = "sl.Tensorflow === '초보 수준'" class="my-1">
+                        Tensorflow
+                      </p>
+                      <p v-if = "sl.Caffe === '초보 수준'" class="my-1">
+                        Caffe
+                      </p>
+                      <p v-if = "sl.OpenCV === '초보 수준'" class="my-1">
+                        OpenCV
+                      </p>
+                      <p v-if = "sl.DLib === '초보 수준'" class="my-1">
+                        DLib
+                      </p>
+                      <p v-if = "sl.OpenGL === '초보 수준'" class="my-1">
+                        OpenGL
+                      </p>
+                      <p v-if = "sl.Unity === '초보 수준'" class="my-1">
+                        Unity
+                      </p>
+                      <p v-if = "sl.Arduino_mac === '초보 수준'" class="my-1">
+                        Arduino_mac
+                      </p>
+                      <p v-if = "sl.Firebase_mac === '초보 수준'" class="my-1">
+                        Firebase_mac
+                      </p>
+                      <p class="my-1">
+                        --맛보기 수준인 Machine learnning 언어--
+                      </p>
+                      <p v-if = "sl.Tensorflow === '맛보기 수준'" class="my-1">
+                        Tensorflow
+                      </p>
+                      <p v-if = "sl.Caffe === '맛보기 수준'" class="my-1">
+                        Caffe
+                      </p>
+                      <p v-if = "sl.OpenCV === '맛보기 수준'" class="my-1">
+                        OpenCV
+                      </p>
+                      <p v-if = "sl.DLib === '맛보기 수준'" class="my-1">
+                        DLib
+                      </p>
+                      <p v-if = "sl.OpenGL === '맛보기 수준'" class="my-1">
+                        OpenGL
+                      </p>
+                      <p v-if = "sl.Unity === '맛보기 수준'" class="my-1">
+                        Unity
+                      </p>
+                      <p v-if = "sl.Arduino_mac === '맛보기 수준'" class="my-1">
+                        Arduino_mac
+                      </p>
+                      <p v-if = "sl.Firebase_mac === '맛보기 수준'" class="my-1">
+                        Firebase_mac
+                      </p> -->
+
                     </b-modal>
                   </div>
                   <!-- 학생 상세 정보 버튼 -->
@@ -97,9 +770,11 @@
   import myModal from './myModal'
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
-            import VueApexCharts from 'vue-apexcharts'
+  import VueApexCharts from 'vue-apexcharts'
   import VError from './Error.vue'
   import VNoNoticeError from './NoNoticeError.vue'
+  import Const from '../../constant/constant';
+
 
   var colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8'];
 
@@ -112,6 +787,8 @@
           stdList : [],
           user : {},
           cloudeLang : [],
+            applyOrder : "",
+            applySemester : "",
           selected : [],
           visible : false,
           judgeStdinfo:[],
@@ -178,7 +855,7 @@
           apexchart: VueApexCharts,
       },
       async created(){
-        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get(Const.API_SERVER + '/' ,{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -193,7 +870,7 @@
           this.stdList[index].YN = event.target.value;
         },
           async getSemester(){
-              await this.$http.get('http://localhost:8888/admin/recentApplyTerm').then((response) => {
+              await this.$http.get(Const.API_SERVER+'/admin/recentApplyTerm').then((response) => {
                   this.applyOrder = response.data.applyOrder;
                   this.applySemester = response.data.applySemester;
                   var data = {
@@ -205,7 +882,7 @@
               });
           },
         applyList(order,semester){
-          this.$http.get('http://localhost:8888/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
+          this.$http.get(Const.API_SERVER+'/co/mypage/watchApplyStd',{params:{cLoginID : this.user.loginId, applyOrder: order,applySemester:semester }}).then((response) => {
               if(response.data =='기간이 없음'){
                   alert('기간이 없습니다.')
                   // this.$router.push({name: "Home"})
@@ -240,7 +917,68 @@
                           sMajor: response.data[i].sMajor,
                           sGrade: response.data[i].sGrade,
                           stdApplyCoID: response.data[i].stdApplyCoID,
-                          YN: "-1"})
+                          sNum: response.data[i].sNum,
+                          sEmail: response.data[i].sEmail,
+                          sPhone: response.data[i].sPhone,
+                          YN: "-1",
+                          //programming Lang
+                          Javascript: programmingLang.Javascript,
+                          HTML: programmingLang.HTML,
+                          CSS: programmingLang.CSS,
+                          jQuery: programmingLang.jQuery,
+                          SQL: programmingLang.SQL,
+                          Java: programmingLang.Java,
+                          AndroidJava: programmingLang.AndroidJava,
+                          Swift: programmingLang.Swift,
+                          Objective: programmingLang.Objective,
+                          Python: programmingLang.Python,
+                          PHP: programmingLang.PHP,
+                          C: programmingLang.C,
+                          Microsoft: programmingLang.Microsoft,
+                          Kotlin: programmingLang.Kotlin,
+                          Peral: programmingLang.Peral,
+                          R: programmingLang.R,
+                          VBA: programmingLang.VBA,
+                          //framework Lang
+                          Nodejs : frameworkLang.Nodejs,
+                          Angular : frameworkLang.Angular,
+                          React : frameworkLang.React,
+                          Expressjs : frameworkLang.Expressjs,
+                          NetCore : frameworkLang.NetCore,
+                          Spring : frameworkLang.Spring,
+                          Django : frameworkLang.Django,
+                          Flask : frameworkLang.Flask,
+                          Cordova : frameworkLang.Cordova,
+                          //database Lang
+                          MySql : databaseLang.MySql,
+                          SQLServer : databaseLang.SQLServer,
+                          MongoDB : databaseLang.MongoDB,
+                          SQLite : databaseLang.SQLite,
+                          Redis : databaseLang.Redis,
+                          Oracle : databaseLang.Oracle,
+                          Flask_data : databaseLang.Flask,
+                          Cordova_data : databaseLang.Cordova,
+                          // clouding Lang
+                          AWS : cloudLang.AWS,
+                          Azure : cloudLang.Azure,
+                          GCP : cloudLang.GCP,
+                          Linux : cloudLang.Linux,
+                          Wordpress : cloudLang.Wordpress,
+                          RaspberryPi : cloudLang.RaspberryPi,
+                          Arduino : cloudLang.Arduino,
+                          Firebase : cloudLang.Firebase,
+                          Docker : cloudLang.Docker,
+                          Go : cloudLang.Go,
+                          //machine learnnig Lang
+                          Tensorflow : machineLang.Tensorflow,
+                          Caffe : machineLang.Caffe,
+                          OpenCV : machineLang.OpenCV,
+                          DLib : machineLang.DLib,
+                          OpenGL : machineLang.OpenGL,
+                          Unity : machineLang.Unity,
+                          Arduino_mac : machineLang.Arduino,
+                          Firebase_mac : machineLang.Firebase,
+                          })
                       this.userProgrammingLang.push({
                           Javascript: programmingLang.Javascript,
                           HTML: programmingLang.HTML,
@@ -260,16 +998,16 @@
                           R: programmingLang.R,
                           VBA: programmingLang.VBA
                       })
-                      // this.userFrameworkLang.push({
-                      // Nodejs : frameworkLang.Nodejs,
-                      // Angular : frameworkLang.Angular,
-                      // React : frameworkLang.React,
-                      // Expressjs : frameworkLang.Expressjs,
-                      // NetCore : frameworkLang.NetCore,
-                      // Spring : frameworkLang.Spring,
-                      // Django : frameworkLang.Django,
-                      // Flask : frameworkLang.Flask,
-                      // Cordova : frameworkLang.Cordova})
+                      this.userFrameworkLang.push({
+                      Nodejs : frameworkLang.Nodejs,
+                      Angular : frameworkLang.Angular,
+                      React : frameworkLang.React,
+                      Expressjs : frameworkLang.Expressjs,
+                      NetCore : frameworkLang.NetCore,
+                      Spring : frameworkLang.Spring,
+                      Django : frameworkLang.Django,
+                      Flask : frameworkLang.Flask,
+                      Cordova : frameworkLang.Cordova})
                       //
                       // this.userDatabaseLang.push({
                       // MySql : databaseLang.MySql,
@@ -324,7 +1062,7 @@
                     this.series[0].data[i] = this.userProgrammingLang[i].C
                 };
             },
-            finishJudge(){
+            async finishJudge(){
                 for(var i=0 ;i<this.stdList.length;i++){
                     if(this.stdList[i].YN==-1){
                         alert("합격여부를 모두 작성해 주세요.")
@@ -335,13 +1073,15 @@
                         YN : this.stdList[i].YN,
                     })
                 }
-                this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
+                await this.$http.post(Const.API_SERVER+'/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
                     alert('합격 여부가 확정되었습니다.')
                 })
-                this.$router.push({name: "Home"});
+                await this.$router.push({name: "Home"});
+                await this.$http.post(Const.API_SERVER+'/mail/nodemailerTest',{cLoginID:this.user.loginId,applySemester:this.applySemester,applyOrder:this.applyOrder}).then((response)=>{
+            })
             },
           changeStatus() {
-              this.$http.post('http://localhost:8888/co/mypage/changeCstatus',{cLoginID : this.user.loginId, applyOrder: this.applyOrder,applySemester:this.applySemester}).then((response)=>{
+              this.$http.post(Const.API_SERVER+'/co/mypage/changeCstatus',{cLoginID : this.user.loginId, applyOrder: this.applyOrder,applySemester:this.applySemester}).then((response)=>{
                   if(response.data == '0'){
                       alert('이미 지원 마감 상태입니다.')
                   }
@@ -351,7 +1091,7 @@
               })
           },
           loadCstatus(applyOrder, applySemester) {
-              this.$http.get('http://localhost:8888/co/mypage/loadCstatus',{params : {cLoginID : this.user.loginId, applyOrder: applyOrder,applySemester:applySemester}}).then((response)=>{
+              this.$http.get(Const.API_SERVER+'/co/mypage/loadCstatus',{params : {cLoginID : this.user.loginId, applyOrder: applyOrder,applySemester:applySemester}}).then((response)=>{
                   if(response.data.cStatus == 0){
                       this.cStatus = '심사중'
                   }

@@ -59,6 +59,7 @@
   //import Vue from 'vue';
   //import VResume from './components/Resume/Index.vue';
   //import Vtest from '../test/test.vue'
+  import Const from '../../constant/constant'
   export default{
     name: 'app',
     data() {
@@ -72,7 +73,7 @@
     },
     created(){
         if(localStorage.token){
-          this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+          this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
               if(res.data.result==1){
                 localStorage.removeItem('token')
                 this.user={};

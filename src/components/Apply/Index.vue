@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import Const from '../../constant/constant';
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   import DatePicker from 'v-cal-input'
@@ -47,7 +48,7 @@
           VReadNotice,
       },
       async created(){
-        await this.$http.get('http://localhost:8888/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -55,7 +56,7 @@
       },
       methods: {
         checkNotice(){
-          this.$http.get('http://localhost:8888/co/mypage/checkNotice',{params:{cLoginID : this.user.loginId}}).then(res => {
+          this.$http.get(Const.API_SERVER+'/co/mypage/checkNotice',{params:{cLoginID : this.user.loginId}}).then(res => {
             if(res.data==0){
               this.$store.dispatch('apply/setApplyState',0);
             }
