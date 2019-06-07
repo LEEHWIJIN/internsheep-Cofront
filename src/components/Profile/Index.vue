@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import Const from '../../constant/constant';
+
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   import VReadProfile from './ReadProfile.vue'
@@ -44,7 +46,7 @@
       },
       methods: {
          submitNotice(){
-           this.$http.post('API_SERVER/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
+           this.$http.post('Const.API_SERVER/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
                console.log(this.cName)
                console.log(this.cManagerName)
                this.cName = "";

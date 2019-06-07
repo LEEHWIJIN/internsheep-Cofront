@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import Const from '../../constant/constant';
   export default{
       name: 'ReadProfile',
       data() {
