@@ -278,7 +278,7 @@
                       <p class="my-1">
                         --나름 고수인 Framwork 언어--
                       </p>
-                      <p v-if = "sl.Node.js === '나름 고수'" class="my-1">
+                      <p v-if = "sl.Nodejs === '나름 고수'" class="my-1">
                         Node.js
                       </p>
                       <p v-if = "sl.Angular === '나름 고수'" class="my-1">
