@@ -142,7 +142,7 @@ import Const from '../../constant/constant';
                     'Content-Type' : 'multipart/form-data'
                 }
             }
-            this.$http.post('http://localhost:8888/co/mypage/modifyNotice',data,config).then((response) => {
+            this.$http.post(Const.API_SERVER+'/co/mypage/modifyNotice',data,config).then((response) => {
                 alert("수정되었습니다.")
 
                 this.$store.dispatch('apply/setApplyState',2);

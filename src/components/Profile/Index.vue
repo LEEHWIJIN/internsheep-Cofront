@@ -92,7 +92,7 @@ import Const from '../../constant/constant';
       },
       methods: {
         //  submitNotice(){
-        //    this.$http.post('http://localhost:8888/co/mypage/modifyCompanyInfo',this.user.loginId,data).then((response) => {
+        //    this.$http.post(Const.API_SERVER+'/co/mypage/modifyCompanyInfo',this.user.loginId,data).then((response) => {
         //        console.log(this.cName)
         //        console.log(this.cManagerName)
         //        this.cName = "";
