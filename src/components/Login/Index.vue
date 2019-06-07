@@ -97,7 +97,7 @@ import Const from '../../constant/constant';
             alert(error)
         })
 //
-        // this.$http.post('Const.API_SERVER/aimsLogin/check',{userId: this.userId,password:this.password}).then((response)=>{
+        // this.$http.post(Const.API_SERVER+'/aimsLogin/check',{userId: this.userId,password:this.password}).then((response)=>{
         //     alert('success');
         // },(error)=>{
         //     console.log('err')

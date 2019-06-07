@@ -65,7 +65,7 @@ import Const from '../../constant/constant';
       },
       methods: {
          submitNotice(){
-           this.$http.post('Const.API_SERVER/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
+           this.$http.post(Const.API_SERVER+'/co/mypage/writeNotice',{cName:this.cName,cManagerName: this.cManagerName}).then((response) => {
                console.log(this.cName)
                console.log(this.cManagerName)
                this.cName = "";

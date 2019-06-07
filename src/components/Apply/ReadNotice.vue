@@ -84,7 +84,7 @@
           DatePicker,
       },
       async created(){
-        await this.$http.get('Const.API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -96,7 +96,7 @@
           this.$store.dispatch('apply/setApplyState',3);
         },
         async getNotice(){
-          await this.$http.get('Const.API_SERVER/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
+          await this.$http.get(Const.API_SERVER+'/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
           {
             this.cName = res.data[0].cName;
             this.cLocation = res.data[0].cLocation;
@@ -111,7 +111,7 @@
           })
         },
         loadImage(loginId){
-          this.uploadImage='Const.API_SERVER/co/mypage/getProfileImage?cLoginID='+loginId
+          this.uploadImage=Const.API_SERVER+'/co/mypage/getProfileImage?cLoginID='+loginId
         }
       }
   }

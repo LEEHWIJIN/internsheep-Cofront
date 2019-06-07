@@ -132,7 +132,7 @@
           })
         },
         compareDate(){
-          this.$http.get('Const.API_SERVER/admin/recentApplyTerm').then((response) => {
+          this.$http.get(Const.API_SERVER+'/admin/recentApplyTerm').then((response) => {
             this.applyTerm = {
                 applyStart : response.data.applyStart,
                 applyEnd : response.data.applyEnd,

@@ -48,7 +48,7 @@ import Const from '../../constant/constant';
           VReadNotice,
       },
       async created(){
-        await this.$http.get('Const.API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -56,7 +56,7 @@ import Const from '../../constant/constant';
       },
       methods: {
         checkNotice(){
-          this.$http.get('Const.API_SERVER/co/mypage/checkNotice',{params:{cLoginID : this.user.loginId}}).then(res => {
+          this.$http.get(Const.API_SERVER+'/co/mypage/checkNotice',{params:{cLoginID : this.user.loginId}}).then(res => {
             if(res.data==0){
               this.$store.dispatch('apply/setApplyState',0);
             }

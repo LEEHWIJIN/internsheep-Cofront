@@ -107,7 +107,7 @@ import Const from '../../constant/constant';
           DatePicker,
       },
       async created(){
-        await this.$http.get('Const.API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        await this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user;
         });
@@ -142,19 +142,14 @@ import Const from '../../constant/constant';
                     'Content-Type' : 'multipart/form-data'
                 }
             }
-
-<<<<<<< HEAD
-            this.$http.post('Const.API_SERVER/co/mypage/modifyNotice',data,config).then((response) => {
-                alert("수정되었습니다.")   
-=======
             this.$http.post('http://localhost:8888/co/mypage/modifyNotice',data,config).then((response) => {
                 alert("수정되었습니다.")
->>>>>>> a3b8bff333e020e04fe06016816bdc7a2db0c878
+
                 this.$store.dispatch('apply/setApplyState',2);
             })
         },
         getNotice(){
-          this.$http.get('Const.API_SERVER/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>{
+          this.$http.get(Const.API_SERVER+'/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>{
             this.cName = res.data[0].cName;
             this.cLocation = res.data[0].cLocation;
             this.cBenefit = res.data[0].cBenefit;

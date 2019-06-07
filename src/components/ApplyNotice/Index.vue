@@ -82,11 +82,11 @@ import Const from '../../constant/constant';
         VCategory,
       },
       created(){
-        this.$http.get('Const.API_SERVER/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+        this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
           return this.user
         });
-          this.$http.get('Const.API_SERVER/admin/recentApplyTerm').then((response) => {
+          this.$http.get(Const.API_SERVER+'/admin/recentApplyTerm').then((response) => {
               if(response.data=='0'){
                   alert('공고신청기간이 아닙니다.')
                   this.$router.push({name: "Home"})
@@ -103,7 +103,7 @@ import Const from '../../constant/constant';
                       applyOrder: this.applyOrder,
                       applySemester: this.applySemester,
                   }
-                  this.$http.get('Const.API_SERVER/co/mypage/checkApplyNotice', {
+                  this.$http.get(Const.API_SERVER+'/co/mypage/checkApplyNotice', {
                       params: {
                           cLoginID: this.user.loginId,
                           applyOrder: this.applyOrder,
@@ -115,7 +115,7 @@ import Const from '../../constant/constant';
                           alert("이미 신청하였습니다.")
                       }
                       else {
-                          this.$http.post('Const.API_SERVER/co/mypage/applyNotice', {
+                          this.$http.post(Const.API_SERVER+'/co/mypage/applyNotice', {
                               cLoginID: this.user.loginId,
                               data
                           }).then((response) => {
