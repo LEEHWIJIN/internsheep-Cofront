@@ -107,7 +107,7 @@
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
             this.cTag = res.data[0].cTag;
-            this.cImage = res.data[0]
+            this.image = res.data[0]
           })
         },
         loadImage(loginId){
