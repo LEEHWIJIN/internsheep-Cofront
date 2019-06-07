@@ -210,12 +210,12 @@
                 sLoginID: this.stdList[i].sLoginID
             })
           }
-          await this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo, cLoginID:this.user.cLoginID, applySemester : this.applySemester}).then((response)=>{
+          await this.$http.post('http://localhost:8888/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo, cLoginID:this.user.loginId, applySemester : this.applySemester}).then((response)=>{
               alert('합격 여부가 확정되었습니다.')
           })
-          await this.$router.push({name: "Home"});
-          await this.$http.post('http://localhost:8888/mail/nodemailerTest',{data : this.judgeStdinfo}).then((response)=>{
-          })
+            await this.$router.push({name: "Home"});
+            await this.$http.post('http://localhost:8888/mail/nodemailerTest',{cLoginID:this.user.loginId,applySemester:this.applySemester,applyOrder:this.applyOrder}).then((response)=>{
+            })
         },
         handleClickButton(){
           this.visible = !this.visible
