@@ -9,6 +9,22 @@
         <h2 class="section-title">Read a Notice</h2>
       </div>
       <form class="row" v-on:submit.prevent='submitNotice'>
+        <div class="col-lg-12">
+          <h6 style="font-weight:bold">회사 소개*</h6>
+          <input class="form-control mb-4" v-model="cInfo" placeholder="회사 주소를 입력 해주세요">
+        </div>
+        <div class="col-lg-6">
+          <h6 style="font-weight:bold">회사 이메일*</h6>
+          <input class="form-control mb-4" v-model="cEmail" placeholder="복리후생 정보를 입력 해주세요">
+        </div>
+        <div class="col-lg-6">
+          <h6 style="font-weight:bold">담당자 성함*</h6>
+          <input class="form-control mb-4" v-model="cManagerName" placeholder="복리후생 정보를 입력 해주세요">
+        </div>
+        <div class="col-lg-6">
+          <h6 style="font-weight:bold">담당자 연락처</h6>
+          <input class="form-control mb-4" v-model="cManagerPhone" placeholder="복리후생 정보를 입력 해주세요">
+        </div>
         <div class="col-lg-6">
           <h6 style="font-weight:bold">회사 주소*</h6>
           <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소를 입력 해주세요" readonly="readonly">
@@ -71,6 +87,10 @@
           internTermStart : null,
           cOccupation : [],
           cNumOfPeople : [],
+            cManagerPhone :[],
+            cManagerName :[],
+            cInfo : [],
+            cEmail : [],
           cTag : [],
           internTermEnd : null,
           image : null,
@@ -104,12 +124,13 @@
             this.cPay = res.data[0].cPay;
             this.internTermStart = res.data[0].internTermStart.split('T')[0];
             this.internTermEnd = res.data[0].internTermEnd.split('T')[0];
-            console.log(res.data[0].internTermStart)
-            console.log(res.data[0].internTermEnd)
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
             this.cTag = res.data[0].cTag;
-            this.image = res.data[0]
+              this.cInfo = res.data[0].cInfo;
+                this.cEmail = res.data[0].cEmail;
+                this.cManagerName = res.data[0].cManagerName;
+                this.cManagerPhone = res.data[0].cManagerPhone;
           })
         },
         loadImage(loginId){
