@@ -1088,7 +1088,7 @@
                         YN : this.stdList[i].YN,
                     })
                 }
-                await this.$http.post(Const.API_SERVER+'/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo,applySemester:this.applySemester}).then((response)=>{
+                await this.$http.post(Const.API_SERVER+'/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo,cLoginID:this.user.loginId,applySemester:this.applySemester}).then((response)=>{
                     alert('합격 여부가 확정되었습니다.')
                 })
                 await this.$router.push({name: "Home"});
