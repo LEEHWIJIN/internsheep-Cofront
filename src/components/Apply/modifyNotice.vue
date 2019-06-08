@@ -198,14 +198,9 @@ import Const from '../../constant/constant';
             data.append('image', this.imageURL)
             data.append('cBenefit', this.cBenefit)
             data.append('cPay', this.cPay)
-            if(this.internTermStart != null)
-            {
               data.append('internTermStart', this.internTermStart)
-            }
-            if(this.internTermEnd != null)
-            {
+
               data.append('internTermEnd', this.internTermEnd)
-            }
             data.append('cOccupation', this.cOccupation)
             data.append('cNumOfPeople',this.cNumOfPeople)
             data.append('cTag',  this.cTag)
@@ -221,7 +216,6 @@ import Const from '../../constant/constant';
             }
             this.$http.post(Const.API_SERVER+'/co/mypage/modifyNotice',data,config).then((response) => {
                 alert("수정되었습니다.")
-
                 this.$store.dispatch('apply/setApplyState',2);
             })
         },
