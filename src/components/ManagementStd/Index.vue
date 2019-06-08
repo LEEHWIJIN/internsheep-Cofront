@@ -118,8 +118,10 @@ import {Calendar} from 'vue-bootstrap4-calendar';
       methods: {
         loadHiredStd(){
           this.$http.get(Const.API_SERVER+'/co/mypage/loadHiredStd',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester}}).then((res)=>{
+            console.log(res.data)
             if(res.data.length==0){
-              console.log("확정된 학생이 없음");
+                alert("확정된 학생이 없습니다.")
+                // this.$router.push('/appliedStd');
               return;
             }
             else{
@@ -172,7 +174,7 @@ import {Calendar} from 'vue-bootstrap4-calendar';
           var year = a.getFullYear();
           var date =[year, month, day].join('.');
           this.pickDate = date;
-          console.log(this.pickDate)
+          // console.log(this.pickDate)
         },
         eventClicked(event) {
         },

@@ -87,7 +87,7 @@
       },
       methods: {
         applyList(){
-          this.$http.get('http://api.ajou-internsheep.co/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
+          this.$http.get(Const.API_SERVER+'/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
             for(var i=0; i<response.data.length;i++){
                 this.applylist.push({
                   cBenefit : response.data[i].cBenefit,

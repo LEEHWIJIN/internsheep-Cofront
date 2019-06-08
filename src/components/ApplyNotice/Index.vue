@@ -110,7 +110,7 @@ import Const from '../../constant/constant';
                           applySemester: this.applySemester
                       }
                   }).then((response) => {
-                      console.log(response.data)
+                      // console.log(response.data)
                       if (response.data == '1') {
                           alert("이미 신청하였습니다.")
                       }
