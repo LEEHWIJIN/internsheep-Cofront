@@ -118,7 +118,7 @@
         async getNotice(){
           await this.$http.get(Const.API_SERVER+'/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
           {
-              console.log(res.data[0])
+              // console.log(res.data[0])
             this.cName = res.data[0].cName;
             this.cLocation = res.data[0].cLocation;
             this.cBenefit = res.data[0].cBenefit;

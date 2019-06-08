@@ -826,7 +826,7 @@
                     type: 'bar',
                     events: {
                         click: function (chart, w, e) {
-                            console.log(chart, w, e)
+                            // console.log(chart, w, e)
                         }
                     },
                 },
@@ -878,7 +878,7 @@
       },
       methods: {
         modalId(i) {
-          console.log(i);
+          // console.log(i);
           return 'modal' + i;
         },
         ynchange(index,event){
@@ -1088,7 +1088,7 @@
                         YN : this.stdList[i].YN,
                     })
                 }
-                await this.$http.post(Const.API_SERVER+'/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo}).then((response)=>{
+                await this.$http.post(Const.API_SERVER+'/co/mypage/changeYNApplyStd',{data:this.judgeStdinfo,applySemester:this.applySemester}).then((response)=>{
                     alert('합격 여부가 확정되었습니다.')
                 })
                 await this.$router.push({name: "Home"});
