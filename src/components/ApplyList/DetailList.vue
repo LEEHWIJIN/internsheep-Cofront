@@ -5,15 +5,15 @@
         <!-- 파란 사각형 -->
         <div class="topImage shadow-sm" style="line-height:130%">
           <div class="row">
-            <div class="col-lg-12 mb-4">
-              <div class="heart mr-sm-2 mt-sm-2">
-                <!-- 만약 찜했을 경우 font-weight: bold; 로 바꾸면 됨. -->
-                <i class="far fa-heart" style="margin-left: 18px;"><span style="font-color:white; font-weight: bold;"> 기업 찜하기</span></i>
-              </div>
-              <div class="apply">
-                <i class="fas fa-walking" ><span @click="applyStd(sc.cName)" style="font-color:white;cursor:Pointer;"> 지원하기</span></i>
-              </div>
-            </div>
+            <!--<div class="col-lg-12 mb-4">-->
+              <!--<div class="heart mr-sm-2 mt-sm-2">-->
+                <!--&lt;!&ndash; 만약 찜했을 경우 font-weight: bold; 로 바꾸면 됨. &ndash;&gt;-->
+                <!--<i class="far fa-heart" style="margin-left: 18px;"><span style="font-color:white; font-weight: bold;"> 기업 찜하기</span></i>-->
+              <!--</div>-->
+              <!--<div class="apply">-->
+                <!--<i class="fas fa-walking" ><span @click="applyStd(sc.cName)" style="font-color:white;cursor:Pointer;"> 지원하기</span></i>-->
+              <!--</div>-->
+            <!--</div>-->
 
             <div class="col-lg-12">
               <div class="job-intro media align-items-center flex-column flex-sm-row">

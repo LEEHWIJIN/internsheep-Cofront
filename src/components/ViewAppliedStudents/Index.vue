@@ -60,7 +60,10 @@
                         E-mail: {{sl.sEmail}}
                       </p>
                       <p class="my-1">
-                        --나름 고수인 프로그램 언어--
+                        -- programming 언어 --
+                      </p>
+                      <p class="my-1">
+                        --나름 고수--
                       </p>
                       <p v-if = "sl.HTML === '나름 고수'" class="my-1">
                         HTML
@@ -114,7 +117,7 @@
                         VBA
                       </p>
                       <p class="my-1">
-                        --실무 가능한 프로그램 언어--
+                        --실무 가능--
                       </p>
                       <p v-if = "sl.HTML === '실무 가능'" class="my-1">
                         HTML
@@ -168,7 +171,7 @@
                         VBA
                       </p>
                       <p class="my-1">
-                        --초보 수준인 프로그램 언어--
+                        --초보 수준--
                       </p>
                       <p v-if = "sl.HTML === '초보 수준'" class="my-1">
                         HTML
@@ -222,7 +225,7 @@
                         VBA
                       </p>
                       <p class="my-1">
-                        --맛보기 수준인 프로그램 언어--
+                        --맛보기 수준--
                       </p>
                       <p v-if = "sl.HTML === '맛보기 수준'" class="my-1">
                         HTML
@@ -275,10 +278,13 @@
                       <p v-if = "sl.VBA === '맛보기 수준'" class="my-1">
                         VBA
                       </p>
-                      <!-- <p class="my-1">
-                        --나름 고수인 Framwork 언어--
+                      <p class="my-1">
+                        -- Framewokr 언어 --
                       </p>
-                      <p v-if = "sl.Node.js === '나름 고수'" class="my-1">
+                      <p class="my-1">
+                        --나름 고수--
+                      </p>
+                      <p v-if = "sl.Nodejs === '나름 고수'" class="my-1">
                         Node.js
                       </p>
                       <p v-if = "sl.Angular === '나름 고수'" class="my-1">
@@ -306,7 +312,7 @@
                         Cordova
                       </p>
                       <p class="my-1">
-                        --실무 가능한 Framework 언어--
+                        --실무 가능--
                       </p>
                       <p v-if = "sl.Nodejs === '실무 가능'" class="my-1">
                         Nodejs
@@ -336,7 +342,7 @@
                         Cordova
                       </p>
                       <p class="my-1">
-                        --초보 수준인 framework 언어--
+                        --초보 수준--
                       </p>
                       <p v-if = "sl.Nodejs === '초보 수준'" class="my-1">
                         Nodejs
@@ -366,7 +372,7 @@
                         Cordova
                       </p>
                       <p class="my-1">
-                        --맛보기 수준인 Framework 언어--
+                        --맛보기 수준--
                       </p>
                       <p v-if = "sl.Nodejs === '맛보기 수준'" class="my-1">
                         Nodejs
@@ -396,7 +402,10 @@
                         Cordova
                       </p>
                       <p class="my-1">
-                        --나름 고수인 Database 언어--
+                        -- Database 언어 --
+                      </p>
+                      <p class="my-1">
+                        --나름 고수--
                       </p>
                       <p v-if = "sl.Mysql === '나름 고수'" class="my-1">
                         Mysql
@@ -423,7 +432,7 @@
                         Cordova_data
                       </p>
                       <p class="my-1">
-                        --실무 가능한 Database 언어--
+                        --실무 가능--
                       </p>
                       <p v-if = "sl.Mysql === '실무 가능'" class="my-1">
                         Mysql
@@ -450,7 +459,7 @@
                         Cordova_data
                       </p>
                       <p class="my-1">
-                        --초보 수준인 Database 언어--
+                        --초보 수준--
                       </p>
                       <p v-if = "sl.Mysql === '초보 수준'" class="my-1">
                         Mysql
@@ -477,7 +486,7 @@
                         Cordova_data
                       </p>
                       <p class="my-1">
-                        --맛보기 수준인 Database 언어--
+                        --맛보기 수준--
                       </p>
                       <p v-if = "sl.Mysql === '맛보기 수준'" class="my-1">
                         Mysql
@@ -504,7 +513,10 @@
                         Cordova_data
                       </p>
                       <p class="my-1">
-                        --나름 고수인 Clouding 언어--
+                        -- Clouding 언어 --
+                      </p>
+                      <p class="my-1">
+                        --나름 고수--
                       </p>
                       <p v-if = "sl.AWS === '나름 고수'" class="my-1">
                         AWS
@@ -534,7 +546,7 @@
                         Go
                       </p>
                       <p class="my-1">
-                        --실무 가능한 Clouding 언어--
+                        --실무 가능--
                       </p>
                       <p v-if = "sl.AWS === '실무 가능'" class="my-1">
                         AWS
@@ -564,7 +576,7 @@
                         Go
                       </p>
                       <p class="my-1">
-                        --초보 수준인 Clouding 언어--
+                        --초보 수준--
                       </p>
                       <p v-if = "sl.AWS === '초보 수준'" class="my-1">
                         AWS
@@ -594,7 +606,7 @@
                         Go
                       </p>
                       <p class="my-1">
-                        --맛보기 수준인 Clouding 언어--
+                        --맛보기 수준--
                       </p>
                       <p v-if = "sl.AWS === '맛보기 수준'" class="my-1">
                         AWS
@@ -624,7 +636,10 @@
                         Go
                       </p>
                       <p class="my-1">
-                        --나름 고수인 Machine learnning 언어--
+                        -- Machine learnning 언어 --
+                      </p>
+                      <p class="my-1">
+                        --나름 고수--
                       </p>
                       <p v-if = "sl.Tensorflow === '나름 고수'" class="my-1">
                         Tensorflow
@@ -651,7 +666,7 @@
                         Firebase_mac
                       </p>
                       <p class="my-1">
-                        --실무 가능한 Machine learnning 언어--
+                        --실무 가능--
                       </p>
                       <p v-if = "sl.Tensorflow === '실무 가능'" class="my-1">
                         Tensorflow
@@ -678,7 +693,7 @@
                         Firebase_mac
                       </p>
                       <p class="my-1">
-                        --초보 수준인 Machine learnning 언어--
+                        --초보 수준--
                       </p>
                       <p v-if = "sl.Tensorflow === '초보 수준'" class="my-1">
                         Tensorflow
@@ -705,7 +720,7 @@
                         Firebase_mac
                       </p>
                       <p class="my-1">
-                        --맛보기 수준인 Machine learnning 언어--
+                        --맛보기 수준--
                       </p>
                       <p v-if = "sl.Tensorflow === '맛보기 수준'" class="my-1">
                         Tensorflow
@@ -730,7 +745,7 @@
                       </p>
                       <p v-if = "sl.Firebase_mac === '맛보기 수준'" class="my-1">
                         Firebase_mac
-                      </p> -->
+                      </p>
 
                     </b-modal>
                   </div>
@@ -908,10 +923,10 @@
                   this.$store.dispatch('apply/setApplyState',0);
                   for (var i = 0; i < response.data.length; i++) {
                       var programmingLang = JSON.parse(response.data[i].programmingLang);
-                      // var frameworkLang = JSON.parse(response.data[i].frameworkLang);
-                      // var databaseLang = JSON.parse(response.data[i].databaseLang);
-                      // var cloudLang = JSON.parse(response.data[i].cloudLang);
-                      // var machineLang = JSON.parse(response.data[i].machineLang)
+                      var frameworkLang = JSON.parse(response.data[i].frameworkLang);
+                      var databaseLang = JSON.parse(response.data[i].databaseLang);
+                      var cloudLang = JSON.parse(response.data[i].cloudLang);
+                      var machineLang = JSON.parse(response.data[i].machineLang)
                       this.stdList.push({
                           sName: response.data[i].sName,
                           sMajor: response.data[i].sMajor,
