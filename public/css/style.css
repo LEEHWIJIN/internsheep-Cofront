@@ -95,7 +95,7 @@ h6,
   padding: 5px 20px;
 }
 
-.btn-primary {
+.rimary {
   border: 0;
   color: #fff;
 }
@@ -107,7 +107,7 @@ h6,
   left: 0;
   width: 102%;
   height: 100%;
-  background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+  background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   z-index: -1;
   transition: ease 0.3s;
 }
@@ -136,14 +136,14 @@ h6,
 }
 
 .btn-outline-primary {
-  color: #007ac7;
-  border: 2px solid #00e0d8;
+  color: white;
+  border: 2px solid white;
 }
 
 .btn-outline-primary:hover {
   color: #fff !important;
   background: none;
-  border: 2px solid #00e0d8;
+  border: 2px solid white;
 }
 
 .btn-outline-primary:hover i {
@@ -165,7 +165,7 @@ h6,
   left: -102%;
   width: 102%;
   height: 100%;
-  background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+  background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   z-index: -1;
   transition: ease 0.3s;
 }

@@ -137,11 +137,11 @@
 
 <style scoped>
 .naviagtion {
-  background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
+  background: linear-gradient(to right, #a517ba, #5f1782);
   padding: 10px 0;
 }
 .naviagtion.nav-bg {
-  background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
+  background: linear-gradient(to right, #a517ba, #5f1782);
   padding: 1px 0;
 }
 .ul{

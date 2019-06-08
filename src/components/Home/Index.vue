@@ -49,6 +49,6 @@
 
 <style scoped>
 #Home {
- background-image: url('../../../public/images/background/banner.png');
+ background-image:linear-gradient(to right, #a517ba, #5f1782);
 }
 </style>
