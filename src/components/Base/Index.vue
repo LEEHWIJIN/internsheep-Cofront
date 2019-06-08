@@ -35,7 +35,7 @@
                 </li>
                 <li v-if="auth!=0" class="nav-item dropdown">
                   <a class="name nav-link text-white text-capitalize dropdown-toggle" href="#" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-graduate mr-1 text-white"></i> {{user.name}}님</a>
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user mr-1 text-white"></i> {{user.name}}님</a>
                   <div class="dropdown-menu">
                     <a class="dropdown-item text-color" href="#" @click="goApply">공고 작성</a>
                     <a class="dropdown-item text-color" href="#" @click="goApplyNotice">공고 신청</a>
