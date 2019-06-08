@@ -104,6 +104,8 @@
             this.cPay = res.data[0].cPay;
             this.internTermStart = res.data[0].internTermStart.split('T')[0];
             this.internTermEnd = res.data[0].internTermEnd.split('T')[0];
+            console.log(res.data[0].internTermStart)
+            console.log(res.data[0].internTermEnd)
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
             this.cTag = res.data[0].cTag;
@@ -111,7 +113,7 @@
           })
         },
         loadImage(loginId){
-          this.uploadImage=Const.API_SERVER+'/co/mypage/getProfileImage?cLoginID='+loginId
+            this.uploadImage = Const.API_SERVER+'/co/mypage/getProfileImage?cLoginID='+this.user.loginId
         }
       }
   }

@@ -275,10 +275,10 @@
                       <p v-if = "sl.VBA === '맛보기 수준'" class="my-1">
                         VBA
                       </p>
-                      <!-- <p class="my-1">
+                      <p class="my-1">
                         --나름 고수인 Framwork 언어--
                       </p>
-                      <p v-if = "sl.Node.js === '나름 고수'" class="my-1">
+                      <p v-if = "sl.Nodejs === '나름 고수'" class="my-1">
                         Node.js
                       </p>
                       <p v-if = "sl.Angular === '나름 고수'" class="my-1">
@@ -730,7 +730,7 @@
                       </p>
                       <p v-if = "sl.Firebase_mac === '맛보기 수준'" class="my-1">
                         Firebase_mac
-                      </p> -->
+                      </p>
 
                     </b-modal>
                   </div>
@@ -908,10 +908,10 @@
                   this.$store.dispatch('apply/setApplyState',0);
                   for (var i = 0; i < response.data.length; i++) {
                       var programmingLang = JSON.parse(response.data[i].programmingLang);
-                      // var frameworkLang = JSON.parse(response.data[i].frameworkLang);
-                      // var databaseLang = JSON.parse(response.data[i].databaseLang);
-                      // var cloudLang = JSON.parse(response.data[i].cloudLang);
-                      // var machineLang = JSON.parse(response.data[i].machineLang)
+                      var frameworkLang = JSON.parse(response.data[i].frameworkLang);
+                      var databaseLang = JSON.parse(response.data[i].databaseLang);
+                      var cloudLang = JSON.parse(response.data[i].cloudLang);
+                      var machineLang = JSON.parse(response.data[i].machineLang)
                       this.stdList.push({
                           sName: response.data[i].sName,
                           sMajor: response.data[i].sMajor,
