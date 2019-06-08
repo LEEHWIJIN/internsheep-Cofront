@@ -52,6 +52,8 @@ import Const from '../../constant/constant';
       name: 'ReadProfile',
       data() {
         return {
+          user:[],
+          userData:[],
           cName:[],
           cManagerName:[],
           cLocation:[],
@@ -60,7 +62,15 @@ import Const from '../../constant/constant';
       },
       components: {
       },
-      created(){
+      async created(){
+        await this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+          this.user = res.data.user;
+          return ;
+        });
+        await this.$http.get(Const.API_SERVER+'/co/mypage/showCompanyInfo',{params:{sLoginID:this.user.loginId}}).then(res=>{
+          this.userData=res.data[0];
+          consoel.log(this.userData)
+        });
       },
       methods: {
         modifyProfile(){
