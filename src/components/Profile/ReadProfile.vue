@@ -1,7 +1,6 @@
 <!-- 회원 정보 수정 페이지  -->
 <template>
-<section class="section section-lg-bottom bg-light">
-  <div  class="container" id="readProfile">
+
     <!-- 회원 정보 -->
     <div class="col-lg-8">
       <div class="row">
@@ -42,8 +41,7 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+
 </template>
 
 <script>
