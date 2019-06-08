@@ -15,28 +15,28 @@
         <div class="col-lg-12 text-center p-0">
         <form class="row" v-on:submit.prevent='submitNotice' >
           <div class="col-lg-6">
-            <input class="form-control mb-4" v-model="cName" placeholder="회사명" readonly="readonly">
+            <input class="form-control mb-4" v-model="userData.cName" placeholder="회사명" readonly="readonly">
           </div>
-          <div class="col-lg-6">
-            <input class="form-control mb-4" v-model="cCeoName" placeholder="대표명" readonly="readonly">
-          </div>
-          <div class="col-lg-6">
+          <!-- <div class="col-lg-6">
+            <input class="form-control mb-4" v-model="userData.cCeoName" placeholder="대표명" readonly="readonly">
+          </div> -->
+          <!-- <div class="col-lg-6">
             <input class="form-control mb-4" v-model="cCompanyNum" placeholder="사업자등록번호" readonly="readonly">
+          </div> -->
+          <div class="col-lg-6">
+            <input class="form-control mb-4" v-model="userData.cCeoPhone" placeholder="대표 전화번호" readonly="readonly">
           </div>
           <div class="col-lg-6">
-            <input class="form-control mb-4" v-model="cCeoPhone" placeholder="대표 전화번호" readonly="readonly">
+            <input class="form-control mb-4" v-model="userData.cManagerName" placeholder="담당자명" readonly="readonly">
           </div>
           <div class="col-lg-6">
-            <input class="form-control mb-4" v-model="cManagerName" placeholder="담당자명" readonly="readonly">
+            <input class="form-control mb-4" v-model="userData.cManagerPhone" placeholder="담당자 전화번호" readonly="readonly">
           </div>
-          <div class="col-lg-6">
-            <input class="form-control mb-4" v-model="cManagerPhone" placeholder="담당자 전화번호" readonly="readonly">
-          </div>
-          <div class="col-lg-6">
+          <!-- <div class="col-lg-6">
             <input class="form-control mb-4" v-model="cPassword" placeholder="비밀번호" readonly="readonly">
-          </div>
+          </div> -->
           <div class="col-lg-12">
-            <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소" readonly="readonly">
+            <input class="form-control mb-4" v-model="userData.cLocation" placeholder="회사 주소" readonly="readonly">
           </div>
         </form>
         </div>
@@ -69,7 +69,7 @@ import Const from '../../constant/constant';
         });
         await this.$http.get(Const.API_SERVER+'/co/mypage/showCompanyInfo',{params:{cLoginID:this.user.loginId}}).then(res=>{
           this.userData=res.data[0];
-          consoel.log(this.userData)
+          // console.log(this.userData)
         });
       },
       methods: {
