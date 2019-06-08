@@ -119,7 +119,8 @@ import {Calendar} from 'vue-bootstrap4-calendar';
         loadHiredStd(){
           this.$http.get(Const.API_SERVER+'/co/mypage/loadHiredStd',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester}}).then((res)=>{
             if(res.data.length==0){
-              console.log("확정된 학생이 없음");
+                alert("확정된 학생이 없습니다.")
+                this.$router.push('/appliedStd');
               return;
             }
             else{

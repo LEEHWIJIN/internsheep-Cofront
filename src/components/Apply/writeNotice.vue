@@ -16,7 +16,23 @@
             <div class="image-preview" v-if="imageData.length > 0">
                 <img class="preview" :src="imageData">
             </div>
-            </div> 
+            </div>
+              <div class="col-lg-12">
+                  <h6 style="font-weight:bold">회사 소개*</h6>
+                  <input class="form-control mb-4" v-model="cInfo" placeholder="회사 소개를 입력 해주세요">
+              </div>
+              <div class="col-lg-6">
+                  <h6 style="font-weight:bold">회사 이메일*</h6>
+                  <input class="form-control mb-4" v-model="cEmail" placeholder="회사 이메일을 입력 해주세요">
+              </div>
+              <div class="col-lg-6">
+                  <h6 style="font-weight:bold">담당자 성함*</h6>
+                  <input class="form-control mb-4" v-model="cManagerName" placeholder="담당자 성함을 입력 해주세요">
+              </div>
+              <div class="col-lg-6">
+                  <h6 style="font-weight:bold">담당자 연락처</h6>
+                  <input class="form-control mb-4" v-model="cManagerPhone" placeholder="담당자 연락처를 입력 해주세요">
+              </div>
             <div class="col-lg-6">
               <h6 style="font-weight:bold">회사 주소*</h6>
               <input class="form-control mb-4" v-model="cLocation" placeholder="회사 주소를 입력 해주세요">
@@ -80,6 +96,10 @@
           cOccupation : [],
           cNumOfPeople : [],
           cTag : [],
+            cManagerPhone :[],
+            cManagerName :[],
+            cInfo : [],
+            cEmail : [],
           internTermEnd : null,
              imageData: "",
            imageURL : null,
@@ -121,6 +141,10 @@
             data.append('cNumOfPeople',this.cNumOfPeople)
             data.append('cTag',  this.cTag)
             data.append('cLocation', this.cLocation)
+            data.append('cManagerPhone', this.cManagerPhone)
+            data.append('cManagerName', this.cManagerName)
+            data.append('cInfo', this.cInfo)
+            data.append('cEmail', this.cEmail)
             let config = {
                 header : {
                     'Content-Type' : 'multipart/form-data'
