@@ -11,19 +11,19 @@
       <form class="row" v-on:submit.prevent='submitNotice'>
         <div class="col-lg-12">
           <h6 style="font-weight:bold">회사 소개*</h6>
-          <input class="form-control mb-4" v-model="cInfo" placeholder="회사 주소를 입력 해주세요">
+          <input class="form-control mb-4" v-model="cInfo" placeholder="회사 소개를 입력 해주세요" readonly="readonly">
         </div>
         <div class="col-lg-6">
           <h6 style="font-weight:bold">회사 이메일*</h6>
-          <input class="form-control mb-4" v-model="cEmail" placeholder="복리후생 정보를 입력 해주세요">
+          <input class="form-control mb-4" v-model="cEmail" placeholder="회사 이메일을 입력 해주세요" readonly="readonly">
         </div>
         <div class="col-lg-6">
           <h6 style="font-weight:bold">담당자 성함*</h6>
-          <input class="form-control mb-4" v-model="cManagerName" placeholder="복리후생 정보를 입력 해주세요">
+          <input class="form-control mb-4" v-model="cManagerName" placeholder="담당자 성함을 입력 해주세요" readonly="readonly">
         </div>
         <div class="col-lg-6">
           <h6 style="font-weight:bold">담당자 연락처</h6>
-          <input class="form-control mb-4" v-model="cManagerPhone" placeholder="복리후생 정보를 입력 해주세요">
+          <input class="form-control mb-4" v-model="cManagerPhone" placeholder="담당자 연락처를 입력 해주세요" readonly="readonly">
         </div>
         <div class="col-lg-6">
           <h6 style="font-weight:bold">회사 주소*</h6>
@@ -118,6 +118,7 @@
         async getNotice(){
           await this.$http.get(Const.API_SERVER+'/co/mypage/watchNotice',{params:{cLoginID:this.user.loginId}}).then(res=>
           {
+              console.log(res.data[0])
             this.cName = res.data[0].cName;
             this.cLocation = res.data[0].cLocation;
             this.cBenefit = res.data[0].cBenefit;
