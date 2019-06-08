@@ -134,9 +134,7 @@
               </ul>
             </div>
           </li>
-          <div class="text-center">
-            <button  class="btn btn-primary" type="submit" >지원하기</button>      
-          </div>
+          
         </ul>
       </div>
     </div>
