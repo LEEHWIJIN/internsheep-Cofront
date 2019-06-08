@@ -134,7 +134,6 @@
               </ul>
             </div>
           </li>
-          
         </ul>
       </div>
     </div>
@@ -245,7 +244,7 @@ export default{
 
 .topImage {
   padding : 10px;
-  background: linear-gradient(80deg, #0064db 0%, #00a4db 100%);
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   height: 150px;
   border-radius: 5px;
 }
