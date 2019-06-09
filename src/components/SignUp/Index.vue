@@ -127,7 +127,7 @@ export default {
 
     .section1 {
       background-color: #007bff;
-      background: linear-gradient(to right, #0062E6, #33AEFF);
+      background: linear-gradient(to right, #5416b4, #7027c3);
       padding-bottom:150px;
       padding-top:150px;
     }
