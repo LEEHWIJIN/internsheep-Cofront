@@ -41,7 +41,7 @@
                 </li>
                 <li class="list-form pt-2 pb-1">
                   학생 이름 <br>
-                  <div v-for="(SL,index) in studentInfo" @click="pickStd(index)"  class="student-name">
+                  <div v-for="(SL,index) in studentInfo" @click="pickStd(index)" style="cursor:pointer;" class="student-name">
                     {{SL.sName}}
                   </div>
                 </li>
@@ -180,7 +180,7 @@ import {Calendar} from 'vue-bootstrap4-calendar';
           var month = '' + (a.getMonth() + 1);
           var day = '' + a.getDate();
           var year = a.getFullYear();
-          var date =[year, month, day].join('.');
+          var date =[year, month, day].join('-');
           this.pickDate = date;
           // console.log(this.pickDate)
         },
