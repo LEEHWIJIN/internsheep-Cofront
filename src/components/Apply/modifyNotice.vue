@@ -228,6 +228,10 @@ import Const from '../../constant/constant';
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
             this.cTag = res.data[0].cTag;
+            this.cInfo = res.data[0].cInfo;
+            this.cEmail = res.data[0].cEmail;
+            this.cManagerPhone = res.data[0].cManagerPhone;
+            this.cManagerName =res.data[0].cManagerName;
           })
         },
       }
