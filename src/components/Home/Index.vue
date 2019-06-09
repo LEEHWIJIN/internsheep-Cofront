@@ -40,6 +40,85 @@
             </div>
           </div>
         </section>
+        <section class="section1">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 mb-5 text-center">
+                <p class="subtitle mt-4">직군 찾기</p>
+                <h2 class="section-title pb-3">해쉬태그를 통해 원하는 직군을 찾아보세요.</h2>
+                <p class="pr-3">인턴쉽 학생들이 원하는 직군에 지원할 수 있도록 하기 위해 분야별, 언어별, 스킬별 해쉬태그 검색을 지원합니다. <br>다양한 분야의 직군을 찾아보고, 자신에게 맞는 분야에 지원해보세요! </p>
+              </div>
+              <div class="col-lg-12">
+                <div class="row category-slider">
+                  <div class="col-lg-3 col-sm-6 mb-5">
+                    <div class="card border-0 shadow rounded-xs pt-5">
+                      <div class="card-body">
+                        <i class="fa fa-object-ungroup icon-lg icon-primary icon-bg-primary icon-bg-circle mb-3"></i>
+                        <h4 class="mt-4 mb-3">네트워크</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 mb-5">
+                    <div class="card border-0 shadow rounded-xs pt-5">
+                      <div class="card-body">
+                        <i class="fa fa-users icon-lg icon-yellow icon-bg-yellow icon-bg-circle mb-3"></i>
+                        <h4 class="mt-4 mb-3">기획</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 mb-5">
+                    <div class="card border-0 shadow rounded-xs pt-5">
+                      <div class="card-body">
+                        <i class="fa fa-desktop icon-lg icon-purple icon-bg-purple icon-bg-circle mb-3"></i>
+                        <h4 class="mt-4 mb-3">웹 개발</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 mb-5">
+                    <div class="card border-0 shadow rounded-xs pt-5">
+                      <div class="card-body">
+                        <i class="fa fa-cloud icon-lg icon-cyan icon-bg-cyan icon-bg-circle mb-3"></i>
+                        <h4 class="mt-4 mb-3">클라우드 컴퓨팅</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 mb-5">
+                    <div class="card border-0 shadow rounded-xs pt-5">
+                      <div class="card-body">
+                        <i class="fa fa-comments icon-lg icon-red icon-bg-red icon-bg-circle mb-3"></i>
+                        <h4 class="mt-4 mb-3">딥러닝</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 mb-5">
+                    <div class="card border-0 shadow rounded-xs pt-5">
+                      <div class="card-body">
+                        <i class="fa fa-search-plus icon-lg icon-green icon-bg-green icon-bg-circle mb-3"></i>
+                        <h4 class="mt-4 mb-3">보안</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 mb-5">
+                    <div class="card border-0 shadow rounded-xs pt-5">
+                      <div class="card-body">
+                        <i class="fa fa-line-chart icon-lg icon-orange icon-bg-orange icon-bg-circle mb-3"></i>
+                        <h4 class="mt-4 mb-3">데이터 분석</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6 mb-5">
+                    <div class="card border-0 shadow rounded-xs pt-5">
+                      <div class="card-body">
+                        <i class="fa fa-wpexplorer icon-lg icon-blue icon-bg-blue icon-bg-circle mb-3"></i>
+                        <h4 class="mt-4 mb-3">임베디드</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       <v-footer></v-footer>
     </div>
 </template>
@@ -74,5 +153,9 @@
 <style scoped>
 #Home {
  background-image:linear-gradient(to right, #a517ba, #5f1782);
+}
+
+.section1 {
+  background-color: #fafafa;
 }
 </style>
