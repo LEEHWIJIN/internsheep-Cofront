@@ -22,7 +22,7 @@
             <!-- <div class="row rounded-sm shadow-sm" style="background: white;"> -->
               <div class="col-lg-8">
                 <!-- 캘린더 -->
-                <div v-for="(info,index) in studentInfo">
+                <div>
                   <vue-calendar
                     :show-limit="3"
                     @show-all="showAll"
@@ -41,8 +41,8 @@
                 </li>
                 <li class="list-form pt-2 pb-1">
                   학생 이름 <br>
-                  <div v-for="(SL,index) in studentInfo" @click="pickStd(index)" style="cursor:pointer;" class="student-name">
-                    {{SL.sName}}
+                  <div class="student-name">
+                    <div v-for="(SL,index) in studentInfo" @click="pickStd(index)" style="cursor:pointer;">{{SL.sName}}</div>
                   </div>
                 </li>
                 <li class="pt-2 pb-1">
