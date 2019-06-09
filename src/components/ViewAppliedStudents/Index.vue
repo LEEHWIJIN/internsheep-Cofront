@@ -834,11 +834,11 @@
                 plotOptions: {
                     bar: {
                         columnWidth: '45%',
-                        distributed: true
+                        distributed: true,
+                        dataLabels: {
+                            position: 'top', // top, center, bottom
+                        },
                     }
-                },
-                dataLabels: {
-                    enabled: false,
                 },
                 title: {
                     text: 'C언어',
@@ -851,6 +851,18 @@
                     text: '0 : 배운적 없음,  1 : 맛보기 수준,  2 : 초보 수준,  3 : 실무 가능,  4 : 나름 고수',
                     align: 'center',
                 },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function (val) {
+                        return val;
+                    },
+                    offsetY: -20,
+                    align: 'top',
+                    style: {
+                        fontSize: '12px',
+                        colors: ["#304758"]
+                    }
+                },
                 xaxis: {
                     categories: [],
                     labels: {
@@ -859,6 +871,22 @@
                             fontSize: '14px'
                         }
                     }
+                },
+                yaxis: {
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    labels: {
+                        show: false,
+                        position: 'top',
+                        formatter: function (val) {
+                            return val;
+                        }
+                    }
+
                 }
             }
         }
