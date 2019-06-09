@@ -45,7 +45,7 @@
           <h6 style="font-weight:bold">모집인원*</h6>
           <input class="form-control mb-4" v-model="cNumOfPeople" placeholder="모집인원을 입력 해주세요" readonly="readonly">
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-12">
           <h6 style="font-weight:bold">태그*</h6>
           <input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요" readonly="readonly">
         </div>
