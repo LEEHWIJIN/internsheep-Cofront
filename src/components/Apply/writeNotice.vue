@@ -62,12 +62,12 @@
                   <input class="form-control mb-4" v-model="cID_1" placeholder="사업자등록번호를 입력 해주세요">
             </div><br> -->
 
-      <div class="col-lg-6">
+      <div class="col-lg-12">
         <h6 style="font-weight:bold">실습시작일*</h6>
         <date-picker v-model="internTermStart"/>
         <!-- <input style="width:200px" type="text" v-model="internTermStart"> -->
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-12">
         <h6 style="font-weight:bold">실습종료일*</h6>
         <date-picker v-model="internTermEnd"/>
         <!-- <input style="width:200px" type="text" v-model="internTermEnd"> -->

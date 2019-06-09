@@ -37,17 +37,17 @@
                   <h4>Attendance Info</h4>
                 </div>
                 <li class="list-form pt-2 pb-1">
-                  선택 날짜 <br>
+                  선택 날짜 <br> {{pickDate}}
                 </li>
                 <li class="list-form pt-2 pb-1">
                   학생 이름 <br>
-                  <div class="student-name">
-
+                  <div v-for="(SL,index) in studentInfo" @click="pickStd(index)"  class="student-name">
+                    {{SL.sName}}
                   </div>
                 </li>
                 <li class="pt-2 pb-1">
                   출석 여부 <br>
-                  <select class="selectpicker select-size" @change="attendanceChange(index,$event)">
+                  <select class="selectpicker select-size" @change="attendanceChange($event)">
                     <option value="" selected disabled hidden style="font-color:#aab1bb;">출석여부</option>
                     <option value="출석">출석</option>
                     <option value="결석">결석</option>
@@ -138,10 +138,18 @@ import {Calendar} from 'vue-bootstrap4-calendar';
             }
           })
         },
-        attendanceChange(index,event){
+        pickStd(index){
           this.pickStudent = index;
+          console.log(index);
+          // this.studentInfo[index].val = event.target.value;
+          // this.studentInfo[index].id = this.pickDate;
+        },
+        attendanceChange(event){
+          // this.pickStudent = index;
+          var index = this.pickStudent;
           this.studentInfo[index].val = event.target.value;
           this.studentInfo[index].id = this.pickDate;
+          console.log(this.studentInfo[index]);
         },
         async modify(){
           await this.$http.get(Const.API_SERVER+'/co/mypage/loadInterTerm',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester,date : this.pickDate}}).then((res)=>{
