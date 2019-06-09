@@ -894,6 +894,7 @@
       components: {
         VBase,
         VCategory,
+          VError,
         appMyModal: myModal,
           apexchart: VueApexCharts,
       },
