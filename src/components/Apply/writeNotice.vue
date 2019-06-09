@@ -8,7 +8,7 @@
           <form class="row" v-on:submit.prevent='submitNotice'>
             <div class="col-lg-12 mb-4">
               <h6 style="font-weight:bold">회사 이미지</h6>
-    
+
             <div class="file-upload-form">
                 Upload an image file:
                 <input type="file" @change="previewImage" accept="image/*">
@@ -51,9 +51,9 @@
             </div>
             <div class="col-lg-6">
               <h6 style="font-weight:bold">모집인원*</h6>
-              <input class="form-control mb-4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" v-model="cNumOfPeople" placeholder="모집인원을 숫자로 입력 해주세요">명
+              <input class="form-control mb-4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" v-model="cNumOfPeople" placeholder="모집인원을 숫자로 입력 해주세요">
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <h6 style="font-weight:bold">태그*</h6>
               <input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요">
             </div>
@@ -128,7 +128,7 @@
                 fr.readAsDataURL(input.files[0]);
                 this.imageURL=input.files[0]
             }
-        }, 
+        },
         submitNotice(){
             var data = new FormData();
             data.append('cLoginID',this.user.loginId)

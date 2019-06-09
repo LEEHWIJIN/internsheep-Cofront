@@ -107,7 +107,7 @@ h6,
   left: 0;
   width: 102%;
   height: 100%;
-  background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+  background-image:  linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   z-index: -1;
   transition: ease 0.3s;
 }
@@ -132,7 +132,7 @@ h6,
 
 .btn-light:hover {
   color: #fff;
-  background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+  background: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
 }
 
 .btn-outline-primary {
@@ -313,7 +313,7 @@ a.text-light:hover {
   width: 100%;
   left: 0;
   top: 0;
-  background-image: linear-gradient(134deg, #00a4db 0%, #00269e 100%);
+  background-image:  linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   content: "";
   opacity: .7;
   border-radius: inherit;
@@ -1333,7 +1333,7 @@ textarea.form-control {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   border-radius: 45px;
-  background: linear-gradient(45deg, #003cff, #008fbf);
+  background: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
 }
 
 .icon-quote {
@@ -1474,7 +1474,7 @@ textarea.form-control {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(115deg, #00269e 0%, #00a4db 100%);
+  background: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   opacity: 0;
   transition: all linear 0.3s;
 }
@@ -1627,7 +1627,7 @@ textarea.form-control {
 }
 
 .tag-list li a:hover {
-  background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+  background:  linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   color: #fff !important;
 }
 
@@ -1636,7 +1636,7 @@ textarea.form-control {
 blockquote {
   box-shadow: inset 0px 7px 0px 0px rgba(255, 255, 255, 0.596);
   padding: 34px 40px 37px 40px;
-  background-image: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
+  background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   border-radius: 10px;
   margin: 40px 0;
 }
@@ -1694,7 +1694,7 @@ form textarea {
 /* subscription */
 @media (max-width: 991px) {
   .subscription {
-    background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
+    background:  linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   }
 }
 
@@ -1723,7 +1723,7 @@ form textarea {
   padding: 70px 50px;
   z-index: 1;
   width: 100%;
-  background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
+  background: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   position: absolute;
   top: -120px;
 }
