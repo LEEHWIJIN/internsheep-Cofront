@@ -150,11 +150,11 @@
 <style scoped>
 
 .hi {
-  height: 100vh;
+  /*height: 100vh;*/
 }
 .section {
-  padding-top: 80px;
-  padding-bottom: 0px;
+  padding-top: 90px;
+  padding-bottom: 40px;
   /* height:100vh; */
 }
 

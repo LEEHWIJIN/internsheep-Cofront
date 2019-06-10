@@ -1,22 +1,24 @@
 <!-- 회원 정보 수정 페이지  -->
 <template>
-  <section class="section section-lg-bottom bg-light">
-    <div  class="container" id="apply">
-      <v-base></v-base>
-      <div class="row">
-      <!-- 카테고리란 -->
-        <div class="col-lg-3">
-          <v-category></v-category>
+  <div class="bg-light">
+    <v-base></v-base>
+    <section class="section section-lg-bottom bg-light">
+      <div  class="container" id="apply">
+        <div class="row">
+          <!-- 카테고리란 -->
+          <div class="col-lg-3">
+            <v-category></v-category>
+          </div>
+          <!-- 공백 -->
+          <div class="col-lg-1">
+          </div>
+          <v-read-profile v-if="$store.state.profile.profile_state==0"></v-read-profile>
+          <v-modify-profile v-if="$store.state.profile.profile_state==1"></v-modify-profile>
         </div>
-        <!-- 공백 -->
-        <div class="col-lg-1">
-        </div>
-        <v-read-profile v-if="$store.state.profile.profile_state==0"></v-read-profile>
-        <v-modify-profile v-if="$store.state.profile.profile_state==1"></v-modify-profile>
       </div>
-    </div>
-    <v-footer></v-footer>
-</section>
+    </section>
+    <v-footer class="mt-4"></v-footer>
+  </div>
 </template>
 
 <script>
@@ -63,6 +65,9 @@ import VFooter from '../Footer/Index.vue';
 </script>
 
 <style scoped>
+  .section {
+    padding-top:130px;
+  }
 </style>
 <!-- Main Stylesheet -->
 <link href="css/style.css" rel="stylesheet">

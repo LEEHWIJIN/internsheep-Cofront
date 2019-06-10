@@ -1,33 +1,34 @@
 <!-- 공고 작성 페이지  -->
 <template>
-<section class="section section-lg-bottom bg-light">
-  <div  class="container" id="managementStd">
+  <div class="bg-light">
     <v-base></v-base>
-      <div class="row">
-        <!-- 카테고리란 -->
-        <div class="col-lg-3">
-          <v-category></v-category>
-        </div>
-        <!-- 공백 -->
-        <div class="col-lg-1">
-        </div>
-        <!-- 내용 -->
-        <div class="col-lg-8">
-          <div class="col-lg-12 text-center">
-            <p class="subtitle">Manage</p>
-            <h2 class="section-title">Manage Student</h2>
+    <section class="section section-lg-bottom bg-light">
+      <div  class="container" id="managementStd">
+        <div class="row">
+          <!-- 카테고리란 -->
+          <div class="col-lg-3">
+            <v-category></v-category>
           </div>
-          <div class="row rounded-sm shadow-sm b-2 p-3" style="background: white;">
+          <!-- 공백 -->
+          <div class="col-lg-1">
+          </div>
+          <!-- 내용 -->
+          <div class="col-lg-8">
+            <div class="col-lg-12 text-center">
+              <p class="subtitle">Manage</p>
+              <h2 class="section-title">Manage Student</h2>
+            </div>
+            <div class="row rounded-sm shadow-sm b-2 p-3" style="background: white;">
 
-            <!-- <div class="row rounded-sm shadow-sm" style="background: white;"> -->
+              <!-- <div class="row rounded-sm shadow-sm" style="background: white;"> -->
               <div class="col-lg-8">
                 <!-- 캘린더 -->
                 <div>
                   <vue-calendar
-                    :show-limit="3"
-                    @show-all="showAll"
-                    @event-clicked="eventClicked"
-                    @month-changed="monthChanged"
+                          :show-limit="3"
+                          @show-all="showAll"
+                          @event-clicked="eventClicked"
+                          @month-changed="monthChanged"
                   ></vue-calendar>
                 </div>
               </div>
@@ -60,26 +61,28 @@
                   <button class="btn btn-primary" @click="modify">저장</button>
                 </div>
               </div>
-            <!-- </div> -->
+              <!-- </div> -->
+
+            </div>
+
 
           </div>
-
-
         </div>
       </div>
+    </section>
+    <v-footer class="mt-4"></v-footer>
   </div>
-</section>
 </template>
-
 
 <script>
 import {Calendar} from 'vue-bootstrap4-calendar';
-  import VFooter from '../Footer/Index.vue'
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   import Const from '../../constant/constant';
+import VFooter from '../Footer/Index.vue'
 
-  export default{
+
+export default{
       name: 'ManagementStd',
       data() {
         return {
@@ -211,8 +214,14 @@ import {Calendar} from 'vue-bootstrap4-calendar';
   overflow-x: hidden;
 }
 
+.section {
+  padding-top:130px;
+}
+
 .select {
   height: 25px !important;
   width: 80px !important;
 }
+
+
 </style>
