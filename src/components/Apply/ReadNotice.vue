@@ -63,10 +63,10 @@
           <input class="form-control mb-4" type="text" v-model="internTermEnd" readonly="readonly">
           <Image src="https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png" stretch="none" />
         </div>
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
           <h6 style="font-weight:bold">프로필 사진*</h6>
           <img id='img' :src="uploadImage" style="width:200px; height:200px; background-color: white; border: 1px solid #DDD; padding: 5px;"/>
-        </div>
+        </div> -->
       </form>
     </div>
 </template>
@@ -110,7 +110,7 @@
           return this.user;
         });
         await this.getNotice();
-        await this.loadImage(this.user.loginId);
+        // await this.loadImage(this.user.loginId);
         await this.loadcoTag();
       },
       methods: {
@@ -143,9 +143,9 @@
             this.cManagerPhone = res.data[0].cManagerPhone;
           })
         },
-        loadImage(loginId){
-            this.uploadImage = Const.API_SERVER+'/co/mypage/getProfileImage?cLoginID='+this.user.loginId
-        }
+        // loadImage(loginId){
+        //     this.uploadImage = Const.API_SERVER+'/co/mypage/getProfileImage?cLoginID='+this.user.loginId
+        // }
       }
   }
 </script>
