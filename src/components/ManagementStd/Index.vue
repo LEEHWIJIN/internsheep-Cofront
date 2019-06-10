@@ -48,7 +48,7 @@
                 </li>
                 <li class="pt-2 pb-1">
                   출석 여부 <br>
-                  <select class="selectpicker select-size" @change="attendanceChange($event)">
+                  <select @change="attendanceChange($event)">
                     <option value="" selected disabled hidden style="font-color:#aab1bb;">출석여부</option>
                     <option value="출석">출석</option>
                     <option value="결석">결석</option>
