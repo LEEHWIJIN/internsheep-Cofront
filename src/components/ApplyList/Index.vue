@@ -1,64 +1,65 @@
 
 <template>
-  <section class="section section-lg-bottom bg-light">
+  <div class="hi bg-light">
     <v-base></v-base>
-    <div class="mt-4 text-center">
-      <br>
-    </div>
-    <div class="container rounded-sm bg-white shadow">
-      <div id="apply">
-        <!-- <v-CoList :applylist="applylist" @clickCo="clickCo"></v-CoList> -->
-        <div class="row">
-          <!-- 기업 목록 -->
-          <div class="companyList col-lg-5">
-            <div class="search-container pt-3">
-              <form class="search-form pb-2" action="/action_page.php">
-                <input class="search-input" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
-                <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
-              </form>
-            </div>
-            <div class="company-item comanyList">
-              <ul class="list-styled list-bordered">
-                  <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)" v-if="AL.cName.includes(searchinput)||AL.cOccupation.includes(searchinput)||AL.cTag.includes(searchinput)">
-                    <div class="zoom">
-                      <li><a class="media align-items-center flex-column flex-sm-row">
-                        <!-- {{index+1}} -->
-                        <!-- 회사 사진 -->
-                        <img src="images/career/logo-1.png" class="mr-sm-0 mb-4 mb-sm-0 rounded p-3" alt="logo-1">
-                        <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:100%">
-                          <!-- 모집 직군 -->
-                          <span class="h6" style="font-weight: bold;">{{AL.cOccupation}}</span><br>
-                          <!-- 기업명 -->
-                          <span style="font-size: 12px; color: #8b8e93;">{{AL.cName}}<br></span>
-                          <!-- 태그 -->
-                          <span style="font-size: 12px; color: #8b8e93;">{{AL.cTag}}<br></span>
-                        </div>
-                        <!-- 경쟁률 -->
-                        <div class="" style="line-height:120%">
-                          <br><br>
-                          <a class="mr-sm-3 paragraph">
-                            <span style="font-size: 12px">모집:</span>{{AL.cNumOfPeople}}
-                            <span class="h4" style="color:#0064db">
-                            <span style="font-size: 12px"> 지원:</span>{{AL.applyStdNum}}</span>
-                          </a>
-                        </div>
-                      </a></li>
-                    </div>
-                  </div>
-                </ul>
-            </div>
-          </div>
-          <!-- 기업 상세 목록 -->
-          <div class="company-item detailList col-lg-10 ">
-              <div>
-                <v-detail-list :selectedCo="selectedCo"></v-detail-list>
-              </div>
-          </div>
-        </div>
+    <section class="section section-lg-bottom bg-light">
+      <div class="mt-4 text-center">
+        <br>
       </div>
-    </div>
+      <div class="container rounded-sm bg-white shadow">
+          <!-- <v-CoList :applylist="applylist" @clickCo="clickCo"></v-CoList> -->
+          <div class="row">
+            <!-- 기업 목록 -->
+            <div class="companyList col-lg-5">
+              <div class="search-container pt-3">
+                <form class="search-form pb-2" action="/action_page.php">
+                  <input class="search-input" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
+                  <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
+                </form>
+              </div>
+              <div class="company-item comanyList">
+                <ul class="list-styled list-bordered">
+                    <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)" v-if="AL.cName.includes(searchinput)||AL.cOccupation.includes(searchinput)||AL.cTag.includes(searchinput)">
+                      <div class="zoom">
+                        <li><a class="media align-items-center flex-column flex-sm-row">
+                          <!-- {{index+1}} -->
+                          <!-- 회사 사진 -->
+                          <img src="images/career/logo-1.png" class="mr-sm-0 mb-4 mb-sm-0 rounded p-3" alt="logo-1">
+                          <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="line-height:100%">
+                            <!-- 모집 직군 -->
+                            <span class="h6" style="font-weight: bold;">{{AL.cOccupation}}</span><br>
+                            <!-- 기업명 -->
+                            <span style="font-size: 12px; color: #8b8e93;">{{AL.cName}}<br></span>
+                            <!-- 태그 -->
+                            <span style="font-size: 12px; color: #8b8e93;">{{AL.cTag}}<br></span>
+                          </div>
+                          <!-- 경쟁률 -->
+                          <div class="" style="line-height:120%">
+                            <br><br>
+                            <a class="mr-sm-3 paragraph">
+                              <span style="font-size: 12px">모집:</span>{{AL.cNumOfPeople}}
+                              <span class="h4" style="color:#0064db">
+                              <span style="font-size: 12px"> 지원:</span>{{AL.applyStdNum}}</span>
+                            </a>
+                          </div>
+                        </a></li>
+                      </div>
+                    </div>
+                  </ul>
+              </div>
+            </div>
+            <!-- 기업 상세 목록 -->
+            <div class="company-item detailList col-lg-10 ">
+                <div>
+                  <v-detail-list :selectedCo="selectedCo"></v-detail-list>
+                </div>
+            </div>
+          </div>
+      </div>
+    </section>
     <v-footer class="mt-4"></v-footer>
-  </section>
+  </div>
+
 </template>
 <script>
  import VBase from '../Base/Index.vue'
@@ -147,9 +148,14 @@
 </script>
 
 <style scoped>
+
+.hi {
+  height: 100vh;
+}
 .section {
   padding-top: 80px;
   padding-bottom: 0px;
+  /* height:100vh; */
 }
 
 .company-item {
