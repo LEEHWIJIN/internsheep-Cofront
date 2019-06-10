@@ -118,16 +118,12 @@ import Const from '../../constant/constant';
   --input-padding-y: .75rem;
 }
 
-.row{
-  padding-top: 10%;
-}
-
 .section1 {
   background-color: #007bff;
   background: linear-gradient(to right, #5416b4, #7027c3);
-  /* padding-bottom:150px;
-  padding-top:150px; */
-  height:100vh;
+  padding-bottom:150px;
+  padding-top:150px;
+  /* margin-bottom: 100px; */
 }
 
 .card-signin {
