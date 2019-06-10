@@ -1,22 +1,13 @@
 <!-- 신청 학생 뷰 페이지 -->
 <template>
-<section class="section section-lg-bottom bg-light">
-  <div class="container" id="apply">
+  <div class="bg-light">
     <v-base></v-base>
-    <div class="row">
-      <!-- 카테고리란 -->
-      <div class="col-lg-3">
-        <v-category></v-category>
-      </div>
-      <!-- 공백 -->
-      <div class="col-lg-1">
-      </div>
-      <!-- 지원 현황 -->
-      <div class="col-lg-8">
+    <section class="section section-lg-bottom bg-light">
+      <div class="container" id="apply">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <p class="subtitle">Students</p>
-            <h2 class="section-title">Applied Students</h2>
+          <!-- 카테고리란 -->
+          <div class="col-lg-3">
+            <v-category></v-category>
           </div>
           <div class="col-lg-12">
             <div v-if="$store.state.apply.apply_state==0">
@@ -752,17 +743,14 @@
                       </div>
                     </b-modal>
                   </div>
-                  <!-- 학생 상세 정보 버튼 -->
-                  <!-- <a href="#" @click="finishJudge(index,sl.selected)" class="btn btn-outline-primary">심사 완료</a> -->
                 </div>
+                <v-error v-else-if="$store.state.apply.apply_state==1"></v-error>
               </div>
-            </div>
-            <v-error v-else-if="$store.state.apply.apply_state==1"></v-error>
-          </div>
 
-          <div class="col-12 text-center" style="font-size: 15px">
-             내 상태 : {{cStatus}}
-          </div><br/>
+              <div class="col-12 text-center" style="font-size: 15px">
+                내 상태 : {{cStatus}}
+              </div><br/>
+
 
           <div class="col-12 text-center mb-4">
             <br/>
@@ -770,17 +758,19 @@
             <button class="btn btn-primary ml-2" v-if="cStatus=='심사중'" @click="changeStatus()">지원 그만 받기</button>
           </div>
 
-          <div class="col-12 text-center">
-          <div id="chart">
-            <apexchart type=bar height=350 :options="chartOptions" :series="series" />
-          </div>
-          </div>
+              <div class="col-12 text-center">
+                <div id="chart">
+                  <!--<apexchart id ="mychart" type=bar height=350 :options="chartOptions" :series="series"/>-->
+                </div>
+              </div>
 
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+    <v-footer class="mt-4"></v-footer>
   </div>
-  </section>
 </template>
 
 <script>
@@ -792,6 +782,8 @@
   import VError from './Error.vue'
   import VNoNoticeError from './NoNoticeError.vue'
   import Const from '../../constant/constant';
+  import VFooter from '../Footer/Index.vue'
+
 
 
   var colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#546E7A', '#26a69a', '#D10CE8'];
@@ -819,88 +811,24 @@
             userCloudLang:[],
             userGrade:[],
             userEng:[],
-            series: [{
-                name: 'C언어 수준',
-                data: []
-            }],
-            chartOptions: {
-                chart: {
-                    height: 350,
-                    type: 'bar',
-                    events: {
-                        click: function (chart, w, e) {
-                            // console.log(chart, w, e)
-                        }
-                    },
-                },
-                colors: colors,
-                plotOptions: {
-                    bar: {
-                        columnWidth: '45%',
-                        distributed: true,
-                        dataLabels: {
-                            position: 'top', // top, center, bottom
-                        },
-                    }
-                },
-                title: {
-                    text: 'C언어',
-                    align: 'center',
-                    style: {
-                        fontSize: '20px'
-                    }
-                },
-                subtitle: {
-                    text: '0 : 배운적 없음,  1 : 맛보기 수준,  2 : 초보 수준,  3 : 실무 가능,  4 : 나름 고수',
-                    align: 'center',
-                },
-                dataLabels: {
-                    enabled: true,
-                    formatter: function (val) {
-                        return val;
-                    },
-                    offsetY: -20,
-                    align: 'top',
-                    style: {
-                        fontSize: '12px',
-                        colors: ["#304758"]
-                    }
-                },
-                xaxis: {
-                    categories: [],
-                    labels: {
-                        style: {
-                            colors: colors,
-                            fontSize: '14px'
-                        }
-                    }
-                },
-                yaxis: {
-                    axisBorder: {
-                        show: false
-                    },
-                    axisTicks: {
-                        show: false,
-                    },
-                    labels: {
-                        show: false,
-                        position: 'top',
-                        formatter: function (val) {
-                            return val;
-                        }
-                    }
-
-                }
-            }
         }
       },
       components: {
         VBase,
         VCategory,
           VError,
-        appMyModal: myModal,
+          VFooter,
+
+          appMyModal: myModal,
           apexchart: VueApexCharts,
       },
+      // async beforeMount(){
+      //     // await this.$http.get(Const.API_SERVER + '/' ,{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
+      //     //     this.user = res.data.user;
+      //     //     return this.user;
+      //     // });
+      //     // await this.getSemester();
+      // },
       async created(){
         await this.$http.get(Const.API_SERVER + '/' ,{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
           this.user = res.data.user;
@@ -1094,8 +1022,10 @@
           })
         },
             chart(stdList) {
+            var a= []
+                var b = []
                 for (var i = 0; i < stdList.length; i++) {
-                    this.chartOptions.xaxis.categories[i] = stdList[i].sName
+                    b.push(stdList[i].sName)
                     if (this.userProgrammingLang[i].C == '배운적 없음')
                         this.userProgrammingLang[i].C = 0
                     else if (this.userProgrammingLang[i].C == '맛보기 수준')
@@ -1106,8 +1036,83 @@
                         this.userProgrammingLang[i].C = 3
                     else if (this.userProgrammingLang[i].C == '나름 고수')
                         this.userProgrammingLang[i].C = 4
-                    this.series[0].data[i] = this.userProgrammingLang[i].C
+                   a.push(this.userProgrammingLang[i].C)
                 };
+                var options = {
+                    chart: {
+                        height: 350,
+                        type: 'bar',
+                        events: {
+                            click: function (chart, w, e) {
+                                // console.log(chart, w, e)
+                            }
+                        },
+                    },
+                    series: [{
+                        name: 'C언어 수준',
+                        data: a
+                    }],
+                        colors: colors,
+                        plotOptions: {
+                            bar: {
+                                columnWidth: '45%',
+                                distributed: true,
+                                dataLabels: {
+                                    position: 'top', // top, center, bottom
+                                },
+                            }
+                        },
+                        title: {
+                            text: 'C언어',
+                            align: 'center',
+                            style: {
+                                fontSize: '20px'
+                            }
+                        },
+                        subtitle: {
+                            text: '0 : 배운적 없음,  1 : 맛보기 수준,  2 : 초보 수준,  3 : 실무 가능,  4 : 나름 고수',
+                            align: 'center',
+                        },
+                        dataLabels: {
+                            enabled: true,
+                            formatter: function (val) {
+                                return val;
+                            },
+                            offsetY: -20,
+                            align: 'top',
+                            style: {
+                                fontSize: '12px',
+                                colors: ["#304758"]
+                            }
+                        },
+                        xaxis: {
+                            categories: b,
+                            labels: {
+                                style: {
+                                    colors: colors,
+                                    fontSize: '14px'
+                                }
+                            }
+                        },
+                        yaxis: {
+                            axisBorder: {
+                                show: false
+                            },
+                            axisTicks: {
+                                show: false,
+                            },
+                            labels: {
+                                show: false,
+                                position: 'top',
+                                formatter: function (val) {
+                                    return val;
+                                }
+                            }
+                    }
+                }
+
+                var chart = new ApexCharts(document.querySelector("#chart"), options);
+                chart.render();
             },
             async finishJudge(){
                 for(var i=0 ;i<this.stdList.length;i++){
@@ -1160,5 +1165,10 @@
     width:100px;
     border-radius: 50%;
     border-color: coral;
+  }
+
+
+  .section{
+    padding-top:130px;
   }
 </style>

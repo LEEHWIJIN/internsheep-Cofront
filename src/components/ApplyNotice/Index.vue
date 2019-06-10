@@ -1,19 +1,20 @@
 <!-- 공고 신청 페이지 -->
 <template>
-  <section class="section section-lg-bottom bg-light">
-    <div class="container" id="apply">
-      <v-base></v-base>
-      <div class="row">
-        <!-- 카테고리란 -->
-        <div class="col-lg-3">
-          <v-category></v-category>
-        </div>
-        <!-- 공백 -->
-        <div class="col-lg-1">
-        </div>
-        <!-- 지원 현황 -->
-        <div class="col-lg-8">
-          <div class="row">
+  <div class="bg-light">
+    <v-base></v-base>
+    <section class="section section-lg-bottom bg-light">
+      <div class="container" id="apply">
+        <div class="row">
+          <!-- 카테고리란 -->
+          <div class="col-lg-3">
+            <v-category></v-category>
+          </div>
+          <!-- 공백 -->
+          <div class="col-lg-1">
+          </div>
+          <!-- 지원 현황 -->
+          <div class="col-lg-8">
+            <div class="row">
               <div class="col-lg-12 text-center">
                 <p class="subtitle">Apply</p>
                 <h2 class="section-title">Apply Notice</h2>
@@ -52,21 +53,25 @@
                 이상 끝.
                 </textarea>
 
-                <input type="checkbox" name="checkbox1" value="agree"> 이용약관과 개인정보 수집 및 이용에 대한 안내에 동의합니다. <br><br>
-                <button  class="btn btn-primary" type="submit" >N차 지원하기</button>
-            </form>
+                  <input type="checkbox" name="checkbox1" value="agree"> 이용약관과 개인정보 수집 및 이용에 대한 안내에 동의합니다. <br><br>
+                  <button  class="btn btn-primary" type="submit" >N차 지원하기</button>
+                </form>
               </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <v-footer class="mt-4"></v-footer>
+  </div>
 </template>
 
 <script>
 import Const from '../../constant/constant';
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
+import VFooter from '../Footer/Index.vue'
+
   export default{
       name: 'Apply',
       data() {
@@ -80,6 +85,8 @@ import Const from '../../constant/constant';
       components: {
         VBase,
         VCategory,
+          VFooter,
+
       },
       created(){
         this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
@@ -134,6 +141,13 @@ import Const from '../../constant/constant';
 </script>
 
 <style scoped>
+
+  .section{
+    padding-top:130px;
+    height:100%;
+    padding-bottom:250px;
+  }
+
 #apply{
 }
 </style>
