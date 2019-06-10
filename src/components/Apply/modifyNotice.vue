@@ -61,25 +61,26 @@
              <div class="mb-1">
                <!-- string value -->
                <model-select :options="options2"
-                                       v-model="item2"
-                                       placeholder="추천 태그">
+                             v-model="item2"
+                                       placeholder="태그" @select="selectFromParentComponent2">
+                   {{lastSelect}}
                </model-select>
              </div>
 <!--  -->
-              <p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 사용자 입력 태그</p>
-              <input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요 ( ex. #프론트엔드개발자 #서버관리 )">
+              <!--<p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 사용자 입력 태그</p>-->
+              <!--<input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요 ( ex. #프론트엔드개발자 #서버관리 )">-->
               <p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 추가된 태그</p>
               <div class="bg-gray-light mb-3 p-2">
-                <button onclick="cTagArray('JAVA')" type="button" class="btn tag-light btn-sm m-1" name="button">Java &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('C++')" type="button" class="btn tag-light btn-sm m-1" name="button">C++ &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('C')" type="button" class="btn tag-light btn-sm m-1" name="button">C &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('Python')" type="button" class="btn tag-light btn-sm m-1" name="button">Python &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('Javascript')" type="button" class="btn tag-light btn-sm m-1" name="button">Javascript &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('Database')" type="button" class="btn tag-light btn-sm m-1" name="button">Database &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('Mysql')" type="button" class="btn tag-light btn-sm m-1" name="button">Mysql &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('Django')" type="button" class="btn tag-light btn-sm m-1" name="button">Django &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('Vue.js')" type="button" class="btn tag-light btn-sm m-1" name="button">Vue.js &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <button onclick="cTagArray('HTML/CSS')" type="button" class="btn tag-light btn-sm m-1" name="button">Html/Css &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button v-for="(ct,index) in coTag" type="button" class="btn tag-light btn-sm m-1" name="button"> {{ct}}<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <!--<button onclick="cTagArray('C++')" type="button" class="btn tag-light btn-sm m-1" name="button">C++ &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
+                <!--<button onclick="cTagArray('C')" type="button" class="btn tag-light btn-sm m-1" name="button">C &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
+                <!--<button onclick="cTagArray('Python')" type="button" class="btn tag-light btn-sm m-1" name="button">Python &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
+                <!--<button onclick="cTagArray('Javascript')" type="button" class="btn tag-light btn-sm m-1" name="button">Javascript &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
+                <!--<button onclick="cTagArray('Database')" type="button" class="btn tag-light btn-sm m-1" name="button">Database &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
+                <!--<button onclick="cTagArray('Mysql')" type="button" class="btn tag-light btn-sm m-1" name="button">Mysql &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
+                <!--<button onclick="cTagArray('Django')" type="button" class="btn tag-light btn-sm m-1" name="button">Django &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
+                <!--<button onclick="cTagArray('Vue.js')" type="button" class="btn tag-light btn-sm m-1" name="button">Vue.js &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
+                <!--<button onclick="cTagArray('HTML/CSS')" type="button" class="btn tag-light btn-sm m-1" name="button">Html/Css &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
                 <!-- <input type="button" value="^_^" id="cat"  onclick="change2(this)" style="background-color:white;"><br>
 클릭하면 바뀌는 버튼<br><br> -->
               </div>
@@ -116,13 +117,8 @@ import Const from '../../constant/constant';
       name: 'Modifyapply',
       data() {
         return {
-          options2: [
-            { value: '1', text: 'CSS' },
-            { value: '2', text: 'HTML' },
-            { value: '3', text: 'JAVA' },
-            { value: '4', text: 'Javascript' },
-            { value: '5', text: 'Python' }
-          ],
+          options2: [],
+            coTag : [],
           item2: '',
           cName:[],
           cLocation:[],
@@ -139,6 +135,7 @@ import Const from '../../constant/constant';
           internTermEnd : null,
            imageData: "",
            imageURL : null,
+            lastSelect : {},
         }
       },
       components: {
@@ -153,6 +150,8 @@ import Const from '../../constant/constant';
           return this.user;
         });
         await this.getNotice();
+        this.loadTag();
+        await this.loadcoTag()
       },
       methods: {
         //
@@ -161,9 +160,25 @@ import Const from '../../constant/constant';
         },
         selectFromParentComponent2 () {
           // select option from parent component
-          this.item2 = this.options2[0].value
+          this.item2 = item2
+          this.lastSelect = lastSelect
+            console.log(this.item2)
+            console.log(this.lastSelect)
         },
-        //
+          loadTag(){
+              this.$http.get(Const.API_SERVER+'/co/getAllTag').then((response) => {
+                  for(var i =0; i<response.data.length;i++) {
+                      this.options2.push({value: i, text: response.data[i].tag})
+                  }
+              })
+          },
+        loadcoTag(){
+                this.$http.get(Const.API_SERVER+'/co/getCoTag',{params:{cLoginID:this.user.loginId}}).then((response) => {
+                    for(var i =0; i<response.data.length;i++) {
+                        this.coTag.push(response.data[i].tag)
+                    }
+                })
+        },
         cTagArray(lang){
           var overlap = 0; //중복횟수를 저장하는 변수 선언
 
