@@ -15,12 +15,13 @@
         <v-modify-profile v-if="$store.state.profile.profile_state==1"></v-modify-profile>
       </div>
     </div>
+    <v-footer></v-footer>
 </section>
 </template>
 
 <script>
 import Const from '../../constant/constant';
-
+import VFooter from '../Footer/Index.vue';
   import VBase from '../Base/Index.vue'
   import VCategory from '../Category/Index.vue'
   import VReadProfile from './ReadProfile.vue'
@@ -43,6 +44,7 @@ import Const from '../../constant/constant';
         VCategory,
         VReadProfile,
         VModifyProfile,
+        VFooter,
       },
       created(){
         this.$store.dispatch('profile/setProfileState',0);

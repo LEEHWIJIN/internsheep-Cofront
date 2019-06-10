@@ -50,12 +50,14 @@
         </form>
         </div>
       </div>
+      <v-footer></v-footer>
     </div>
 
 </template>
 
 <script>
 import Const from '../../constant/constant';
+import VFooter from '../Footer/Index.vue';
   export default{
       name: 'ModifyProfile',
       data() {
@@ -71,6 +73,7 @@ import Const from '../../constant/constant';
         }
       },
       components: {
+        VFooter,
       },
       async created(){
         await this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
