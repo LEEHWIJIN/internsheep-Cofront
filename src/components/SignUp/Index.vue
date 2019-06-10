@@ -1,40 +1,40 @@
 <template>
   <section class="section1">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-          <div class="" style="text-align: center;">
-            <a class="" href="#" @click="goHome"><img src="images/login.png" style="text-align: center; filter: brightness(0) invert(1);"alt="Intern Sheep"></a>
-          </div>
-          <div class="card card-signin my-5">
-            <div class="card-body">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="" style="text-align: center;">
+          <a class="" href="#" @click="goHome"><img src="images/login.png" style="text-align: center; filter: brightness(0) invert(1);"alt="Intern Sheep"></a>
+        </div>
+        <div class="card card-signin my-5">
+          <div class="card-body">
 
-              <h2 class="card-title text-center">Sign Up</h2>
-              <form v-on:submit.prevent='signup' class="form-signin">
+            <h2 class="card-title text-center">Sign Up</h2>
+            <form v-on:submit.prevent='signup' class="form-signin">
 
-                <div class="form-label-group">
-                  <input v-model="user.name" type="text" id="signupName" class="form-control1" placeholder="Id" required autofocus>
-                  <label for="signupName">Name</label>
-                </div>
+              <div class="form-label-group">
+                <input v-model="user.name" type="text" id="signupName" class="form-control1" placeholder="Id" required autofocus>
+                <label for="signupName">Name</label>
+              </div>
 
-                <div class="form-label-group">
-                  <input v-model="user.id" type="signid" id="signupId" class="form-control1" placeholder="Id" required autofocus>
-                  <label for="signupId">Id</label>
-                  <input class="btn btn-sm btn-white" type="button" v-on:click="dupcheck" value="중복확인"><br>
-                </div>
+              <div class="form-label-group">
+                <input v-model="user.id" type="signid" id="signupId" class="form-control1" placeholder="Id" required autofocus>
+                <label for="signupId">Id</label>
+                <input class="btn btn-sm btn-white" type="button" v-on:click="dupcheck" value="중복확인"><br>
+              </div>
 
-                <div class="form-label-group">
-                  <input v-model="user.password" type="password" name="signpassword" id="inputPassword" class="form-control1"  placeholder="Password" required autofocus>
-                  <label for="inputPassword">Password</label>
-                </div>
+              <div class="form-label-group">
+                <input v-model="user.password" type="password" name="signpassword" id="inputPassword" class="form-control1"  placeholder="Password" required autofocus>
+                <label for="inputPassword">Password</label>
+              </div>
 
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button><br>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button><br>
 
-              </form>
-            </div>
+            </form>
           </div>
         </div>
       </div>
+    </div>
   </div>
   </section>
 </template>
@@ -128,13 +128,8 @@ export default {
     .section1 {
       background-color: #007bff;
       background: linear-gradient(to right, #5416b4, #7027c3);
-      /* padding-bottom:120px;
-      padding-top:120px; */
-      height:100vh
-    }
-
-    .row{
-      padding-top:10%
+      padding-bottom:150px;
+      padding-top:150px;
     }
 
     .card-signin {
