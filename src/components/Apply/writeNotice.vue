@@ -165,17 +165,16 @@
         //     }
         // },
         async submitNotice(){
-            if(this.internTermStart.length == 0){
+            if(this.internTermStart == null){
               alert("실습 시작 일을 선택해주세요!");
               return;
             }
-            if(this.internTermEnd.length == 0){
+            if(this.internTermEnd == null){
               alert("실습 종료 일을 선택해주세요!");
               return;
             }
             var data = new FormData();
             data.append('cLoginID',this.user.loginId)
-            // data.append('image', this.imageURL)
             data.append('cBenefit', this.cBenefit)
             data.append('cPay', this.cPay)
             data.append('internTermStart', this.internTermStart)
@@ -192,7 +191,7 @@
                     'Content-Type' : 'multipart/form-data'
                 }
             }
-          
+          console.log(data)
           await this.$http.post(Const.API_SERVER+'/co/mypage/writeNotice',data,config).then((response) => {
 
           })
