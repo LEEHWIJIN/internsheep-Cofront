@@ -191,7 +191,6 @@
                     'Content-Type' : 'multipart/form-data'
                 }
             }
-          console.log(data)
           await this.$http.post(Const.API_SERVER+'/co/mypage/writeNotice',data,config).then((response) => {
 
           })
