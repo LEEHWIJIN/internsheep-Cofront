@@ -124,7 +124,7 @@ export default{
             // console.log(res.data)
             if(res.data.length==0){
                 alert("확정된 학생이 없습니다.")
-                // this.$router.push('/appliedStd');
+                this.$router.push({name: "Home"})
               return;
             }
             else{
