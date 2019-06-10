@@ -1,7 +1,7 @@
 <template>
   <div id="applyList">
     <div class="companyList">
-      <div v-for='sc in selectedCo' :key="sc.cNoticeID">
+      <div v-for='sc in selectedCo'>
         <!-- 파란 사각형 -->
         <div class="topImage shadow-sm" style="line-height:130%">
           <div class="row">

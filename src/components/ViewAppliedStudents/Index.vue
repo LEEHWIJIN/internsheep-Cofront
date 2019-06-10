@@ -1180,7 +1180,6 @@
     border-color: coral;
   }
 
-<<<<<<< HEAD
   select {
   width: 200px;
   border: 1px solid #999;
@@ -1196,6 +1195,4 @@
   .section{
     padding-top:130px;
   }
-=======
->>>>>>> 54dc09b77add5e8bd49fda6356c18346a4802770
 </style>
