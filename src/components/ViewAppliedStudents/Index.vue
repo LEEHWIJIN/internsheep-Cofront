@@ -762,12 +762,12 @@
                 내 상태 : {{cStatus}}
               </div><br/>
 
+
               <div class="col-12 text-center">
                 <br/>
                 <button class="btn btn-primary" @click="finishJudge()">심사 완료</button>
                 <button class="btn btn-primary ml-2" v-if="cStatus=='심사중'" @click="changeStatus()">지원 그만 받기</button>
               </div>
-
               <div class="col-12 text-center">
                 <div id="chart">
                   <!--<apexchart id ="mychart" type=bar height=350 :options="chartOptions" :series="series"/>-->
@@ -1176,6 +1176,7 @@
     border-radius: 50%;
     border-color: coral;
   }
+
 
   .section{
     padding-top:130px;

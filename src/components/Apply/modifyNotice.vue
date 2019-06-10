@@ -8,7 +8,7 @@
             </div>
           <form class="row" v-on:submit.prevent='submitNotice'>
 
-            <div class="col-lg-12 mb-4">
+            <!-- <div class="col-lg-12 mb-4">
               <h6 style="font-weight:bold">회사 이미지*</h6>   <p> *파일을 업로드 해주세요</p>
               <div class="file-upload-form">
 
@@ -17,7 +17,7 @@
               <div class="image-preview" v-if="imageData.length > 0">
                   <img class="preview" :src="imageData">
               </div>
-            </div>
+            </div> -->
               <div class="col-lg-12">
                   <h6 style="font-weight:bold">회사 소개*</h6>
                   <input class="form-control mb-4" v-model="cInfo" placeholder="회사 소개를 입력 해주세요">
@@ -57,32 +57,14 @@
             <div class="col-lg-12">
               <h6 style="font-weight:bold">태그*</h6>
               <p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 추천 태그 검색</p>
-<!---  -->
              <div class="mb-1">
                <!-- string value -->
-               <model-select :options="options2"
-                             v-model="item2"
-                                       placeholder="태그" @select="selectFromParentComponent2">
-                   {{lastSelect}}
+               <model-select :options="options" v-model="item" placeholder="태그">
                </model-select>
              </div>
-<!--  -->
-              <!--<p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 사용자 입력 태그</p>-->
-              <!--<input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요 ( ex. #프론트엔드개발자 #서버관리 )">-->
               <p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 추가된 태그</p>
               <div class="bg-gray-light mb-3 p-2">
-                <button v-for="(ct,index) in coTag" type="button" class="btn tag-light btn-sm m-1" name="button"> {{ct}}<i class="fa fa-plus" style="font-size:14px;"></i></button>
-                <!--<button onclick="cTagArray('C++')" type="button" class="btn tag-light btn-sm m-1" name="button">C++ &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!--<button onclick="cTagArray('C')" type="button" class="btn tag-light btn-sm m-1" name="button">C &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!--<button onclick="cTagArray('Python')" type="button" class="btn tag-light btn-sm m-1" name="button">Python &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!--<button onclick="cTagArray('Javascript')" type="button" class="btn tag-light btn-sm m-1" name="button">Javascript &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!--<button onclick="cTagArray('Database')" type="button" class="btn tag-light btn-sm m-1" name="button">Database &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!--<button onclick="cTagArray('Mysql')" type="button" class="btn tag-light btn-sm m-1" name="button">Mysql &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!--<button onclick="cTagArray('Django')" type="button" class="btn tag-light btn-sm m-1" name="button">Django &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!--<button onclick="cTagArray('Vue.js')" type="button" class="btn tag-light btn-sm m-1" name="button">Vue.js &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!--<button onclick="cTagArray('HTML/CSS')" type="button" class="btn tag-light btn-sm m-1" name="button">Html/Css &nbsp; &nbsp;<i class="fa fa-plus" style="font-size:14px;"></i></button>-->
-                <!-- <input type="button" value="^_^" id="cat"  onclick="change2(this)" style="background-color:white;"><br>
-클릭하면 바뀌는 버튼<br><br> -->
+                <button v-for="(ct,index) in cTag" type="button" class="btn tag-light btn-sm m-1" @click="removeItem(index)" name="button"> {{ct}}<i class="fa fa-plus" style="font-size:14px;"></i></button>
               </div>
             </div>
             <!-- <h6 style="font-weight:bold">사업자등록번호*</h6>
@@ -106,36 +88,35 @@
 </template>
 
 <script>
-//
 import { ModelSelect } from 'vue-search-select'
-//
 import Const from '../../constant/constant';
-  import VBase from '../Base/Index.vue'
-  import VCategory from '../Category/Index.vue'
-  import DatePicker from 'v-cal-input'
+import VBase from '../Base/Index.vue'
+import VCategory from '../Category/Index.vue'
+import DatePicker from 'v-cal-input'
   export default{
       name: 'Modifyapply',
       data() {
         return {
-          options2: [],
-            coTag : [],
-          item2: '',
+          options: [],
+          coTag : [],
+          item: '',
           cName:[],
           cLocation:[],
           cBenefit:[],
           cPay : [],
-            cManagerPhone :[],
-            cManagerName :[],
-            cInfo : [],
-            cEmail : [],
+          cManagerPhone :[],
+          cManagerName :[],
+          cInfo : [],
+          cEmail : [],
           internTermStart : null,
           cOccupation : [],
           cNumOfPeople : [],
           cTag : [],
+          newTag : [],
           internTermEnd : null,
-           imageData: "",
-           imageURL : null,
-            lastSelect : {},
+          imageData: "",
+          imageURL : null,
+          lastSelect : {},
         }
       },
       components: {
@@ -143,6 +124,18 @@ import Const from '../../constant/constant';
           VCategory,
           DatePicker,
           ModelSelect,
+      },
+      watch:{
+        item : function(){
+          for(var j = 0;j<this.cTag.length;j++){
+            if(this.options[this.item].text==this.cTag[j]){
+              return;
+            }
+          }
+          var tagname = this.options[this.item].text;
+          this.cTag.push(tagname)
+          // this.newTag.push(tagname)
+        }
       },
       async created(){
         await this.$http.get(Const.API_SERVER+'/',{'headers': {authorization: `Bearer ${localStorage.token}`}}).then(res => {
@@ -154,47 +147,22 @@ import Const from '../../constant/constant';
         await this.loadcoTag()
       },
       methods: {
-        //
-        reset2 () {
-          this.item2 = ''
+        removeItem(index){
+          this.cTag.splice(index,1)
         },
-        selectFromParentComponent2 () {
-          // select option from parent component
-          this.item2 = item2
-          this.lastSelect = lastSelect
-            console.log(this.item2)
-            console.log(this.lastSelect)
+        loadTag(){
+            this.$http.get(Const.API_SERVER+'/co/getAllTag').then((response) => {
+                for(var i =0; i<response.data.length;i++) {
+                  this.options.push({value: i, text: response.data[i].tag})
+                }
+            })
         },
-          loadTag(){
-              this.$http.get(Const.API_SERVER+'/co/getAllTag').then((response) => {
-                  for(var i =0; i<response.data.length;i++) {
-                      this.options2.push({value: i, text: response.data[i].tag})
-                  }
-              })
-          },
         loadcoTag(){
-                this.$http.get(Const.API_SERVER+'/co/getCoTag',{params:{cLoginID:this.user.loginId}}).then((response) => {
-                    for(var i =0; i<response.data.length;i++) {
-                        this.coTag.push(response.data[i].tag)
-                    }
-                })
-        },
-        cTagArray(lang){
-          var overlap = 0; //중복횟수를 저장하는 변수 선언
-
-          for(var i=0; i<this.cTag.length ; i++){
-            if(cTag[i]==lang){  // lang과 같은 태그가 존재할 경우
-              overlap++; //중복횟수를 늘린다
-            }
-          }
-
-          if(overlap>=1){ // 중복횟수가 1이상일 경우
-            return;
-          }
-          else{ // 아닐경우
-            this.cTag.push(lang); // cTag 배열에 저장
-          }
-
+          this.$http.get(Const.API_SERVER+'/co/getCoTag',{params:{cLoginID:this.user.loginId}}).then((response) => {
+              for(var i =0; i<response.data.length;i++) {
+                  this.cTag.push(response.data[i].tag)
+              }
+          })
         },
         previewImage(event) {
           var input = event.target;
@@ -208,27 +176,37 @@ import Const from '../../constant/constant';
           }
         },
         submitNotice(){
+            if(this.internTermStart.length == 0){
+              alert("실습 시작 일을 선택해주세요!");
+              return;
+            }
+            if(this.internTermEnd.length == 0){
+              alert("실습 종료 일을 선택해주세요!");
+              return;
+            }
             var data = new FormData();
             data.append('cLoginID',this.user.loginId)
             data.append('image', this.imageURL)
             data.append('cBenefit', this.cBenefit)
             data.append('cPay', this.cPay)
-              data.append('internTermStart', this.internTermStart)
-
-              data.append('internTermEnd', this.internTermEnd)
+            data.append('internTermStart', this.internTermStart)
+            data.append('internTermEnd', this.internTermEnd)
             data.append('cOccupation', this.cOccupation)
             data.append('cNumOfPeople',this.cNumOfPeople)
-            data.append('cTag',  this.cTag)
+            // data.append('cTag',  this.cTag)
             data.append('cLocation', this.cLocation)
             data.append('cManagerPhone', this.cManagerPhone)
             data.append('cManagerName', this.cManagerName)
             data.append('cInfo', this.cInfo)
             data.append('cEmail', this.cEmail)
             let config = {
-                header : {
-                    'Content-Type' : 'multipart/form-data'
-                }
+              header : {
+                'Content-Type' : 'multipart/form-data'
+              }
             }
+            this.$http.post(Const.API_SERVER+'/co/addCoAndTag',{cLoginID:this.user.loginId,tag : this.cTag}).then((response)=>{
+              
+            })
             this.$http.post(Const.API_SERVER+'/co/mypage/modifyNotice',data,config).then((response) => {
                 alert("수정되었습니다.")
                 this.$store.dispatch('apply/setApplyState',2);
@@ -242,7 +220,7 @@ import Const from '../../constant/constant';
             this.cPay = res.data[0].cPay;
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
-            this.cTag = res.data[0].cTag;
+            // this.cTag = res.data[0].cTag;
             this.cInfo = res.data[0].cInfo;
             this.cEmail = res.data[0].cEmail;
             this.cManagerPhone = res.data[0].cManagerPhone;

@@ -121,7 +121,7 @@ export default{
       methods: {
         loadHiredStd(){
           this.$http.get(Const.API_SERVER+'/co/mypage/loadHiredStd',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester}}).then((res)=>{
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data.length==0){
                 alert("확정된 학생이 없습니다.")
                 // this.$router.push('/appliedStd');
@@ -143,7 +143,7 @@ export default{
         },
         pickStd(index){
           this.pickStudent = index;
-          console.log(index);
+          // console.log(index);
           // this.studentInfo[index].val = event.target.value;
           // this.studentInfo[index].id = this.pickDate;
         },
@@ -152,7 +152,7 @@ export default{
           var index = this.pickStudent;
           this.studentInfo[index].val = event.target.value;
           this.studentInfo[index].id = this.pickDate;
-          console.log(this.studentInfo[index]);
+          // console.log(this.studentInfo[index]);
         },
         async modify(){
           await this.$http.get(Const.API_SERVER+'/co/mypage/loadInterTerm',{params:{cLoginID:this.user.loginId,applySemester:this.applySemester,date : this.pickDate}}).then((res)=>{
