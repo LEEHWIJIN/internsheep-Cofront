@@ -8,7 +8,7 @@
             </div>
           <form class="row" v-on:submit.prevent='submitNotice'>
 
-            <div class="col-lg-12 mb-4">
+            <!-- <div class="col-lg-12 mb-4">
               <h6 style="font-weight:bold">회사 이미지*</h6>   <p> *파일을 업로드 해주세요</p>
               <div class="file-upload-form">
 
@@ -17,7 +17,7 @@
               <div class="image-preview" v-if="imageData.length > 0">
                   <img class="preview" :src="imageData">
               </div>
-            </div>
+            </div> -->
               <div class="col-lg-12">
                   <h6 style="font-weight:bold">회사 소개*</h6>
                   <input class="form-control mb-4" v-model="cInfo" placeholder="회사 소개를 입력 해주세요">

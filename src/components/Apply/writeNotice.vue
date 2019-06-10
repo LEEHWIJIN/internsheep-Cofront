@@ -6,17 +6,17 @@
               <h2 class="section-title">Write a Notice</h2>
             </div>
           <form class="row" v-on:submit.prevent='submitNotice'>
-            <div class="col-lg-12 mb-4">
+            <!-- <div class="col-lg-12 mb-4">
               <h6 style="font-weight:bold">회사 이미지</h6>
 
-            <div class="file-upload-form">
-                Upload an image file:
-                <input type="file" @change="previewImage" accept="image/*">
-            </div>
-            <div class="image-preview" v-if="imageData.length > 0">
-                <img class="preview" :src="imageData">
-            </div>
-            </div>
+              <div class="file-upload-form">
+                  Upload an image file:
+                  <input type="file" @change="previewImage" accept="image/*">
+              </div>
+              <div class="image-preview" v-if="imageData.length > 0">
+                  <img class="preview" :src="imageData">
+              </div>
+            </div> -->
               <div class="col-lg-12">
                   <h6 style="font-weight:bold">회사 소개*</h6>
                   <input class="form-control mb-4" v-model="cInfo" placeholder="회사 소개를 입력 해주세요">
@@ -118,17 +118,17 @@
 
       },
       methods: {
-           previewImage(event) {
-            var input = event.target;
-                  if (input.files && input.files[0]) {
-                var fr = new FileReader();
-                fr.onload = (e) => {
-                    this.imageData = e.target.result;
-                }
-                fr.readAsDataURL(input.files[0]);
-                this.imageURL=input.files[0]
-            }
-        },
+        // previewImage(event) {
+        //   var input = event.target;
+        //         if (input.files && input.files[0]) {
+        //       var fr = new FileReader();
+        //       fr.onload = (e) => {
+        //           this.imageData = e.target.result;
+        //       }
+        //       fr.readAsDataURL(input.files[0]);
+        //       this.imageURL=input.files[0]
+        //   }
+        // },
         submitNotice(){
             var data = new FormData();
             data.append('cLoginID',this.user.loginId)
