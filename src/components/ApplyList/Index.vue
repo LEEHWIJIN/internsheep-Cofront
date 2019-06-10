@@ -89,6 +89,10 @@
       methods: {
         applyList(){
           this.$http.get(Const.API_SERVER+'/std/list',{params:{applyOrder:this.applyTerm.applyOrder, applySemester: this.applyTerm.applySemester}}).then((response) => {
+            if(response.data.length==0){
+              alert("신청한 기업이 없습니다.");
+              this.$router.push({name: "Home"});
+            }
             for(var i=0; i<response.data.length;i++){
                 this.applylist.push({
                   cBenefit : response.data[i].cBenefit,

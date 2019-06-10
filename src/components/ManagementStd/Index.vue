@@ -218,10 +218,21 @@ export default{
   padding-top:130px;
 }
 
-.select {
+/* .select {
   height: 25px !important;
   width: 80px !important;
-}
+} */
 
+select {
+  width: 200px;
+  border: 1px solid #999;
+  font-family: inherit;
+  border-radius: 0px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+select::-ms-expand {
+display: none;
+}
 
 </style>

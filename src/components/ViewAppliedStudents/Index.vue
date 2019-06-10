@@ -744,7 +744,7 @@
                     </b-modal>
                   </div>
                 </div>
-                <v-error v-else-if="$store.state.apply.apply_state==1"></v-error>
+                <!-- <v-error v-else-if="$store.state.apply.apply_state==1"></v-error> -->
               </div>
 
               <div class="col-12 text-center" style="font-size: 15px">
@@ -1167,6 +1167,17 @@
     border-color: coral;
   }
 
+  select {
+  width: 200px;
+  border: 1px solid #999;
+  font-family: inherit;
+  border-radius: 0px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  }
+  select::-ms-expand {
+    display: none;
+  }
 
   .section{
     padding-top:130px;
