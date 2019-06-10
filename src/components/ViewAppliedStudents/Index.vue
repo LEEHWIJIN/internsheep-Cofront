@@ -828,8 +828,6 @@
                     height: 350,
                     type: 'bar',
                     events: {
-                        click: function (chart, w, e) {
-                            // console.log(chart, w, e)
                         }
                     },
                 },
@@ -891,7 +889,7 @@
                     }
 
                 }
-            }
+            
         }
       },
       components: {
