@@ -62,11 +62,9 @@
                <model-select :options="options" v-model="item" placeholder="태그">
                </model-select>
              </div>
-              <!--<p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 사용자 입력 태그</p>-->
-              <!--<input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요 ( ex. #프론트엔드개발자 #서버관리 )">-->
               <p class="mb-1" style="font-weight:bold; font-size:15px; color:grey;">- 추가된 태그</p>
               <div class="bg-gray-light mb-3 p-2">
-                <button v-for="(ct,index) in coTag" type="button" class="btn tag-light btn-sm m-1" @click="removeItem(index)" name="button"> {{ct}}<i class="fa fa-plus" style="font-size:14px;"></i></button>
+                <button v-for="(ct,index) in cTag" type="button" class="btn tag-light btn-sm m-1" @click="removeItem(index)" name="button"> {{ct}}<i class="fa fa-plus" style="font-size:14px;"></i></button>
               </div>
             </div>
             <!-- <h6 style="font-weight:bold">사업자등록번호*</h6>
@@ -114,6 +112,7 @@ import DatePicker from 'v-cal-input'
           cOccupation : [],
           cNumOfPeople : [],
           cTag : [],
+          newTag : [],
           internTermEnd : null,
           imageData: "",
           imageURL : null,
@@ -128,17 +127,14 @@ import DatePicker from 'v-cal-input'
       },
       watch:{
         item : function(){
-          console.log(this.options[this.item].text)
-          for(var i=0;this.coTag.length;i++){
-            if(this.options[this.item].text==this.coTag[i]){
-              console.log(this.coTag[i])  
+          for(var j = 0;j<this.cTag.length;j++){
+            if(this.options[this.item].text==this.cTag[j]){
               return;
-            } 
-            else break;
+            }
           }
-          console.log("for문 나왔다.")
           var tagname = this.options[this.item].text;
-          this.coTag.push(tagname)
+          this.cTag.push(tagname)
+          // this.newTag.push(tagname)
         }
       },
       async created(){
@@ -151,23 +147,20 @@ import DatePicker from 'v-cal-input'
         await this.loadcoTag()
       },
       methods: {
-        pushTaglist(item2){
-          console.log(item2)
-        },
         removeItem(index){
-          this.coTag.splice(index,1)
+          this.cTag.splice(index,1)
         },
         loadTag(){
             this.$http.get(Const.API_SERVER+'/co/getAllTag').then((response) => {
                 for(var i =0; i<response.data.length;i++) {
-                    this.options.push({value: i, text: response.data[i].tag})
+                  this.options.push({value: i, text: response.data[i].tag})
                 }
             })
         },
         loadcoTag(){
           this.$http.get(Const.API_SERVER+'/co/getCoTag',{params:{cLoginID:this.user.loginId}}).then((response) => {
               for(var i =0; i<response.data.length;i++) {
-                  this.coTag.push(response.data[i].tag)
+                  this.cTag.push(response.data[i].tag)
               }
           })
         },
@@ -183,6 +176,14 @@ import DatePicker from 'v-cal-input'
           }
         },
         submitNotice(){
+            if(this.internTermStart.length == 0){
+              alert("실습 시작 일을 선택해주세요!");
+              return;
+            }
+            if(this.internTermEnd.length == 0){
+              alert("실습 종료 일을 선택해주세요!");
+              return;
+            }
             var data = new FormData();
             data.append('cLoginID',this.user.loginId)
             data.append('image', this.imageURL)
@@ -192,20 +193,20 @@ import DatePicker from 'v-cal-input'
             data.append('internTermEnd', this.internTermEnd)
             data.append('cOccupation', this.cOccupation)
             data.append('cNumOfPeople',this.cNumOfPeople)
-            data.append('cTag',  this.cTag)
+            // data.append('cTag',  this.cTag)
             data.append('cLocation', this.cLocation)
             data.append('cManagerPhone', this.cManagerPhone)
             data.append('cManagerName', this.cManagerName)
             data.append('cInfo', this.cInfo)
             data.append('cEmail', this.cEmail)
             let config = {
-                header : {
-                    'Content-Type' : 'multipart/form-data'
-                }
+              header : {
+                'Content-Type' : 'multipart/form-data'
+              }
             }
-            // this.$http.post(Const.API_SERVER+'/co/addCoAndTag',{cLoginID:this.user.loginId,tag : this.coTag}).then((response)=>{
+            this.$http.post(Const.API_SERVER+'/co/addCoAndTag',{cLoginID:this.user.loginId,tag : this.cTag}).then((response)=>{
               
-            // })
+            })
             this.$http.post(Const.API_SERVER+'/co/mypage/modifyNotice',data,config).then((response) => {
                 alert("수정되었습니다.")
                 this.$store.dispatch('apply/setApplyState',2);
@@ -219,7 +220,7 @@ import DatePicker from 'v-cal-input'
             this.cPay = res.data[0].cPay;
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
-            this.cTag = res.data[0].cTag;
+            // this.cTag = res.data[0].cTag;
             this.cInfo = res.data[0].cInfo;
             this.cEmail = res.data[0].cEmail;
             this.cManagerPhone = res.data[0].cManagerPhone;

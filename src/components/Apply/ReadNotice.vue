@@ -47,7 +47,7 @@
         </div>
         <div class="col-lg-12">
           <h6 style="font-weight:bold">태그*</h6>
-          <input class="form-control mb-4" v-model="cTag" placeholder="태그를 입력 해주세요" readonly="readonly">
+          <button v-for="(ct,index) in coTag" type="button" class="btn tag-light btn-sm m-1" name="button"> {{ct}}<i class="fa fa-plus" style="font-size:14px;"></i></button>
         </div>
         <!-- <h6 style="font-weight:bold">사업자등록번호*</h6>
         <div class="col-lg-6">
@@ -87,11 +87,12 @@
           internTermStart : null,
           cOccupation : [],
           cNumOfPeople : [],
-            cManagerPhone :[],
-            cManagerName :[],
-            cInfo : [],
-            cEmail : [],
+          cManagerPhone :[],
+          cManagerName :[],
+          cInfo : [],
+          cEmail : [],
           cTag : [],
+          coTag:[],
           internTermEnd : null,
           image : null,
           uploadImage : "",
@@ -109,9 +110,17 @@
           return this.user;
         });
         await this.getNotice();
-        await this.loadImage(this.user.loginId)
+        await this.loadImage(this.user.loginId);
+        await this.loadcoTag();
       },
       methods: {
+        loadcoTag(){
+          this.$http.get(Const.API_SERVER+'/co/getCoTag',{params:{cLoginID:this.user.loginId}}).then((response) => {
+              for(var i =0; i<response.data.length;i++) {
+                  this.coTag.push(response.data[i].tag)
+              }
+          })
+        },
         modifyApply(){
           this.$store.dispatch('apply/setApplyState',3);
         },
@@ -128,10 +137,10 @@
             this.cOccupation = res.data[0].cOccupation;
             this.cNumOfPeople = res.data[0].cNumOfPeople;
             this.cTag = res.data[0].cTag;
-              this.cInfo = res.data[0].cInfo;
-                this.cEmail = res.data[0].cEmail;
-                this.cManagerName = res.data[0].cManagerName;
-                this.cManagerPhone = res.data[0].cManagerPhone;
+            this.cInfo = res.data[0].cInfo;
+            this.cEmail = res.data[0].cEmail;
+            this.cManagerName = res.data[0].cManagerName;
+            this.cManagerPhone = res.data[0].cManagerPhone;
           })
         },
         loadImage(loginId){
@@ -151,5 +160,18 @@ img.preview {
     background-color: white;
     border: 1px solid #DDD;
     padding: 5px;
+}
+.tag-light {
+  /* font-weight: bold; */
+  font-size: 14px;
+  background: grey;
+  color: white;
+  border: 0;
+  transition: none;
+}
+
+.tag-light:hover {
+  color: dimgrey;
+  background: silver;
 }
 </style>
