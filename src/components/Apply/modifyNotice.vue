@@ -164,23 +164,23 @@ import DatePicker from 'v-cal-input'
               }
           })
         },
-        previewImage(event) {
-          var input = event.target;
-                if (input.files && input.files[0]) {
-              var fr = new FileReader();
-              fr.onload = (e) => {
-                  this.imageData = e.target.result;
-              }
-              fr.readAsDataURL(input.files[0]);
-              this.imageURL=input.files[0]
-          }
-        },
+        // previewImage(event) {
+        //   var input = event.target;
+        //         if (input.files && input.files[0]) {
+        //       var fr = new FileReader();
+        //       fr.onload = (e) => {
+        //           this.imageData = e.target.result;
+        //       }
+        //       fr.readAsDataURL(input.files[0]);
+        //       this.imageURL=input.files[0]
+        //   }
+        // },
         submitNotice(){
-            if(this.internTermStart.length == 0){
+            if(this.internTermStart == null){
               alert("실습 시작 일을 선택해주세요!");
               return;
             }
-            if(this.internTermEnd.length == 0){
+            if(this.internTermEnd == null){
               alert("실습 종료 일을 선택해주세요!");
               return;
             }
