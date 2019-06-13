@@ -13,7 +13,7 @@
             <div class="companyList col-lg-5">
               <div class="search-container pt-3">
                 <form class="search-form pb-2" action="/action_page.php">
-                  <input class="search-input" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
+                  <input class="search-input" v-model="searchinput" type="text" placeholder="Search" name="search" style="font-size:17px; color: #555555;">
                   <button class="search-button" type="submit"><i class="fa fa-search" style="font-size:20px; color:#555555;"></i></button>
                 </form>
               </div>
