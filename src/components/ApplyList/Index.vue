@@ -19,7 +19,7 @@
               </div>
               <div class="company-item comanyList">
                 <ul class="list-styled list-bordered">
-                    <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)" v-if="AL.cName.includes(searchinput)||AL.cOccupation.includes(searchinput)||AL.cTag.includes(searchinput)">
+                    <div v-for='(AL,index) in applylist' :key="AL.cNoticeID" @click="clickCo(index)" v-if="AL.cName.includes(searchinput)||AL.cOccupation.includes(searchinput)">
                       <div class="zoom">
                         <li><a class="media align-items-center flex-column flex-sm-row">
                           <!-- {{index+1}} -->
