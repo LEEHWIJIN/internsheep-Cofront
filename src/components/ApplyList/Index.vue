@@ -31,7 +31,7 @@
                             <!-- 기업명 -->
                             <span style="font-size: 12px; color: #8b8e93;">{{AL.cName}}<br></span>
                             <!-- 태그 -->
-                            <span style="font-size: 12px; color: #8b8e93;">{{AL.cTag}}<br></span>
+                            <button type="button" style="padding-left: 5px;padding-right: 5px;margin-right: 0px;margin-left: 0px;" class="btn tag-light btn-sm m-1" v-for="(Tag,Tindex) in cTag[0]" v-if="Tag.cName==AL.cName">{{Tag.tag}}</button>
                           </div>
                           <!-- 경쟁률 -->
                           <div class="" style="line-height:120%">
@@ -75,6 +75,7 @@
           selectedCo:[],
           applyTerm:{},
           searchinput:"",
+          cTag:[],
         }
       },
       components: {
@@ -105,7 +106,6 @@
                   cManagerName : response.data[i].cManagerName,
                   cName : response.data[i].cName,
                   cOccupation : response.data[i].cOccupation,
-                  cTag : response.data[i].cTag,
                   cNumOfPeople :response.data[i].cNumOfPeople,
                   applyStdNum : response.data[i].applyStdNum,
                   cInfo : response.data[i].cInfo,
@@ -136,15 +136,22 @@
               cEmail : this.applylist[selectedNum].cEmail,
           })
         },
-        compareDate(){
-          this.$http.get(Const.API_SERVER+'/admin/recentApplyTerm').then((response) => {
+        async compareDate(){
+          await this.$http.get(Const.API_SERVER+'/admin/recentApplyTerm').then((response) => {
             this.applyTerm = {
                 applyStart : response.data.applyStart,
                 applyEnd : response.data.applyEnd,
                 applySemester : response.data.applySemester,
                 applyOrder : response.data.applyOrder
             }
-            this.applyList();
+          })
+          await this.applyList();
+          await this.getTag();
+        },
+        getTag(){
+          this.$http.get(Const.API_SERVER+'/co/mypage/getCoTagList').then((response) => {
+            this.cTag.push(response.data);
+            console.log(this.cTag);
           })
         },
       }
@@ -227,4 +234,19 @@
   transform: scale(1.072) !important; /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   box-shadow: 0px 2px 8px 0px rgba(51, 77, 128, 0.12) !important;
 }
+
+.tag-light {
+  /* font-weight: bold; */
+  font-size: 10px;
+  background: grey;
+  color: white;
+  border: 0;
+  transition: none;
+}
+
+.tag-light:hover {
+  color: dimgrey;
+  background: silver;
+}
+
 </style>
